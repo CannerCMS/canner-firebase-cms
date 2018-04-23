@@ -10,5 +10,6 @@ firebase auth:import firebase-default-user.json
 
 #### Default user
 
-**User name:** admin-test@canner.io
+**Username:** admin-test@canner.io
+
 **Password:** admin-test
