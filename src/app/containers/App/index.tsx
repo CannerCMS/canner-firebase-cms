@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as firebase from 'firebase';
 import styled from 'styled-components';
 // import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps, Redirect } from 'react-router';
 import { FormComponentProps } from 'antd/lib/form';
-import {Row, Col, Card, Form, Input, Icon, Button} from 'antd';
+import {Row, Col, Card, Form, Input, Icon, Button, notification} from 'antd';
 const FormItem = Form.Item;
 
 const Title = styled.div`
@@ -28,17 +28,40 @@ export interface Props extends RouteComponentProps<void>, FormComponentProps {
 }
 
 class CMSApp extends React.Component<Props> {
+  state = {
+    redirectToReferrer: false
+  };
+
   handleSubmit = (e: any) => {
     e.preventDefault();
     this.props.form.validateFields((err: any, values: any) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        firebase.auth().signInWithEmailAndPassword(values.email, values.password)
+          .then((result) => {
+            this.setState({redirectToReferrer: true})
+          })
+          .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            notification.error({
+              message: errorCode,
+              description: errorMessage
+            })
+          });
       }
     });
   }
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) {
+      return <Redirect to={"/"} />;
+    }
+
     return (
       <BodyWrapper>
         <Row type="flex" justify="space-around" align="middle" style={{height: '100%'}}>
@@ -47,15 +70,15 @@ class CMSApp extends React.Component<Props> {
               <Card title={<Title>Welcome to Canner CMS for Firebase</Title>}>
               <Form onSubmit={this.handleSubmit}>
                 <FormItem>
-                  {getFieldDecorator('userName', {
-                    rules: [{ required: true, message: 'Please input your username!' }],
+                  {getFieldDecorator('email', {
+                    rules: [{ required: true, message: 'Please input your Email!' }],
                   })(
-                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                    <Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
                   )}
                 </FormItem>
                 <FormItem>
                   {getFieldDecorator('password', {
-                    rules: [{ required: true, message: 'Please input your Password!' }],
+                    rules: [{ required: true, message: 'Please input your password!' }],
                   })(
                     <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
                   )}
