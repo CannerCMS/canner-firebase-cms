@@ -8,8 +8,7 @@ Canner CMS for Firebase
 firebase auth:import firebase-default-user.json
 ```
 
-#### Default user
+### Default user
 
-**Username:** admin-test@canner.io
-
-**Password:** admin-test
+- **Username:** admin-test@canner.io
+- **Password:** admin-test
