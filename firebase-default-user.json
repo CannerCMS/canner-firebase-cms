@@ -1,0 +1,10 @@
+{
+  "users": [{
+    "localId": "akjBInS2IZQY5pdOfXhUiRna4Ov2",
+    "email": "admin-test@canner.io",
+    "emailVerified": false,
+    "passwordHash": "JJShPDYlNKjbokZOzTh7+HSZ0+JcoNlWb4HY0LWNgcloNVwU1aY87OWRl1orRgO+z70Gp/ACLLh+PYLoZiiv5Q==",
+    "salt": "rSnP2QUqqWFVhw==",
+    "providerUserInfo": []
+  }]
+}
