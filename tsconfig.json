@@ -13,10 +13,11 @@
     "strict": true,
     "outDir": "build",
     "lib": ["es6", "es7", "dom"],
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "app/*": ["./app/*"],
-      "assets/*": ["./assets/*"]
+      "app/*": ["./src/app/*"],
+      "assets/*": ["./src/assets/*"],
+      "canner-schema": ["./canner.schema"]
     }
   },
   "exclude": ["dist", "build", "node_modules"]

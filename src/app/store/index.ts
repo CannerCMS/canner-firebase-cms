@@ -4,8 +4,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { routerMiddleware } from 'react-router-redux';
 import { History } from 'history';
 import { logger } from 'app/middleware';
-import { RootState, rootReducer } from 'app/reducers';
 import * as firebase from 'firebase';
+import { RootState } from 'app/reducers/state';
+import rootReducer from 'app/reducers';
 import firebaseConfig from 'app/config/firebase';
 
 firebase.initializeApp(firebaseConfig);
@@ -17,7 +18,7 @@ export function configureStore(history: History, initialState?: RootState): Stor
     middleware = composeWithDevTools(middleware);
   }
 
-  const store = createStore(rootReducer as any, initialState, middleware) as Store<RootState>;
+  const store = createStore(rootReducer, initialState, middleware) as Store<RootState>;
 
   if (module.hot) {
     module.hot.accept('app/reducers', () => {

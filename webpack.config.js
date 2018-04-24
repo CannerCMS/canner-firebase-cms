@@ -32,7 +32,9 @@ module.exports = {
     mainFields: ['module', 'browser', 'main'],
     alias: {
       app: path.resolve(__dirname, 'src/app/'),
-      assets: path.resolve(__dirname, 'src/assets/')
+      assets: path.resolve(__dirname, 'src/assets/'),
+      "canner-schema": path.resolve(__dirname, './canner.schema.js'),
+      "styled-components": path.resolve(__dirname, 'node_modules', 'styled-components')
     }
   },
   resolveLoader: {
@@ -92,10 +94,19 @@ module.exports = {
             // antd - customized themes
             // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
             options: {
-              modifyVars: theme
+              modifyVars: theme,
+              javascriptEnabled: true
             }
           }
         ],
+      },
+      // loader for canner.schema.js
+      {
+        test: /canner\.schema\.js$/,
+        use: [
+          {loader: '@canner/canner-schema-loader'},
+          {loader: 'babel-loader'}
+        ]
       },
       // static assets
       { test: /\.html$/, use: 'html-loader' },
@@ -121,6 +132,9 @@ module.exports = {
     runtimeChunk: true
   },
   plugins: [
+    new webpack.DefinePlugin({
+      IMGUR_CLIENT_ID: JSON.stringify(process.env.IMGUR_CLIENT_ID)
+    }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
       DEBUG: false
