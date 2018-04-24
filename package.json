@@ -10,6 +10,12 @@
     "build": "webpack -p --progress --colors",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },
+  "theme": {
+    "primary-color": "#f2b173",
+    "primary-3": "rgba(242, 177, 115, 0.5)",
+    "primary-4": "rgba(242, 177, 115, 0.7)",
+    "font-size-base": "14px"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/classnames": "2.2.3",

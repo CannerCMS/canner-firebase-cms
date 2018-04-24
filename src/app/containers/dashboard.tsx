@@ -5,7 +5,7 @@ import {RouteComponentProps} from 'react-router';
 import logoWhite from 'assets/logo-word-white.png';
 import { LogoContainer, HeaderMenu } from 'app/components/dashboard';
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 interface Props extends RouteComponentProps<void> {
 }
@@ -48,6 +48,9 @@ export default class Dashboard extends React.Component<Props> {
             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
               Content
             </Content>
+            <Footer style={{textAlign: "center"}}>
+              Built by <a href="https://www.canner.io/">CannerIO</a>. License under Apache License 2.0
+            </Footer>
           </Layout>
         </Layout>
       </Layout>

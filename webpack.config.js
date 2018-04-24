@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
+const pkg = require("./package.json");
+const theme = pkg.theme;
 
 const isProduction = process.argv.indexOf('-p') >= 0;
 const sourcePath = path.join(__dirname, './src');
@@ -86,7 +88,12 @@ module.exports = {
             loader: 'css'
           },
           {
-            loader: 'less'
+            loader: 'less',
+            // antd - customized themes
+            // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
+            options: {
+              modifyVars: theme
+            }
           }
         ],
       },
