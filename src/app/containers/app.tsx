@@ -1,10 +1,12 @@
 import * as React from 'react';
 import * as firebase from 'firebase';
-// import { connect } from 'react-redux';
 import { RouteComponentProps, Redirect } from 'react-router';
 import { FormComponentProps } from 'antd/lib/form';
 import {Row, Col, Card, Form, Input, Icon, Button, notification} from 'antd';
-import {Title, LoginContainer, BodyWrapper} from 'app/components/app'
+import {Title, LoginContainer, LogoContainer, BodyWrapper} from 'app/components/app'
+
+import logoWhite from 'assets/logo-word-white.png';
+
 const FormItem = Form.Item;
 
 interface Props extends RouteComponentProps<void>, FormComponentProps {
@@ -49,8 +51,10 @@ class CMSApp extends React.Component<Props> {
       <BodyWrapper>
         <Row type="flex" justify="space-around" align="middle" style={{height: '100%'}}>
           <Col span={12}>
+            <LogoContainer>
+              <img src={logoWhite}/>
+            </LogoContainer>
             <LoginContainer>
-              <Card title={<Title>Welcome to Canner CMS for Firebase</Title>}>
               <Form onSubmit={this.handleSubmit}>
                 <FormItem>
                   {getFieldDecorator('email', {
@@ -72,7 +76,6 @@ class CMSApp extends React.Component<Props> {
                   </Button>
                 </FormItem>
               </Form>
-              </Card>
             </LoginContainer>
           </Col>
         </Row>

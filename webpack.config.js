@@ -29,7 +29,8 @@ module.exports = {
     // (jsnext:main directs not usually distributable es6 format, but es6 sources)
     mainFields: ['module', 'browser', 'main'],
     alias: {
-      app: path.resolve(__dirname, 'src/app/')
+      app: path.resolve(__dirname, 'src/app/'),
+      assets: path.resolve(__dirname, 'src/assets/')
     }
   },
   resolveLoader: {
