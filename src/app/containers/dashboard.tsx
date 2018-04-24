@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as firebase from 'firebase';
 import {Layout, Menu} from 'antd';
-import {RouteComponentProps} from 'react-router';
+import {RouteComponentProps, Redirect} from 'react-router';
 import {Link} from 'react-router-dom';
 import {CMS} from '@canner/react-cms-core';
 import logoWhite from 'assets/logo-word-white.png';
@@ -27,7 +27,12 @@ export default class Dashboard extends React.Component<Props> {
   }
 
   render() {
-    const {history} = this.props;
+    const {history, location} = this.props;
+    const firstKey = Object.keys(schema.cannerSchema)[0];
+
+    if (location.pathname === '/dashboard') {
+      return <Redirect to={`/dashboard/${firstKey}`}/>
+    }
 
     return (
       <Layout>
@@ -39,7 +44,6 @@ export default class Dashboard extends React.Component<Props> {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={['2']}
               style={{ lineHeight: '64px' }}
               onClick={this.headerMenuOnClick}
             >
@@ -49,7 +53,10 @@ export default class Dashboard extends React.Component<Props> {
         </Header>
         <Layout>
           <Sider width={200} style={{ background: '#001529', minHeight: "100vh" }}>
-            <Menu theme="dark" mode="inline">
+            <Menu
+              theme="dark"
+              mode="inline"
+              defaultSelectedKeys={[firstKey]}>
             {
               Object.keys(schema.cannerSchema).map(key => (
                 <Menu.Item key={key}>
