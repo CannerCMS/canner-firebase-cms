@@ -14,3 +14,13 @@ firebase auth:import firebase-default-user.json
 
 - **Username:** admin-test@canner.io
 - **Password:** admin-test
+
+## Development
+
+```
+npm start
+```
+
+## License
+
+Apache license 2.0

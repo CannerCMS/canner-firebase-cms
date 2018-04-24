@@ -5,11 +5,11 @@ const theme = pkg.theme;
 
 const isProduction = process.argv.indexOf('-p') >= 0;
 const sourcePath = path.join(__dirname, './src');
-const outPath = path.join(__dirname, './dist');
+const outPath = path.join(__dirname, './public');
 
 // plugins
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const tsImportPluginFactory = require('ts-import-plugin');
 
@@ -66,7 +66,7 @@ module.exports = {
         test: /\.less$/,
         use: [
           {
-            loader: 'style'
+            loader: !isProduction ? 'style' : MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css'
@@ -114,6 +114,12 @@ module.exports = {
     runtimeChunk: true
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: !isProduction ? '[name].css' : '[name].[hash].css',
+      chunkFilename: !isProduction ? '[id].css' : '[id].[hash].css',
+    }),
     new webpack.DefinePlugin({
       IMGUR_CLIENT_ID: JSON.stringify(process.env.IMGUR_CLIENT_ID)
     }),

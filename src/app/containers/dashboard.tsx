@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as firebase from 'firebase';
 import {Layout, Menu, Modal, Table} from 'antd';
-import {RouteComponentProps, Redirect} from 'react-router';
+import {RouteComponentProps} from 'react-router';
 import {Link} from 'react-router-dom';
 import {CMS} from '@canner/react-cms-core';
 import logoWhite from 'assets/logo-word-white.png';
@@ -42,7 +42,7 @@ export default class Dashboard extends React.Component<Props> {
   }
 
   render() {
-    const {history, location} = this.props;
+    const {history} = this.props;
     const firstKey = Object.keys(schema.cannerSchema)[0];
     const columns = [{
       title: 'Project ID',
@@ -62,10 +62,6 @@ export default class Dashboard extends React.Component<Props> {
       key: 'databaseURL',
       render: ((text: string) => <a href={text} target="_blank">{text}</a>),
     }];
-
-    if (location.pathname === '/dashboard') {
-      return <Redirect to={`/dashboard/${firstKey}`}/>
-    }
 
     return (
       <>
