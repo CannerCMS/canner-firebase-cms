@@ -1,30 +1,13 @@
 import * as React from 'react';
 import * as firebase from 'firebase';
-import styled from 'styled-components';
 // import { connect } from 'react-redux';
 import { RouteComponentProps, Redirect } from 'react-router';
 import { FormComponentProps } from 'antd/lib/form';
 import {Row, Col, Card, Form, Input, Icon, Button, notification} from 'antd';
+import {Title, LoginContainer, BodyWrapper} from 'app/components/app'
 const FormItem = Form.Item;
 
-const Title = styled.div`
-  text-align: center;
-`
-
-const LoginContainer = styled.div`
-  align-self: center;
-  max-width: 500px;
-  margin: 0 auto;
-`
-
-const BodyWrapper = styled.div`
-  background: linear-gradient(to left top,#e4506d,#f2b173);
-  min-height: 600px;
-  height: 100vh;
-  width: 100%;
-`
-
-export interface Props extends RouteComponentProps<void>, FormComponentProps {
+interface Props extends RouteComponentProps<void>, FormComponentProps {
 }
 
 class CMSApp extends React.Component<Props> {
@@ -98,4 +81,4 @@ class CMSApp extends React.Component<Props> {
   }
 }
 
-export const App = Form.create()(CMSApp);
+export default Form.create()(CMSApp);

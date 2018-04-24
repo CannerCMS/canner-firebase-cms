@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
-import { App as CMSApp } from 'app/containers/App';
+
+import IndexPage from 'app/containers/indexPage';
+import CMSApp from 'app/containers/app';
+import Dashboard from 'app/containers/dashboard';
 
 export const App = () => (
   <Switch>
-    <Route path="/" component={CMSApp} />
+    <Route path="/" exact component={IndexPage}/>
+    <Route path="/login" component={CMSApp} />
+    <Route path="/dashboard" component={Dashboard} />
   </Switch>
 );
