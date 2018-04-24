@@ -62,24 +62,6 @@ module.exports = {
           }
         }
       },
-      // css
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              query: {
-                modules: true,
-                sourceMap: !isProduction,
-                importLoaders: 1,
-                localIdentName: '[local]__[hash:base64:5]'
-              }
-            }
-          ]
-        })
-      },
       {
         test: /\.less$/,
         use: [
@@ -140,10 +122,6 @@ module.exports = {
       DEBUG: false
     }),
     new WebpackCleanupPlugin(),
-    new ExtractTextPlugin({
-      filename: 'styles.css',
-      disable: !isProduction
-    }),
     new HtmlWebpackPlugin({
       template: 'assets/index.html'
     })
