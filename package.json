@@ -62,7 +62,7 @@
     "@canner/react-cms-core": "^1.0.2",
     "@canner/react-cms-helpers": "^0.1.6",
     "@canner/react-cms-layouts": "^1.0.1",
-    "antd": "^3.4.2",
+    "antd": "3.5.2",
     "firebase": "^4.13.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

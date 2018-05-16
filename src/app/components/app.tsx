@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const Title = styled.div`
-  text-align: center;
-`
-
 export const LogoContainer = styled.div`
   text-align: center;
   margin-bottom: 30px;
@@ -23,4 +19,15 @@ export const BodyWrapper = styled.div`
   min-height: 600px;
   height: 100vh;
   width: 100%;
+`
+
+export const FooterContainer = styled.div`
+  text-align: center;
+  margin-top: 30px;
+  color: #FFF;
+
+  a {
+    color: #FFF;
+    text-decoration: underline;
+  }
 `
