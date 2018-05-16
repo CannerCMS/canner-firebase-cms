@@ -333,9 +333,9 @@
     rc-util "^4.0.4"
     warning "^3.0.0"
 
-"@canner/react-cms-core@^1.0.0-rc.5":
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@canner/react-cms-core/-/react-cms-core-1.0.0-rc.5.tgz#776d7422e51b1d4325c4b544fa2049237ac81304"
+"@canner/react-cms-core@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@canner/react-cms-core/-/react-cms-core-1.0.2.tgz#0b8d36770c4d5fc2b0f9951d147e38f1f435941b"
   dependencies:
     "@canner/cms-locales" "^0.1.0-rc.35"
     "@canner/react-cms-helpers" "^0.1.3"
