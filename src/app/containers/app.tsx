@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as firebase from 'firebase';
 import { RouteComponentProps, Redirect } from 'react-router';
 import { FormComponentProps } from 'antd/lib/form';
-import {Row, Col, Card, Form, Input, Icon, Button, notification} from 'antd';
-import {Title, LoginContainer, LogoContainer, BodyWrapper} from 'app/components/app'
+import {Row, Col, Form, Input, Icon, Button, notification} from 'antd';
+import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from 'app/components/app'
 
 import logoWhite from 'assets/logo-word-white.png';
 
@@ -77,6 +77,9 @@ class CMSApp extends React.Component<Props> {
                 </FormItem>
               </Form>
             </LoginContainer>
+            <FooterContainer>
+              Built by <a href="https://www.canner.io/" target="_blank">CannerIO</a>. License under Apache License 2.0
+            </FooterContainer>
           </Col>
         </Row>
       </BodyWrapper>
