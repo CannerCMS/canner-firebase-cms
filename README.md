@@ -4,6 +4,10 @@
 
 Canner CMS for Firebase.
 
+## Live demo
+
+https://fir-cms-15f83.firebaseapp.com/login
+
 
 ## Import default user
 
