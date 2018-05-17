@@ -114,7 +114,7 @@ export default <root>
     <Block title="All Types">
       <Tabs>
         <object keyName="string type" title="String type">
-          <string keyName="demo-input" title="Demo" packageName="@canner/customize-string-input"/>
+          <string keyName="demoInput" title="Demo" packageName="@canner/customize-string-input"/>
           <string keyName="input" title="Input" description="Input is the default ui of string type"/>
           <string keyName="card" title="Card" ui="card" uiParams={{
             options: [{
@@ -164,7 +164,7 @@ export default <root>
           <array keyName="panel" ui="panel" title="Panel">
             <string keyName="children" title="Children" />
           </array>
-          <array keyName="table-route" ui="table-route" title="Table-route" uiParams={{
+          <array keyName="tableRoute" ui="table-route" title="Table-route" uiParams={{
             columns: [{
               title: 'Children',
               dataIndex: 'children'

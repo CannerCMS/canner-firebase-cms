@@ -10,7 +10,7 @@ export const App = () => (
   <Switch>
     <Route path="/" exact component={IndexPage}/>
     <Route path="/login" component={CMSApp} />
-    <Route path="/dashboard" exact component={(props) => (
+    <Route path="/dashboard" exact component={() => (
       <Redirect to={`/dashboard/${Object.keys(schema.cannerSchema)[0]}`}/>
     )}/>
     <Route path="/dashboard/*" component={Dashboard} />
