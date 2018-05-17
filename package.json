@@ -18,8 +18,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@canner/canner-schema-loader": "^1.0.14",
-    "@canner/canner-script": "^1.0.9",
+    "canner-schema-loader": "^1.0.14",
+    "canner-script": "^1.0.9",
+    "@canner/customize-string-input": "0.1.3",
     "@types/classnames": "2.2.3",
     "@types/firebase": "^3.2.1",
     "@types/history": "4.6.2",
@@ -59,9 +60,9 @@
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
-    "@canner/react-cms-core": "^1.0.2",
-    "@canner/react-cms-helpers": "^0.1.6",
-    "@canner/react-cms-layouts": "^1.0.1",
+    "canner": "^1.0.2",
+    "canner-helpers": "^0.1.8",
+    "canner-layouts": "^1.0.1",
     "antd": "3.5.2",
     "firebase": "^4.13.1",
     "react": "^16.2.0",

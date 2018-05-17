@@ -3,7 +3,7 @@ import * as firebase from 'firebase';
 import {Layout, Menu, Modal, Table} from 'antd';
 import {RouteComponentProps} from 'react-router';
 import {Link} from 'react-router-dom';
-import {CMS} from '@canner/react-cms-core';
+import {CMS} from 'canner';
 import logoWhite from 'assets/logo-word-white.png';
 import schema from 'canner-schema';
 import { LogoContainer, HeaderMenu } from 'app/components/dashboard';

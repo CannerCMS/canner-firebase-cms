@@ -1,7 +1,7 @@
 /** @jsx builder */
 
 // eslint-disable-next-line no-unused-vars
-import builder, {Block, Layout} from '@canner/canner-script';
+import builder, {Block, Layout} from 'canner-script';
 
 var contactInfo = [
   {
@@ -114,6 +114,7 @@ export default <root>
     <Block title="All Types">
       <Tabs>
         <object keyName="string type" title="String type">
+          <string keyName="demo-input" title="Demo" packageName="@canner/customize-string-input"/>
           <string keyName="input" title="Input" description="Input is the default ui of string type"/>
           <string keyName="card" title="Card" ui="card" uiParams={{
             options: [{
