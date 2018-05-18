@@ -62,7 +62,6 @@ export default class Dashboard extends React.Component<Props> {
       key: 'databaseURL',
       render: ((text: string) => <a href={text} target="_blank">{text}</a>),
     }];
-
     return (
       <>
         <Layout>

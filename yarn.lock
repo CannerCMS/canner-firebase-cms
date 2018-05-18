@@ -239,9 +239,9 @@
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@canner/customize-string-input/-/customize-string-input-0.1.3.tgz#05a5ccd8380897aeb929d7246fd5f8c74a865e5d"
 
-"@canner/graphql-resolver@^1.1.2":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@canner/graphql-resolver/-/graphql-resolver-1.3.1.tgz#6d4c8d49360ae06f4cb799ff1e8666839a2b60be"
+"@canner/graphql-resolver@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@canner/graphql-resolver/-/graphql-resolver-1.1.2.tgz#5865fd8c52910ef5b6d2f646a9fc75a8e376dcfe"
 
 "@canner/image-service-config@^0.0.8":
   version "0.0.8"
@@ -2120,13 +2120,6 @@ canner-compiler@^0.1.4:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/canner-compiler/-/canner-compiler-0.1.5.tgz#f8661991e6b72dbffcf2005c1f26f92dce472f18"
 
-canner-helpers@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/canner-helpers/-/canner-helpers-0.0.1.tgz#e25ce16f6831e99dbc159e55ff9c457362b58ba1"
-  dependencies:
-    immutable "^4.0.0-rc.9"
-    lodash "^4.17.5"
-
 canner-helpers@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/canner-helpers/-/canner-helpers-0.1.8.tgz#d0e8e731f7cdad95e1d79c584b94f828907ad39e"
@@ -2203,16 +2196,15 @@ canner-script@^1.0.19:
     eval "^0.1.2"
     object-path "^0.11.4"
 
-canner@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/canner/-/canner-1.0.4.tgz#260df2bac73d09c763ef4ca35218ea467de4f155"
+canner@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/canner/-/canner-1.0.8.tgz#6e47b01e44859fd481ee3f519a5fe34e7210b831"
   dependencies:
     "@canner/cms-locales" "^0.1.0-rc.35"
-    "@canner/graphql-resolver" "^1.1.2"
+    "@canner/graphql-resolver" "1.1.2"
     antd "^3.2.3"
     apollo-boost "^0.1.4"
     bson-objectid "^1.2.2"
-    canner-helpers "^0.0.1"
     canner-layouts "^1.0.2"
     canner-ref-id "^0.1.2"
     graphql "^0.13.2"

@@ -113,7 +113,7 @@ export default <root>
   <object keyName="overview" title="Components Overview">
     <Block title="All Types">
       <Tabs>
-        <object keyName="string type" title="String type">
+        <object keyName="string" title="String type">
           <string keyName="demoInput" title="Demo" packageName="@canner/customize-string-input"/>
           <string keyName="input" title="Input" description="Input is the default ui of string type"/>
           <string keyName="card" title="Card" ui="card" uiParams={{
@@ -157,31 +157,31 @@ export default <root>
           <number keyName="rate" title="Rate" ui="rate" />
           <number keyName="slider" title="Slider" ui="slider" />
         </object>
-        <object keyName="array type" title="Array Type">
+        <object keyName="array" title="Array Type">
           <array keyName="tabs" ui="tabs" title="Tabs">
-            <string keyName="children" title="Children" />
+            <string keyName="info" title="info" />
           </array>
           <array keyName="panel" ui="panel" title="Panel">
-            <string keyName="children" title="Children" />
+            <string keyName="info" title="info" />
           </array>
           <array keyName="tableRoute" ui="table-route" title="Table-route" uiParams={{
             columns: [{
-              title: 'Children',
-              dataIndex: 'children'
+              title: 'info',
+              dataIndex: 'info'
             }]
           }}>
-            <string keyName="children" title="Children" />
+            <string keyName="info" title="info" />
           </array>
           <array keyName="table" ui="table" title="Table" uiParams={{
             columns: [{
-              title: 'Children',
-              dataIndex: 'children'
+              title: 'info',
+              dataIndex: 'info'
             }]
           }}>
-            <string keyName="children" title="Children" />
+            <string keyName="info" title="info" />
           </array>
           {/* <array keyName="slider" ui="slider" title="Slider">
-            <string keyName="children" title="Children" />
+            <string keyName="info" title="info" />
           </array>
           <array keyName="tag" ui="tag" title="Tag" />
           <array keyName="gallery" ui="gallery" title="Gallery" /> */}
