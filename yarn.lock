@@ -235,6 +235,20 @@
   version "0.1.0-rc.35"
   resolved "https://registry.yarnpkg.com/@canner/cms-locales/-/cms-locales-0.1.0-rc.35.tgz#1774c51a3ed9154cf4ef159fb2e3916424f7a0aa"
 
+"@canner/customize-array-tabs@^0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@canner/customize-array-tabs/-/customize-array-tabs-0.1.11.tgz#bf2138f1d76a5386dd33d66f4e9ae5a91d760206"
+  dependencies:
+    "@canner/rc-tabs" "^9.2.5"
+    antd "^3.2.0"
+    immutable "4.0.0-rc.9"
+    react-sortablejs "^1.3.6"
+    sortablejs "^1.7.0"
+
+"@canner/customize-object-fields@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@canner/customize-object-fields/-/customize-object-fields-0.1.8.tgz#5fa4dc19106e199fb2386126b6f1d7a1e533a1ec"
+
 "@canner/customize-string-input@0.1.4":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/@canner/customize-string-input/-/customize-string-input-0.1.4.tgz#9a2225e15ec9f4c384ef6221a5aadb88e9d4f368"
@@ -2187,9 +2201,9 @@ canner-schema-loader@^1.1.1:
     canner-compiler "^0.1.4"
     schema-utils "^0.4.5"
 
-canner-script@^1.0.19:
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.0.19.tgz#e1a4e5ace84bdf59182e58f308f78e42ed54dd1d"
+canner-script@1.0.22:
+  version "1.0.22"
+  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.0.22.tgz#ed572151275bbf3422dcd7f9bb93b0ad2903972f"
   dependencies:
     babel-core "^6.26.3"
     babel-plugin-transform-es2015-modules-commonjs "^6.26.2"

@@ -202,6 +202,7 @@ export default <root>
             <string keyName="one" />
             <boolean keyName="two" />
           </object>
+          <object keyname="demoFields" packageName="@canner/customize-object-fields"/>
         </object>
       </Tabs>
     </Block>

@@ -18,7 +18,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@canner/customize-string-input": "0.1.4",
     "@types/classnames": "2.2.3",
     "@types/firebase": "^3.2.1",
     "@types/history": "4.6.2",
@@ -37,7 +36,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "canner-schema-loader": "^1.1.1",
-    "canner-script": "^1.0.19",
+    "canner-script": "1.0.22",
     "css-loader": "^0.28.10",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
@@ -60,6 +59,9 @@
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
+    "@canner/customize-string-input": "0.1.4",
+    "@canner/customize-array-tabs": "^0.1.11",
+    "@canner/customize-object-fields": "^0.1.8",
     "@canner/graphql-resolver": "1.1.2",
     "antd": "3.5.2",
     "canner": "^1.0.8",
