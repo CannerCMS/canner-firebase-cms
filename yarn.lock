@@ -2201,12 +2201,13 @@ canner-schema-loader@^1.1.1:
     canner-compiler "^0.1.4"
     schema-utils "^0.4.5"
 
-canner-script@1.0.22:
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.0.22.tgz#ed572151275bbf3422dcd7f9bb93b0ad2903972f"
+canner-script@^1.0.25:
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.0.25.tgz#4fc593df29bde8ccc1dc3c6cea69846b727250dd"
   dependencies:
     babel-core "^6.26.3"
     babel-plugin-transform-es2015-modules-commonjs "^6.26.2"
+    babel-register "^6.26.0"
     eval "^0.1.2"
     object-path "^0.11.4"
 
