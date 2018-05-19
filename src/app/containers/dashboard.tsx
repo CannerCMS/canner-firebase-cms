@@ -12,7 +12,6 @@ import Tabs from 'app/components/layouts/tabs';
 import firConfig from 'app/config/firebase';
 
 const { Header, Sider, Content, Footer } = Layout;
-
 interface Props extends RouteComponentProps<void> {
 }
 

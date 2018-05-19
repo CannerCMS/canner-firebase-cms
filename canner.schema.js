@@ -2,6 +2,7 @@
 
 // eslint-disable-next-line no-unused-vars
 import builder, {Block, Layout} from 'canner-script';
+import path from 'path';
 
 var contactInfo = [
   {
@@ -206,7 +207,7 @@ export default <root>
             <string keyName="one" />
             <boolean keyName="two" />
           </object>
-          <object keyName="demoFields" packageName="@canner/customize-object-fields"/>
+          <object keyName="demoFields" packageName="@canner/customize-object-fields" />
         </object>
       </Tabs>
     </Block>
