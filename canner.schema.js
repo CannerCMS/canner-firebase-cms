@@ -158,6 +158,10 @@ export default <root>
           <number keyName="slider" title="Slider" ui="slider" />
         </object>
         <object keyName="array" title="Array Type">
+          <array keyName="demoArray" packageName="@canner/customize-array-tabs">
+            <string keyName="name" title="Name" />
+            <string keyName="description" title="Description" />
+          </array>
           <array keyName="tabs" ui="tabs" title="Tabs">
             <string keyName="info" title="info" />
           </array>

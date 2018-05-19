@@ -235,9 +235,9 @@
   version "0.1.0-rc.35"
   resolved "https://registry.yarnpkg.com/@canner/cms-locales/-/cms-locales-0.1.0-rc.35.tgz#1774c51a3ed9154cf4ef159fb2e3916424f7a0aa"
 
-"@canner/customize-array-tabs@^0.1.11":
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@canner/customize-array-tabs/-/customize-array-tabs-0.1.11.tgz#bf2138f1d76a5386dd33d66f4e9ae5a91d760206"
+"@canner/customize-array-tabs@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@canner/customize-array-tabs/-/customize-array-tabs-0.1.16.tgz#8e04e7f7c65e2b1b73502b61aef44e69e30a94a9"
   dependencies:
     "@canner/rc-tabs" "^9.2.5"
     antd "^3.2.0"
@@ -245,9 +245,9 @@
     react-sortablejs "^1.3.6"
     sortablejs "^1.7.0"
 
-"@canner/customize-object-fields@^0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@canner/customize-object-fields/-/customize-object-fields-0.1.8.tgz#5fa4dc19106e199fb2386126b6f1d7a1e533a1ec"
+"@canner/customize-object-fields@0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@canner/customize-object-fields/-/customize-object-fields-0.1.13.tgz#b8899b27bedcb0a8b8e30733d3455dbf01507cfc"
 
 "@canner/customize-string-input@0.1.4":
   version "0.1.4"
@@ -2130,9 +2130,9 @@ caniuse-lite@^1.0.30000792:
   version "1.0.30000830"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000830.tgz#cb96b8a2dd3cbfe04acea2af3c4e894249095328"
 
-canner-compiler@^0.1.4:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/canner-compiler/-/canner-compiler-0.1.5.tgz#f8661991e6b72dbffcf2005c1f26f92dce472f18"
+canner-compiler@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/canner-compiler/-/canner-compiler-0.1.6.tgz#516b5b2ded2029cf94fe4ef65ce024adad79fdd0"
 
 canner-helpers@^0.1.8:
   version "0.1.8"
@@ -2160,9 +2160,9 @@ canner-ref-id@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/canner-ref-id/-/canner-ref-id-0.1.2.tgz#9c534d517818e915cef1004116012458bd165d83"
 
-canner-schema-loader@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/canner-schema-loader/-/canner-schema-loader-1.1.1.tgz#f6f7db90d603e7536f1392807497045de69f8a94"
+canner-schema-loader@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/canner-schema-loader/-/canner-schema-loader-1.1.2.tgz#06866da03ecf005da92193c00bbc249ac5adbb16"
   dependencies:
     "@canner/antd-array-gallery" "^0.1.3"
     "@canner/antd-array-panel" "^0.1.3"
@@ -2198,21 +2198,22 @@ canner-schema-loader@^1.1.1:
     "@canner/antd-string-select" "^0.1.3"
     "@canner/antd-string-textarea" "^0.1.3"
     "@canner/antd-string-time_picker" "^0.1.3"
-    canner-compiler "^0.1.4"
+    canner-compiler "^0.1.6"
     schema-utils "^0.4.5"
 
-canner-script@1.0.22:
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.0.22.tgz#ed572151275bbf3422dcd7f9bb93b0ad2903972f"
+canner-script@1.0.25:
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.0.25.tgz#4fc593df29bde8ccc1dc3c6cea69846b727250dd"
   dependencies:
     babel-core "^6.26.3"
     babel-plugin-transform-es2015-modules-commonjs "^6.26.2"
+    babel-register "^6.26.0"
     eval "^0.1.2"
     object-path "^0.11.4"
 
-canner@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/canner/-/canner-1.0.8.tgz#6e47b01e44859fd481ee3f519a5fe34e7210b831"
+canner@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/canner/-/canner-1.0.10.tgz#a9d46c4b88b1cd5179d394a4a4f1327601aef9ad"
   dependencies:
     "@canner/cms-locales" "^0.1.0-rc.35"
     "@canner/graphql-resolver" "1.1.2"
