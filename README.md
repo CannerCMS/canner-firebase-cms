@@ -8,6 +8,9 @@ Canner CMS for Firebase.
 
 https://fir-cms-15f83.firebaseapp.com/login
 
+## Tutorial
+
+https://framework.canner.io/docs/tutorial-community-firebase.html
 
 ## Import default user
 
