@@ -35,7 +35,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "canner-schema-loader": "1.1.2",
+    "canner-schema-loader": "1.1.4",
     "canner-script": "1.0.25",
     "css-loader": "^0.28.10",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -59,12 +59,12 @@
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
-    "@canner/customize-array-tabs": "0.1.16",
+    "@canner/customize-array-tabs": "0.1.19",
     "@canner/customize-object-fields": "0.1.13",
     "@canner/customize-string-input": "0.1.4",
     "@canner/graphql-resolver": "1.1.2",
     "antd": "3.5.2",
-    "canner": "^1.0.10",
+    "canner": "1.0.11",
     "canner-helpers": "^0.1.8",
     "canner-layouts": "^1.0.1",
     "firebase": "^4.13.1",
