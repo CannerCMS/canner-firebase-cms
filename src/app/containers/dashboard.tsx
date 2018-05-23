@@ -66,9 +66,9 @@ export default class Dashboard extends React.Component<Props> {
     return (
       <>
         <Layout>
-          <Header className="header">
+          <Header className="header" style={{padding: "0 20px"}}>
             <LogoContainer>
-              <img src={logoWhite} width={100}/>
+              <img src={logoWhite} width={150}/>
             </LogoContainer>
             <HeaderMenu>
               <Menu
@@ -84,7 +84,7 @@ export default class Dashboard extends React.Component<Props> {
             </HeaderMenu>
           </Header>
           <Layout>
-            <Sider width={200} style={{ background: '#001529', minHeight: "100vh" }}>
+            <Sider width={200} style={{ minHeight: "100vh" }}>
               <Menu
                 theme="dark"
                 mode="inline"

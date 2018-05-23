@@ -738,10 +738,6 @@
     "@types/node" "*"
     "@types/react" "*"
 
-"@types/react-intl@^2.3.8":
-  version "2.3.8"
-  resolved "https://registry.yarnpkg.com/@types/react-intl/-/react-intl-2.3.8.tgz#de56b21b67e39df24bc0fc7e67b437976b666919"
-
 "@types/react-redux@5.0.16":
   version "5.0.16"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.16.tgz#46f1b2043abd2b4364a857100abf5e5a6ef94bf0"
@@ -2543,9 +2539,9 @@ canner-slate-editor@^0.4.2:
     slate-trailing-block "^0.5.0"
     styled-components "^3.2.3"
 
-canner@1.0.18:
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/canner/-/canner-1.0.18.tgz#c69350a1f372ca990f2d07291f564c40fa8b1197"
+canner@1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/canner/-/canner-1.0.19.tgz#6729dc19fecd3c364a12bb2470ed6f0073c633ec"
   dependencies:
     "@canner/cms-locales" "^0.1.0-rc.35"
     antd "^3.2.3"
