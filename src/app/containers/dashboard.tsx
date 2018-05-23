@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as firebase from 'firebase';
+import * as connector from 'canner-connector';
+import * as resolver from 'canner-resolver';
 import {Layout, Menu, Modal, Table} from 'antd';
 import {RouteComponentProps} from 'react-router';
 import {Link} from 'react-router-dom';
@@ -104,11 +106,14 @@ export default class Dashboard extends React.Component<Props> {
                   layouts={{Tabs, Focus}}
                   history={history}
                   schema={schema}
+                  connector={connector.default.connector}
+                  connectors={connector.default.connectors}
+                  resolver={resolver.default}
                   baseUrl="/dashboard"
                 />
               </Content>
               <Footer style={{textAlign: "center"}}>
-                Built by <a href="https://www.canner.io/">CannerIO</a>. License under Apache License 2.0
+                Powered by <a href="https://www.canner.io/">CannerIO</a>. License under Apache License 2.0
               </Footer>
             </Layout>
           </Layout>

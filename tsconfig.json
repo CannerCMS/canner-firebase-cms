@@ -17,7 +17,9 @@
     "paths": {
       "app/*": ["./src/app/*"],
       "assets/*": ["./src/assets/*"],
-      "canner-schema": ["./canner.schema"]
+      "canner-schema": ["./canner.schema"],
+      "canner-resolver": ["./canner.resolver"],
+      "canner-connector": ["./canner.connector"]
     }
   },
   "exclude": ["dist", "build", "node_modules"]

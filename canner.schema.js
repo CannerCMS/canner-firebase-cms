@@ -46,7 +46,7 @@ const Focus = ({attributes, children}) => <Layout name="Focus" {...attributes}>{
 const infoDesc = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged`;
 const postDesc = `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English`;
 const Posts = () => (
-<array keyName="posts" title="Posts" ui="table-route" description={postDesc}
+<array keyName="posts" title="Posts" ui="tableRoute" description={postDesc}
   uiParams={{
     columns: [{
       title: 'Title',
@@ -57,7 +57,7 @@ const Posts = () => (
   <Focus focus="content">
     <string keyName="title" title="Title" />
     <object keyName="status" title="Status">
-      <date keyName="createAt" title="Create at"/>
+      <dateTime keyName="createAt" title="Create at"/>
       <boolean keyName="draft" title="Draft"/>
     </object>
     <file keyName="featureImage" title="Feature Image"/>
@@ -115,7 +115,6 @@ export default <root>
     <Block title="All Types">
       <Tabs>
         <object keyName="string" title="String type">
-          <string keyName="demoInput" title="Demo" packageName="@canner/customize-string-input"/>
           <string keyName="input" title="Input" description="Input is the default ui of string type"/>
           <string keyName="card" title="Card" ui="card" uiParams={{
             options: [{
@@ -147,7 +146,7 @@ export default <root>
           }}/>
           <string keyName="textarea" title="Textarea" ui="textarea" />
           <file keyName="image" title="Image" />
-          <date keyName="date" title="Date" />
+          <dateTime keyName="date" title="Date" />
         </object>
         <object keyName="boolean" title="Boolean Types">
           <boolean keyName="card" ui="card" title="Card" />
@@ -159,17 +158,13 @@ export default <root>
           <number keyName="slider" title="Slider" ui="slider" />
         </object>
         <object keyName="array" title="Array Type">
-          <array keyName="demoArray" packageName="@canner/customize-array-tabs">
-            <string keyName="name" title="Name" />
-            <string keyName="description" title="Description" />
-          </array>
           <array keyName="tabs" ui="tabs" title="Tabs">
             <string keyName="info" title="info" />
           </array>
           <array keyName="panel" ui="panel" title="Panel">
             <string keyName="info" title="info" />
           </array>
-          <array keyName="tableRoute" ui="table-route" title="Table-route" uiParams={{
+          <array keyName="tableRoute" ui="tableRoute" title="Table-route" uiParams={{
             columns: [{
               title: 'info',
               dataIndex: 'info'
@@ -207,7 +202,6 @@ export default <root>
             <string keyName="one" />
             <boolean keyName="two" />
           </object>
-          <object keyName="demoFields" packageName="@canner/customize-object-fields" />
         </object>
       </Tabs>
     </Block>

@@ -78,7 +78,7 @@ class CMSApp extends React.Component<Props> {
               </Form>
             </LoginContainer>
             <FooterContainer>
-              Built by <a href="https://www.canner.io/" target="_blank">CannerIO</a>. License under Apache License 2.0
+              Powered by <a href="https://www.canner.io/" target="_blank">CannerIO</a>. License under Apache License 2.0
             </FooterContainer>
           </Col>
         </Row>

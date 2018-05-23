@@ -34,6 +34,8 @@ module.exports = {
       app: path.resolve(__dirname, 'src/app/'),
       assets: path.resolve(__dirname, 'src/assets/'),
       "canner-schema": path.resolve(__dirname, './canner.schema.js'),
+      "canner-connector": path.resolve(__dirname, './canner.connector.js'),
+      "canner-resolver": path.resolve(__dirname, './canner.resolver.js'),
       "styled-components": path.resolve(__dirname, 'node_modules', 'styled-components')
     }
   },
@@ -42,6 +44,18 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+        options: {
+          presets: [
+            require('babel-preset-env'),
+            require('babel-preset-react'),
+            require('babel-preset-stage-0'),
+          ]
+        }
+      },
       // .ts, .tsx
       {
         test: /\.tsx?$/,
