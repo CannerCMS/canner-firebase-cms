@@ -44,7 +44,7 @@ class CMSApp extends React.Component<Props> {
     const { redirectToReferrer } = this.state;
 
     if (redirectToReferrer) {
-      return <Redirect to={"/"} />;
+      return <Redirect to={"/Dashboard"} />;
     }
 
     return (

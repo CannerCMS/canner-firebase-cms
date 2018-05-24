@@ -8,7 +8,7 @@ import Dashboard from 'app/containers/dashboard';
 
 export const App = () => (
   <Switch>
-    <Route path="/" exact component={IndexPage}/>
+    <Route path="/" exact component={Dashboard}/>
     <Route path="/login" component={CMSApp} />
     <Route path="/dashboard" exact component={() => (
       <Redirect to={`/dashboard/${Object.keys(schema.cannerSchema)[0]}`}/>

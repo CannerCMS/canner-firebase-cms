@@ -22,6 +22,19 @@ export default class Dashboard extends React.Component<Props> {
     visible: false
   }
 
+  componentWillMount() {
+    const {history, location} = this.props;
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        history.push({
+          pathname: "/login",
+          state: { from: location }
+        })
+      }
+    });
+  }
+
   headerMenuOnClick = (menuItem: {key: string}) => {
     const {history} = this.props;
     if(menuItem.key === 'logout') {
