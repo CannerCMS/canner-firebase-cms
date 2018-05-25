@@ -4,6 +4,13 @@
 
 Canner CMS for Firebase.
 
+## Preview
+
+![preview](./preview/1.png)
+![preview](./preview/2.png)
+![preview](./preview/3.png)
+![preview](./preview/4.png)
+
 ## Live demo
 
 https://fir-cms-15f83.firebaseapp.com/login
