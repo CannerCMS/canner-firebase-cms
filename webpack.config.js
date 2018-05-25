@@ -76,6 +76,17 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        use: [
+          {
+            loader: !isProduction ? 'style' : MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css'
+          }
+        ],
+      },
+      {
         test: /\.less$/,
         use: [
           {
