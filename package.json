@@ -41,7 +41,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "canner-schema-loader": "1.1.10",
+    "canner-schema-loader": "^1.1.11",
     "canner-script": "1.0.31",
     "css-loader": "^0.28.10",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",

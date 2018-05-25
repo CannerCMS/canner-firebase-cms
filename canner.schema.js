@@ -56,6 +56,7 @@ const Posts = () => (
 >
   <Focus focus="content">
     <string keyName="title" title="Title" />
+    <object keyName="content" title="Content" ui="editor" />
     <object keyName="status" title="Status">
       <dateTime keyName="createAt" title="Create at"/>
       <boolean keyName="draft" title="Draft"/>

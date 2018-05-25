@@ -88,7 +88,7 @@ export default class Dashboard extends React.Component<Props> {
         cancelText: 'No',
         onOk: () => {
           return new Promise((resolve, reject) => {
-            setTimeout(resolve, 600);
+            setTimeout(resolve, 1000);
           }).then(this.reset)
             .then(() => {
               history.push(`/dashboard/${key}`);
@@ -126,7 +126,7 @@ export default class Dashboard extends React.Component<Props> {
             this.setState({
               deploying: false
             });
-          }, 600)
+          }, 1000)
         });
     }
   }
