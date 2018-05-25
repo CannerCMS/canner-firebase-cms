@@ -3,7 +3,7 @@ import * as firebase from 'firebase';
 import * as connector from 'canner-connector';
 import * as resolver from 'canner-resolver';
 import styled from 'styled-components';
-import {Layout, Menu, Modal, Table, Badge, Avatar, Icon, Spin} from 'antd';
+import {Layout, Menu, Modal, Table, Badge, Avatar, Icon, Spin, notification} from 'antd';
 import {RouteComponentProps} from 'react-router';
 import {CMS} from 'canner';
 import logoWhite from 'assets/logo-word-white.png';
@@ -24,7 +24,7 @@ const UserName = styled.span`
   margin-left: 8px;
 `
 
-const AvatarWithIcon = styled(Avatar)`
+const AvatarWithIcon = styled(Avatar as any)`
   .anticon {
     margin-right: 0 !important;
   }
@@ -40,7 +40,7 @@ export default class Dashboard extends React.Component<Props> {
     visible: false,
     dataChanged: {},
     user: null,
-    deploying: false
+    deploying: false,
   }
 
   componentWillMount() {
@@ -82,8 +82,8 @@ export default class Dashboard extends React.Component<Props> {
     const {key} = menuItem;
     if (dataChanged && Object.keys(dataChanged).length > 0) {
       confirm({
-        title: 'Do you want to reset the all changes?',
-        content: 'Leaving without deployment will reset all changes.',
+        title: 'Do you want to reset all changes?',
+        content: <div>Leaving without deployment will reset all changes. Click the <b>Save</b> button at the top-right corner to save them.</div>,
         okText: 'Yes',
         cancelText: 'No',
         onOk: () => {
@@ -126,6 +126,11 @@ export default class Dashboard extends React.Component<Props> {
             this.setState({
               deploying: false
             });
+            notification.success({
+              message: 'Save successfully!',
+              description: 'Your changes have been saved.',
+              placement: 'bottomRight'
+            });
           }, 1000)
         });
     }
@@ -139,9 +144,8 @@ export default class Dashboard extends React.Component<Props> {
   }
 
   render() {
-    const {history} = this.props;
+    const {history, match} = this.props;
     const {dataChanged, user, deploying} = this.state;
-    const firstKey = Object.keys(schema.cannerSchema)[0];
     const columns = [{
       title: 'Project ID',
       dataIndex: 'projectId',
@@ -161,8 +165,9 @@ export default class Dashboard extends React.Component<Props> {
       render: ((text: string) => <a href={text} target="_blank">{text}</a>),
     }];
     const hasChanged = dataChanged && Object.keys(dataChanged).length;
-    const username = user ? user.displayName || user.email : 'Hi';
+    const username = user ? (user as any).displayName || (user as any).email : 'Hi';
     const spinIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
+    const firstKey = Object.keys(schema.cannerSchema)[0];
     return (
       <>
         <Layout>
@@ -185,17 +190,24 @@ export default class Dashboard extends React.Component<Props> {
                   <Menu.Item key="overview">Overview</Menu.Item>
                   <Menu.Item key="logout">Log out</Menu.Item>
                 </Menu.SubMenu>
-                <Menu.Item key="deploy">
+                {
+                  hasChanged ? 
+                  <Menu.Item key="deploy">
                   {
                     deploying ?
                       spinIcon :
-                      <Badge count={hasChanged ? 1 : 0} dot>
+                      <Badge dot>
                         <MenuText>
-                          Deploy
+                         Save
                         </MenuText>
                       </Badge>
                   }
-                </Menu.Item>
+                  </Menu.Item> :
+                  <Menu.Item key="saved">
+                    Saved
+                  </Menu.Item>
+                }
+                
               </Menu>
             </HeaderMenu>
           </Header>
@@ -205,7 +217,7 @@ export default class Dashboard extends React.Component<Props> {
                 theme="dark"
                 mode="inline"
                 onClick={this.siderMenuOnClick}
-                defaultSelectedKeys={[firstKey]}>
+                selectedKeys={[(match.params as any).activeKey || firstKey]}>
               {
                 Object.keys(schema.cannerSchema).map(key => (
                   <Menu.Item key={key}>
@@ -217,7 +229,7 @@ export default class Dashboard extends React.Component<Props> {
             </Sider>
             <Layout>
               <Content>
-                <Spin indicator={spinIcon} spinning={deploying} tip="Depolying...">
+                <Spin indicator={spinIcon} spinning={deploying} tip="Saving...">
                   <CMS
                     layouts={{Tabs, Focus}}
                     history={history}

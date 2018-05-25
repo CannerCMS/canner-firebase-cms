@@ -13,6 +13,6 @@ export const App = () => (
     <Route path="/dashboard" exact component={() => (
       <Redirect to={`/dashboard/${Object.keys(schema.cannerSchema)[0]}`}/>
     )}/>
-    <Route path="/dashboard/*" component={Dashboard} />
+    <Route path="/dashboard/:activeKey" component={Dashboard} />
   </Switch>
 );
