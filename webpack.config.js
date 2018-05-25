@@ -148,7 +148,7 @@ module.exports = {
       IMGUR_CLIENT_ID: JSON.stringify(process.env.IMGUR_CLIENT_ID)
     }),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+      NODE_ENV: !isProduction ? 'development' : 'production', // use 'development' unless process.env.NODE_ENV is defined
       DEBUG: false
     }),
     new WebpackCleanupPlugin(),

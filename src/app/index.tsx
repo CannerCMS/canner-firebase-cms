@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 import schema from 'canner-schema';
 
-import IndexPage from 'app/containers/indexPage';
 import CMSApp from 'app/containers/app';
 import Dashboard from 'app/containers/dashboard';
 
