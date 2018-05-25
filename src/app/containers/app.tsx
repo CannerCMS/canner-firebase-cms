@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as firebase from 'firebase';
 import { RouteComponentProps, Redirect } from 'react-router';
 import { FormComponentProps } from 'antd/lib/form';
-import {Row, Col, Form, Input, Icon, Button, notification} from 'antd';
+import {Row, Col, Form, Input, Icon, Button, Alert, notification} from 'antd';
 import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from 'app/components/app'
 
 import logoWhite from 'assets/logo-word-white.png';
@@ -40,6 +40,7 @@ class CMSApp extends React.Component<Props> {
   }
 
   render() {
+
     const { getFieldDecorator } = this.props.form;
     const { redirectToReferrer } = this.state;
 
@@ -80,6 +81,21 @@ class CMSApp extends React.Component<Props> {
             <FooterContainer>
               Powered by <a href="https://www.canner.io/" target="_blank">CannerIO</a>. License under Apache License 2.0
             </FooterContainer>
+            {
+              // DELETE HERE !!!!!!! This section is some information for demo.
+            }
+            <Alert
+              style={{marginTop: '20px'}}
+              message="Demo version"
+              description={
+                <div>
+                  Username: <b>admin-test@canner.io</b><br/>
+                  Password: <b>admin-test</b>
+                </div>
+              }
+              type="info"
+              showIcon
+            />
           </Col>
         </Row>
       </BodyWrapper>
