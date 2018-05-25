@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --hot --progress --color --port 3000",
     "build": "NODE_ENV=production webpack -p --progress --colors",
+    "deploy": "npm run build && firebase deploy --only hosting",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },
   "theme": {

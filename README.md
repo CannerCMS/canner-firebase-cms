@@ -38,7 +38,7 @@ npm run build
 ## Deploy hosting
 
 ```
-firebase deploy --only hosting
+npm run deploy
 ```
 
 ## License
