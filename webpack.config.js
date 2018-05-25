@@ -145,7 +145,8 @@ module.exports = {
       chunkFilename: !isProduction ? '[id].css' : '[id].[hash].css',
     }),
     new webpack.DefinePlugin({
-      IMGUR_CLIENT_ID: JSON.stringify(process.env.IMGUR_CLIENT_ID)
+      IMGUR_CLIENT_ID: JSON.stringify(process.env.IMGUR_CLIENT_ID),
+      IMGUR_MASHAPE_KEY: JSON.stringify(process.env.IMGUR_MASHAPE_KEY)
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined

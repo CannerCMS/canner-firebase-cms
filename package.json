@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "antd": "3.5.2",
-    "canner": "^1.0.25",
+    "canner": "^1.0.27",
     "canner-graphql-interface": "^1.3.4",
     "canner-helpers": "^0.1.10",
     "canner-layouts": "1.0.5",
