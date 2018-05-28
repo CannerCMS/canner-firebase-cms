@@ -4,6 +4,7 @@ import { RouteComponentProps, Redirect } from 'react-router';
 import { FormComponentProps } from 'antd/lib/form';
 import {Row, Col, Form, Input, Icon, Button, Alert, notification} from 'antd';
 import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from 'app/components/app'
+import GithubCorner from 'react-github-corner';
 
 import logoWhite from 'assets/logo-word-white.png';
 
@@ -50,6 +51,7 @@ class CMSApp extends React.Component<Props> {
 
     return (
       <BodyWrapper>
+        <GithubCorner href="https://github.com/canner/canner-firebase-cms" />
         <Row type="flex" justify="space-around" align="middle" style={{height: '100%'}}>
           <Col span={12}>
             <LogoContainer>
