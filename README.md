@@ -23,7 +23,7 @@ https://framework.canner.io/docs/tutorial-community-firebase.html
 
 It is based on Canner CMS framework (https://framework.canner.io/), used `JSX` (canner-script) to declare how you Firebase data structure and UI in your CMS.
 
-A simple blog post exmaple:
+A simple blog post example:
 
 ![preview](./preview/syntax.png)
 
