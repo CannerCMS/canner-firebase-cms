@@ -1,6 +1,6 @@
 # canner-firebase-cms
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Canner/canner-firebase-cms.svg?token=7a3a99e0644ce523bd0f6cda0e32e1582ae689d237c08e418ce19c1b0911d609&ts=1524501535243)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/Canner/canner-firebase-cms.svg?token=7a3a99e0644ce523bd0f6cda0e32e1582ae689d237c08e418ce19c1b0911d609&ts=1524501535243)](https://greenkeeper.io/) [![](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/Canner/CannerCMS?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 
 Canner CMS for Firebase.
 
