@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/Canner/CannerCMS?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 
-Canner CMS for Firebase.
+Canner CMS for Firebase. This project is based on Canner, a open source CMS framework  https://framework.canner.io/
 
 ## Preview
 
