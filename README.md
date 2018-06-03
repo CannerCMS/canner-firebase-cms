@@ -1,15 +1,8 @@
 # canner-firebase-cms
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Canner/canner-firebase-cms.svg?token=7a3a99e0644ce523bd0f6cda0e32e1582ae689d237c08e418ce19c1b0911d609&ts=1524501535243)](https://greenkeeper.io/)
+[![](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/Canner/CannerCMS?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 
-Canner CMS for Firebase.
-
-## Preview
-
-![preview](./preview/1.png)
-![preview](./preview/2.png)
-![preview](./preview/3.png)
-![preview](./preview/4.png)
+Canner CMS for Firebase, for Firebase, for blog, ecommerce, mobile apps and even chatbot! This project is based on Canner, a open source CMS framework  https://framework.canner.io/
 
 ## Live demo
 
@@ -18,6 +11,24 @@ https://fir-cms-15f83.firebaseapp.com/login
 ## Tutorial
 
 https://framework.canner.io/docs/tutorial-community-firebase.html
+
+## Preview
+
+![preview](./preview/1.png)
+![preview](./preview/2.png)
+![preview](./preview/3.png)
+![preview](./preview/4.png)
+
+## How it works
+
+It is based on Canner CMS framework (https://framework.canner.io/), used `JSX` (canner-script) to declare how you Firebase data structure and UI in your CMS.
+
+A simple blog post example:
+
+![preview](./preview/syntax.png)
+
+
+Learn how to write schema [canner-script](https://framework.canner.io/docs/guides-writing-schema.html)
 
 ## Import default user
 

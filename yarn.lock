@@ -101,7 +101,7 @@
 
 "@canner/antd-locales@0.1.18", "@canner/antd-locales@^0.1.18":
   version "0.1.18"
-  resolved "https://registry.yarnpkg.com/@canner/antd-locales/-/antd-locales-0.1.18.tgz#75179d1e4ba4ddd33a18956e0d3c4b856ed84faa"
+  resolved "https://registry.npmjs.org/@canner/antd-locales/-/antd-locales-0.1.18.tgz#75179d1e4ba4ddd33a18956e0d3c4b856ed84faa"
 
 "@canner/antd-number-input@0.1.18":
   version "0.1.18"
@@ -1017,7 +1017,7 @@ apollo-link-http-common@^0.2.4:
   dependencies:
     apollo-link "^1.2.2"
 
-apollo-link-http@^1.3.1:
+apollo-link-http@^1.3.1, apollo-link-http@^1.5.4:
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.5.4.tgz#b80b7b4b342c655b6a5614624b076a36be368f43"
   dependencies:
@@ -2348,16 +2348,17 @@ canner-graphql-interface@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/canner-graphql-interface/-/canner-graphql-interface-1.3.4.tgz#651e8b8d7fbf183f85e94c61c5de9a8749bcf238"
 
-canner-graphql-interface@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/canner-graphql-interface/-/canner-graphql-interface-1.7.0.tgz#7598f2e708c647d38463b94396d4c5ae8d7d1d8d"
+canner-graphql-interface@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.npmjs.org/canner-graphql-interface/-/canner-graphql-interface-1.9.0.tgz#e7c49c230bfe57ddf129c599a07ced059185b5af"
   dependencies:
     apollo-cache "^1.1.7"
     apollo-cache-inmemory "^1.1.12"
     apollo-client "^2.2.8"
     apollo-link "^1.2.2"
+    apollo-link-http "^1.5.4"
     apollo-utilities "^1.0.11"
-    canner-graphql-utils "^1.3.0"
+    canner-graphql-utils "^1.4.0"
     firebase "^4.13.1"
     graphql "0.13.0"
     graphql-anywhere "^4.1.6"
@@ -2369,9 +2370,9 @@ canner-graphql-interface@^1.7.0:
     pluralize "^7.0.0"
     uuid "^3.2.1"
 
-canner-graphql-utils@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/canner-graphql-utils/-/canner-graphql-utils-1.3.0.tgz#4b9354aa50fd523e99ab061765f3434a26b5909a"
+canner-graphql-utils@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/canner-graphql-utils/-/canner-graphql-utils-1.4.0.tgz#6d704fb8b4483b7730ab13c598670f953f52a1db"
   dependencies:
     lodash "^4.17.5"
     lowdb "^1.0.0"
@@ -2444,9 +2445,9 @@ canner-schema-loader@^1.1.15:
     canner-compiler "^0.1.6"
     schema-utils "^0.4.5"
 
-canner-script@^1.0.33:
-  version "1.0.35"
-  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.0.35.tgz#39d97c98da3d09d59ef9db9e1e780a4d3db81219"
+canner-script@^1.0.36:
+  version "1.0.36"
+  resolved "https://registry.npmjs.org/canner-script/-/canner-script-1.0.36.tgz#f60a887a4d35db99b5e1d29de13ac2e1cabb4e5f"
   dependencies:
     babel-core "^6.26.3"
     babel-plugin-transform-es2015-modules-commonjs "^6.26.2"
@@ -2494,9 +2495,9 @@ canner-slate-editor@^0.4.4:
     slate-trailing-block "^0.5.0"
     styled-components "^3.2.3"
 
-canner@^1.0.29:
-  version "1.0.29"
-  resolved "https://registry.yarnpkg.com/canner/-/canner-1.0.29.tgz#5d953f6f5511ee1d267178a2f8c45c4d1a1a0ef2"
+canner@^1.0.30:
+  version "1.0.30"
+  resolved "https://registry.npmjs.org/canner/-/canner-1.0.30.tgz#d66b09de567789beab32f182e3b0824f78b51faa"
   dependencies:
     "@canner/antd-locales" "^0.1.18"
     "@canner/image-service-config" "^0.3.0"
@@ -2504,7 +2505,7 @@ canner@^1.0.29:
     antd-geosuggest "^0.2.4"
     apollo-boost "^0.1.4"
     bson-objectid "^1.2.2"
-    canner-graphql-interface "^1.7.0"
+    canner-graphql-interface "^1.9.0"
     canner-layouts "^1.0.5"
     canner-ref-id "^0.1.2"
     graphql "^0.13.2"
