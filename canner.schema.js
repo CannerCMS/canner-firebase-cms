@@ -13,7 +13,7 @@ const Img = ({attributes}) => (
 const Tabs = ({attributes, children}) => <Layout name="Tabs" {...attributes}>{children}</Layout>
 const Focus = ({attributes, children}) => <Layout name="Focus" {...attributes}>{children}</Layout>
 const siteDesc = `Edit, update, add your new page in your blog.`;
-const postDesc = `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English`;
+const postDesc = `Post dashboard is the place you manage all your blog posts.`;
 
 export default (
   <root>
@@ -39,7 +39,7 @@ export default (
         <object keyName="content" title="Content" ui="editor" />
         <object keyName="status" title="Status">
           <string keyName="publish" packageName="./customize-cms-component/custom-string-schedule_btn" />
-          <boolean keyName="draft" packageName="./customize-cms-component/custom-boolean-switch_desc" uiParams={{
+          <boolean keyName="draft" packageName="./customize-cms-component/custom-boolean-review_btn" uiParams={{
             desc: "Pending review",
             help: "Flag this post to be reviewed for approval."
           }}/>
@@ -60,7 +60,7 @@ export default (
             desc: "Show like button"
           }}/>
         </object>
-        <object keyName="other" title="More options">
+        <object keyName="other" title="More Options">
           <string keyName="slug" title="Slug" description="The slug is the URL-friendly version of the page title."/>
           <string
             keyName="excerpt"
@@ -91,23 +91,25 @@ export default (
         }]}/>
       </toolbar>
       <Focus focus={["title", "content"]}>
-        <string keyName="title" title="Title" />
+        <string keyName="title" title="Title" packageName="./customize-cms-component/custom-string-title_input"/>
         <object keyName="content" title="Content" ui="editor" />
         <object keyName="status" title="Status">
           <string keyName="publish" packageName="./customize-cms-component/custom-string-schedule_btn" />
-          <boolean keyName="draft" packageName="./customize-cms-component/custom-boolean-switch_desc" uiParams={{
+          <boolean keyName="draft" title="Draft" packageName="./customize-cms-component/custom-boolean-review_btn" uiParams={{
             desc: "Pending review",
             help: "Flag this post to be reviewed for approval."
           }}/>
+          <boolean keyName="stick" packageName="./customize-cms-component/custom-boolean-switch_desc" uiParams={{
+            desc: "Stick to the front page",
+            help: "Sticky posts will appear at the top of the posts listing."
+          }}/>
+        </object>
+        <object keyName="categoryAndTag" title="Categories & Tags">
+          <array keyName="tags" title="Tags" ui="tag" description="Use tags to associate more specific keywords with your posts.">
+            <string/>
+          </array>
         </object>
         <file keyName="featureImage" title="Feature Image"/>
-        <object keyName="pageProperty" title="Page Property">
-          <boolean keyName="topLevel" title="Parent page" packageName="./customize-cms-component/custom-boolean-switch_desc" uiParams={{
-            desc: "Top level",
-            help: "Disable to select a parent page"
-          }}/>
-          <number keyName="order" title="Order" uiParams={{min: 0}}/>
-        </object>
         <object keyName="share" title="Sharing">
           <boolean keyName="showShareButton" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
             desc: "Show sharing button"
@@ -116,7 +118,21 @@ export default (
             desc: "Show like button"
           }}/>
         </object>
-        <object keyName="other" title="More options">
+        <string
+          title="Post format"
+          keyName="format"
+          ui="radio"
+          uiParams={{
+            options: [{
+              text: 'Standard',
+              value: "standard"
+            }, {
+              text: 'Image',
+              value: "image"
+            }],
+            defaultSelected: 0
+          }}/>
+        <object keyName="other" title="More Options">
           <string keyName="slug" title="Slug" description="The slug is the URL-friendly version of the page title."/>
           <string
             keyName="excerpt"
@@ -129,6 +145,26 @@ export default (
           }}/>
         </object>
       </Focus>
+    </array>
+    <array keyName="category" title="Category" hide={true} uiParams={{
+      columns: [{
+        title: 'Title',
+        dataIndex: 'name'
+      }]
+    }}>
+      <string keyName="name" title="Title"/>
+      <relation keyName="parent"
+        relation={{
+          type: 'toOne',
+          to: 'category'
+        }}
+        uiParams={{
+          textCol: "name",
+          columns: [{
+            title: 'Title',
+            dataIndex: 'name'
+          }]
+        }}/>
     </array>
   </root>
 );

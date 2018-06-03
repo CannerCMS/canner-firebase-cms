@@ -11,11 +11,11 @@ export default class Focus extends React.Component {
           <Item filter={node => focus.indexOf(node.keyName) !== -1 } />
         </Col>
         <Col span={7}>
-          <Collapse>
+          <Collapse activeKey={children.map(child => child.keyName)}>
           {
             children.map((child, i) => (
               focus.indexOf(child.keyName) === -1 &&
-                <Panel header={child.title || 'UNKNOWN TITLE'} key={i}>
+                <Panel header={child.title || 'UNKNOWN TITLE'} key={child.keyName}>
                   <Item
                     hideTitle={true}
                     refId={refId}

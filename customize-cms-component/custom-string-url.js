@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Input} from 'antd';
-import 'antd/lib/switch/style';
+import {baseUrl} from './blog';
 
 export default class CustomStringUrl extends React.Component {
   onChange = (e) => {
@@ -11,7 +11,7 @@ export default class CustomStringUrl extends React.Component {
   render() {
     const {value} = this.props;
     return (
-      <Input addonBefore="http://<your blog url>/" defaultValue={value} />
+      <Input addonBefore={baseUrl} defaultValue={value} />
     )
   }
 }

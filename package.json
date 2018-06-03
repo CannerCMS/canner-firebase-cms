@@ -83,6 +83,7 @@
     "redux": "^4.0.0",
     "redux-actions": "^2.2.1",
     "redux-firebase-middleware": "1.2.0",
+    "slug": "^0.9.1",
     "styled-components": "^3.2.6"
   }
 }
