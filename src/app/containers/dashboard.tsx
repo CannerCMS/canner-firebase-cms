@@ -191,7 +191,7 @@ export default class Dashboard extends React.Component<Props> {
                   <Menu.Item key="logout">Log out</Menu.Item>
                 </Menu.SubMenu>
                 {
-                  hasChanged ? 
+                  hasChanged ?
                   <Menu.Item key="deploy">
                   {
                     deploying ?
@@ -207,7 +207,7 @@ export default class Dashboard extends React.Component<Props> {
                     Saved
                   </Menu.Item>
                 }
-                
+
               </Menu>
             </HeaderMenu>
           </Header>
@@ -221,7 +221,7 @@ export default class Dashboard extends React.Component<Props> {
               {
                 Object.keys(schema.cannerSchema).map(key => (
                   <Menu.Item key={key}>
-                    {key.toLocaleUpperCase()}
+                    {schema.cannerSchema[key].title}
                   </Menu.Item>
                 ))
               }

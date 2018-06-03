@@ -7,16 +7,19 @@ export default class Focus extends React.Component {
     const {children, focus, refId} = this.props;
     return (
       <Row gutter={32} type="flex">
-        <Col span={18}>
-          <Item filter={node => node.keyName === focus} />
+        <Col span={17}>
+          <Item filter={node => focus.indexOf(node.keyName) !== -1 } />
         </Col>
-        <Col span={6}>
+        <Col span={7}>
           <Collapse>
           {
             children.map((child, i) => (
-              child.keyName !== focus &&
+              focus.indexOf(child.keyName) === -1 &&
                 <Panel header={child.title || 'UNKNOWN TITLE'} key={i}>
-                  <Item refId={refId} filter={node => node.keyName === child.keyName} />
+                  <Item
+                    hideTitle={true}
+                    refId={refId}
+                    filter={node => node.keyName === child.keyName} />
                 </Panel>
             ))
           }
