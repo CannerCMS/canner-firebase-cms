@@ -154,6 +154,8 @@ export default (
     }}>
       <string keyName="name" title="Title"/>
       <relation keyName="parent"
+        title="Parent category"
+        packageName="./customize-cms-component/custom-relation-tree"
         relation={{
           type: 'toOne',
           to: 'category'
