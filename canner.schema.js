@@ -104,11 +104,26 @@ export default (
             help: "Sticky posts will appear at the top of the posts listing."
           }}/>
         </object>
-        <object keyName="categoryAndTag" title="Categories & Tags">
+        <Layout name="default" title="Categories & Tags" keyName="CategoriesAndTags">
           <array keyName="tags" title="Tags" ui="tag" description="Use tags to associate more specific keywords with your posts.">
             <string/>
           </array>
-        </object>
+          <relation keyName="category"
+            title="category"
+            packageName="./customize-cms-component/custom-relation-tree_toOne"
+            relation={{
+              type: 'toOne',
+              to: 'category'
+            }}
+            uiParams={{
+              textCol: "name",
+              columns: [{
+                title: 'Title',
+                dataIndex: 'name'
+              }]
+            }}/>
+        </Layout>
+        
         <file keyName="featureImage" title="Feature Image"/>
         <object keyName="share" title="Sharing">
           <boolean keyName="showShareButton" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
@@ -155,7 +170,7 @@ export default (
       <string keyName="name" title="Title"/>
       <relation keyName="parent"
         title="Parent category"
-        packageName="./customize-cms-component/custom-relation-tree"
+        packageName="./customize-cms-component/custom-relation-tree_toOne"
         relation={{
           type: 'toOne',
           to: 'category'

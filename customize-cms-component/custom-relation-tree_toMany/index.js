@@ -35,61 +35,123 @@ export default class RelationTree extends PureComponent<Props, State> {
     this.state = {
       expandedKeys: [],
       autoExpandParent: true,
-      selectedKeys: [],
-      treeData: []
+      checkedKeys: [],
+      treeData: [],
+      data: fromJS({
+        [props.relation.to]: {
+          edges: []
+        }
+      })
     }
   }
  
   componentDidMount() {
-    const {updateQuery, relation, value, uiParams: {textCol}, fetch} = this.props;
+    const {updateQuery, relation} = this.props;
     updateQuery([relation.to], {
       pagination: {
         first: 99
       }
     });
-    fetch(relation.to)
-      .then(data => {
-        const treeData = genRelationTree(data.getIn([relation.to, 'edges']).map(edge => edge.get('node')).toJS(), textCol);
-        this.setState({
-          treeData
-        });
-      })
-
+    this.fetchData();
   }
 
-  onSelect = (selectedKeys, info) => {
-    const {onChange, refId, value} = this.props;
-    if (selectedKeys[0]) {
-      onChange(refId, 'connect', fromJS({id: selectedKeys[0]}));
-    } else {
-      onChange(refId, 'disconnect', value);
+  componentWillUnmount() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 
-  renderTreeNodes = (data) => {
+  componentWillReceiveProps(props: Props) {
+    if (props.refId.toString() !== this.props.refId.toString()) {
+      this.updateData(this.state.data);
+    }
+  }
+
+  fetchData = () => {
+    const {fetch, relation} = this.props;
+    fetch(relation.to)
+      .then(data => {
+        this.updateData(data);
+        this.subscribe();
+      })
+  }
+
+  subscribe = () => {
+    const {subscribe, relation} = this.props;
+    this.subscription = subscribe(relation.to, this.updateData);
+  }
+
+  updateData = (data: any) => {
+    const {relation, uiParams: {textCol}} = this.props;
+    const treeData = genRelationTree(data.getIn([relation.to, 'edges']).map(edge => edge.get('node')).toJS(), textCol);
+    this.setState({
+      treeData,
+      data
+    });
+  }
+
+  onCheck = (v, info) => {
+    const checkedKeys = v.checked;
+    const nodes = info.checkedNodes;
+    const {onChange, refId, value, relation} = this.props;
+    const {data} = this.state;
+
+    const addKeys = checkedKeys.filter(key => !value.find(item => item.get('id') === key));
+    const removeItems = value.filter(item => !checkedKeys.find(key => key === item.get('id')));
+
+    const addItems = data.getIn([relation.to, 'edges'])
+    .filter(edge => addKeys.indexOf(edge.get('cursor')) !== -1)
+    .map(edge => edge.get('node'));
+
+    onChange(refId, 'connect', addItems);
+    onChange(refId, 'disconnect', removeItems);
+
+    // if (checkedKeys.length > 1 && !nodes[1].props.disableCheckbox) {
+      
+    //   onChange(refId, 'connect', checked);
+    // } else if (checkedKeys[0] && !nodes[0].props.disableCheckbox) {
+    //   const checked = data.getIn([relation.to, 'edges'])
+    //     .find(edge => edge.get('cursor') === checkedKeys[0])
+    //     .get('node');
+    //   onChange(refId, 'connect', checked);
+    // } else {
+    //   onChange(refId, 'disconnect', value);
+    // }
+  }
+
+  renderTreeNodes = (data, selfId, disableCheckbox) => {
     return data.map((item) => {
+      const isSelf = item.key === selfId;
       if (item.children) {
         return (
-          <TreeNode title={item.title} key={item.key} dataRef={item}>
-            {this.renderTreeNodes(item.children)}
+          <TreeNode title={item.title} key={item.key} dataRef={item} disableCheckbox={isSelf}>
+            {this.renderTreeNodes(item.children, selfId, isSelf)}
           </TreeNode>
         );
       }
-      return <TreeNode {...item} />;
+      return <TreeNode {...item} disableCheckbox={isSelf}/>;
     });
   }
 
   render() {
-    const { treeData } = this.state;
+    const { treeData, data } = this.state;
     const { disabled, value, uiParams, refId, relation, fetch, fetchRelation, subscribe, updateQuery } = this.props;
+    const [key, index] = refId.getPathArr();
+    const checkedIds = value.map(v => v.get('id')).toJS();
+    let selfId = null;
+    if (key === relation.to) {
+      // self relation
+      selfId = data.getIn([key, 'edges', index, 'cursor']);
+    }
     return (
       <Tree
-        autoExpandParent
-        // defaultExpandAll
-        onSelect={this.onSelect}
-        selectedKeys={value ? [value.get('id')] : []}
+        defaultExpandAll
+        checkStrictly
+        checkable
+        onCheck={this.onCheck}
+        checkedKeys={checkedIds}
       >
-        {this.renderTreeNodes(treeData)}
+        {this.renderTreeNodes(treeData, selfId)}
       </Tree>
     );
   }
@@ -97,6 +159,9 @@ export default class RelationTree extends PureComponent<Props, State> {
 function genRelationTree(data: any, textCol: string, treeData: array = [], treeMap: object = {}) {
   const leftData = [];
   data.forEach(datum => {
+    if (!datum.parent) {
+      return ;
+    }
     const parentId = datum.parent.id;
     if (datum.id === parentId || !parentId) {
       treeMap[datum.id] = `[${treeData.length}]`;
