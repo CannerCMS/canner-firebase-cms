@@ -119,6 +119,9 @@ function genRelationTree(data: any, textCol: string, treeData: array = [], treeM
       leftData.push(datum);
     }
   });
+  if (data.length === leftData.length) {
+    leftData[0].parent.id = null;
+  }
   if (leftData.length) {
     genRelationTree(leftData, textCol, treeData, treeMap)
   }
