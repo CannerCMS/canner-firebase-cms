@@ -3,8 +3,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 // import DateRangeFilter from './dateRange';
 import isUndefined from 'lodash/isUndefined';
-import {Tabs} from 'antd';
+import {Tabs, Input, Row, Col} from 'antd';
 const TabPane = Tabs.TabPane;
+const Search = Input.Search;
 
 type Props = {
   changeFilter: Object => void,
@@ -19,24 +20,74 @@ const Wrapper = styled.div`
   .ant-tabs-bar {
     margin-bottom: 0;
   }
+  .ant-input-search-enter-button,
+  .ant-input-search-button {
+    height: 44px;
+    line-height: 44px;
+    border-radius: 0;
+  }
 `
 
 export default class TabsFilter extends React.Component<Props> {
+  state = {
+    search: {},
+    filter: {}
+  }
+
   onChange = (index: number) => {
     const {fields} = this.props;
-    this.props.changeFilter(fields[index].condition);
+    const {search, filter} = this.state;
+    this.props.changeFilter({
+      ...search,
+      ...fields[index].condition
+    });
+    this.setState({
+      filter: fields[index].condition
+    });
+  }
+
+  onSearch = (value: string) => {
+    const {filter} = this.state;
+    if (!value) {
+      this.props.changeFilter({
+        ...filter
+      });
+      this.setState({
+        search: {}
+      });
+      return;
+    }
+    const {search} = this.props;
+    this.props.changeFilter({
+      [search.key]: {eq: value},
+      ...filter
+    });
+    this.setState({
+      search: {[search.key]: {eq: value}}
+    });
   }
 
   render() {
-    const {fields, where} = this.props;
+    const {fields, where, search} = this.props;
     const activeKey = fields.findIndex(field => JSON.stringify(field.condition) === JSON.stringify(where));
     return (
       <Wrapper>
-        <Tabs activeKey={`${activeKey}`} defaultActiveKey="0" onChange={this.onChange}>
-          {fields.map((field, i) => (
-            <TabPane tab={field.title} key={i}></TabPane>
-          ))}
-        </Tabs>
+        <Row>
+          <Col span={18}>
+            <Tabs activeKey={`${activeKey}`} defaultActiveKey="0" onChange={this.onChange}>
+              {fields.map((field, i) => (
+                <TabPane tab={field.title} key={i}></TabPane>
+              ))}
+            </Tabs>
+          </Col>
+          <Col span={6}>
+            <Search
+              placeholder={search.title}
+              onSearch={this.onSearch}
+              enterButton
+            />
+          </Col>
+        </Row>
       </Wrapper>
     );
   }

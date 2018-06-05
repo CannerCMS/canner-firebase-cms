@@ -30,7 +30,6 @@ const AvatarWithIcon = styled(Avatar as any)`
     margin-right: 0 !important;
   }
 `
-console.log(schema);
 const { Header, Sider, Content, Footer } = Layout;
 interface Props extends RouteComponentProps<void> {
 }

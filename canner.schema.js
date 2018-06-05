@@ -27,6 +27,41 @@ export default (
     >
       <toolbar>
         <pagination />
+        <filter fields={[{
+          title: 'Published',
+          condition: {
+            status: {
+              draft: {
+                eq: false
+              },
+            },
+            trash: {
+              eq: false
+            }
+          }
+        }, {
+          title: 'Drafts',
+          condition: {
+            status: {
+              draft: {
+                eq: true
+              },
+            },
+            trash: {
+              eq: false
+            }
+          }
+        }, {
+          title: 'Trashed',
+          condition: {
+            trash: {
+              eq: true
+            }
+          }
+        }]} search={{
+          title: 'Search title',
+          key: 'title'
+        }} componentName="TabsFilter"/>
       </toolbar>
       <Focus focus={["title", "url", "content"]}>
         <string keyName="title" title="Title" />
@@ -67,6 +102,16 @@ export default (
             help: "Provide a comment section to give readers the ability to respond."
           }}/>
         </object>
+        <boolean title="Move to trash" keyName="trash" packageName="./customize-cms-component/custom-boolean-trash_btn" uiParams={{
+          true: {
+            title: 'Deleted Page',
+            desc: 'This page has been sent to the trash. Restore it to continue writing.'
+          },
+          false: {
+            text: "Move to trash",
+            confirmText: "Are you sure you want to trash this page?",
+          }
+        }}/>
       </Focus>
     </array>
     <array keyName="posts" title="Posts" ui="tableRoute" description={postDesc}
@@ -83,25 +128,34 @@ export default (
       <toolbar>
         <pagination />
         <filter fields={[{
-          title: 'All',
+          title: 'Published',
           condition: {
+            status: {
+              draft: {
+                eq: false
+              },
+            },
+            trash: {
+              eq: false
+            }
           }
         }, {
-          title: 'Draft',
+          title: 'Drafts',
           condition: {
             status: {
               draft: {
                 eq: true
-              }
+              },
+            },
+            trash: {
+              eq: false
             }
           }
         }, {
-          title: 'Stick',
+          title: 'Trashed',
           condition: {
-            status: {
-              stick: {
-                eq: true
-              }
+            trash: {
+              eq: true
             }
           }
         }]} search={{
@@ -178,6 +232,16 @@ export default (
             help: "Provide a comment section to give readers the ability to respond."
           }}/>
         </object>
+        <boolean title="Move to trash" keyName="trash" packageName="./customize-cms-component/custom-boolean-trash_btn" uiParams={{
+          true: {
+            title: 'Deleted Page',
+            desc: 'This page has been sent to the trash. Restore it to continue writing.'
+          },
+          false: {
+            text: "Move to trash",
+            confirmText: "Are you sure you want to trash this page?",
+          }
+        }}/>
       </Focus>
     </array>
     <array keyName="category" title="Category" hide={true} uiParams={{
