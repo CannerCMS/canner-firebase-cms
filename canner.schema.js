@@ -27,11 +27,6 @@ export default (
     >
       <toolbar>
         <pagination />
-        <filter fields={[{
-          key: 'title',
-          type: 'text',
-          label: 'Title'
-        }]}/>
       </toolbar>
       <Focus focus={["title", "url", "content"]}>
         <string keyName="title" title="Title" />
@@ -85,10 +80,31 @@ export default (
       <toolbar>
         <pagination />
         <filter fields={[{
-          key: 'title',
-          type: 'text',
-          label: 'Title'
-        }]}/>
+          title: 'All',
+          condition: {
+          }
+        }, {
+          title: 'Draft',
+          condition: {
+            status: {
+              draft: {
+                eq: true
+              }
+            }
+          }
+        }, {
+          title: 'Stick',
+          condition: {
+            status: {
+              stick: {
+                eq: true
+              }
+            }
+          }
+        }]} search={{
+          title: 'Search name',
+          key: 'name'
+        }} componentName="TabsFilter"/>
       </toolbar>
       <Focus focus={["title", "content"]}>
         <string keyName="title" title="Title" packageName="./customize-cms-component/custom-string-title_input"/>
@@ -167,6 +183,9 @@ export default (
         dataIndex: 'name'
       }]
     }}>
+      <toolbar>
+        <pagination />
+      </toolbar>
       <string keyName="name" title="Title"/>
       <relation keyName="parent"
         title="Parent category"
