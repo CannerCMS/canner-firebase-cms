@@ -12,6 +12,7 @@ import { LogoContainer, HeaderMenu } from 'app/components/dashboard';
 import Focus from 'app/components/layouts/focus';
 import Tabs from 'app/components/layouts/tabs';
 import firConfig from 'app/config/firebase';
+import TabsFilter from '../../../customize-cms-component/filter.js';
 const confirm = Modal.confirm;
 const MenuText = styled.span`
   color: rgba(255, 255, 255, .65);
@@ -29,7 +30,7 @@ const AvatarWithIcon = styled(Avatar as any)`
     margin-right: 0 !important;
   }
 `
-
+console.log(schema);
 const { Header, Sider, Content, Footer } = Layout;
 interface Props extends RouteComponentProps<void> {
 }
@@ -53,9 +54,16 @@ export default class Dashboard extends React.Component<Props> {
           state: { from: location }
         })
       } else {
-        this.setState({
-          user: user as any
-        });
+        if (location.pathname.match("/dashboard")) {
+          this.setState({
+            user: user as any
+          });
+        } else {
+          history.push({
+            pathname: "/dashboard",
+            state: { from: location }
+          })
+        }
       }
     });
   }
@@ -191,7 +199,7 @@ export default class Dashboard extends React.Component<Props> {
                   <Menu.Item key="logout">Log out</Menu.Item>
                 </Menu.SubMenu>
                 {
-                  hasChanged ? 
+                  hasChanged ?
                   <Menu.Item key="deploy">
                   {
                     deploying ?
@@ -207,7 +215,7 @@ export default class Dashboard extends React.Component<Props> {
                     Saved
                   </Menu.Item>
                 }
-                
+
               </Menu>
             </HeaderMenu>
           </Header>
@@ -221,7 +229,7 @@ export default class Dashboard extends React.Component<Props> {
               {
                 Object.keys(schema.cannerSchema).map(key => (
                   <Menu.Item key={key}>
-                    {key.toLocaleUpperCase()}
+                    {schema.cannerSchema[key].title}
                   </Menu.Item>
                 ))
               }
@@ -232,6 +240,9 @@ export default class Dashboard extends React.Component<Props> {
                 <Spin indicator={spinIcon} spinning={deploying} tip="Saving...">
                   <CMS
                     layouts={{Tabs, Focus}}
+                    toolbars={{
+                      TabsFilter
+                    }}
                     history={history}
                     schema={schema}
                     connector={connector.default.connector}

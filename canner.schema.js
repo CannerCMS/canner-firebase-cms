@@ -2,37 +2,6 @@
 
 // eslint-disable-next-line no-unused-vars
 import builder, {Block, Layout} from 'canner-script';
-import path from 'path';
-
-var contactInfo = [
-  {
-    key: 'phones',
-    options: [{
-      text: 'Home',
-      value: 'HOME'
-    }, {
-      text: 'Company',
-      value: 'COMPANY'
-    }, {
-      text: 'Mobile',
-      value: 'MOBILE'
-    }]
-  },
-  {
-    key: 'addresses',
-    options: [{
-      text: 'Home',
-      value: 'HOME'
-    }, {
-      text: 'Company',
-      value: 'COMPANY'
-    }]
-  },
-  {
-    key: 'emails',
-    options: []
-  }
-]
 
 const Img = ({attributes}) => (
   <object keyName={attributes.keyName} title={attributes.title}>
@@ -43,168 +12,201 @@ const Img = ({attributes}) => (
 
 const Tabs = ({attributes, children}) => <Layout name="Tabs" {...attributes}>{children}</Layout>
 const Focus = ({attributes, children}) => <Layout name="Focus" {...attributes}>{children}</Layout>
-const infoDesc = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged`;
-const postDesc = `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English`;
-const Posts = () => (
-<array keyName="posts" title="Posts" ui="tableRoute" description={postDesc}
-  uiParams={{
-    columns: [{
-      title: 'Title',
-      dataIndex: 'title'
-    }]
-  }}
->
-  <Focus focus="content">
-    <string keyName="title" title="Title" />
-    <object keyName="content" title="Content" ui="editor" />
-    <object keyName="status" title="Status">
-      <dateTime keyName="createAt" title="Create at"/>
-      <boolean keyName="draft" title="Draft"/>
-    </object>
-    <file keyName="featureImage" title="Feature Image"/>
-    <object keyName="pageProperty" title="Page Property">
-      <number keyName="onTop" title="On Top"/>
-      <number keyName="order" title="Order"/>
-    </object>
-    <object keyName="share" title="Share">
-      <number keyName="showShareButton" title="Show Share Button"/>
-      <number keyName="showGoodButton" title="Show Good Button"/>
-    </object>
-    <object keyName="other" title="Other">
-      <string keyName="introduction" title="Introduction"/>
-      <string keyName="position" title="Position"/>
-    </object>
-  </Focus>
-</array>);
+const siteDesc = `Edit, update, add your new page in your blog.`;
+const postDesc = `Post dashboard is the place you manage all your blog posts.`;
 
-export default <root>
-  <object keyName="info" title="MyInfo" description={infoDesc}>
-    <Block title="MyInfo">
-      <Tabs>
-        {/* <file keyName="thumbnail" title="Thumbnail" contentType="image/*" ui="image"/> */}
-        <string keyName="name" title="Name"/>
-        <string keyName="nickname" title="Nickname" />
-        <Img keyName="thumbnail" title="Photo" />
-        <object keyName="contactInfo" title="ContactInfo">
-        {
-          contactInfo.map(info => (
-            <array ui="table" title={info.key} keyName={info.key} uiParams={{
-              columns: [{
-                title: 'Type',
-                dataIndex: 'type'
-              }, {
-                title: 'Value',
-                dataIndex: 'value'
-              }]
-            }}>
-              {
-                info && <string ui="select"
-                  uiParams={{options: info.options}}
-                  keyName="type"
-                />
+export default (
+  <root>
+    <array keyName="pages" title="Pages" ui="tableRoute" description={siteDesc}
+      uiParams={{
+        columns: [{
+          title: 'Title',
+          dataIndex: 'title'
+        }]
+      }}
+    >
+      <toolbar>
+        <pagination />
+      </toolbar>
+      <Focus focus={["title", "url", "content"]}>
+        <string keyName="title" title="Title" />
+        <string keyName="url" title="URL" packageName="./customize-cms-component/custom-string-url" />
+        <object keyName="content" title="Content" ui="editor" />
+        <object keyName="status" title="Status">
+          <string keyName="publish" packageName="./customize-cms-component/custom-string-schedule_btn" />
+          <boolean keyName="draft" packageName="./customize-cms-component/custom-boolean-review_btn" uiParams={{
+            desc: "Pending review",
+            help: "Flag this post to be reviewed for approval."
+          }}/>
+        </object>
+        <image keyName="featureImage" title="Feature Image"/>
+        <object keyName="pageProperty" title="Page Property">
+          <boolean keyName="topLevel" title="Parent page" packageName="./customize-cms-component/custom-boolean-switch_desc" uiParams={{
+            desc: "Top level",
+            help: "Disable to select a parent page"
+          }}/>
+          <number keyName="order" title="Order" uiParams={{min: 0}}/>
+        </object>
+        <object keyName="share" title="Sharing">
+          <boolean keyName="showShareButton" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
+            desc: "Show sharing button"
+          }}/>
+          <boolean keyName="showLikeButton" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
+            desc: "Show like button"
+          }}/>
+        </object>
+        <object keyName="other" title="More Options">
+          <string keyName="slug" title="Slug" description="The slug is the URL-friendly version of the page title."/>
+          <string
+            keyName="excerpt"
+            ui="textarea"
+            title="Excerpt"
+            description="An excerpt is a short summary you can add to your posts. Some themes show excerpts alongside post titles on your site's homepage and archive pages."/>
+          <boolean keyName="allowComment" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
+            desc: "Allow comments",
+            help: "Provide a comment section to give readers the ability to respond."
+          }}/>
+        </object>
+      </Focus>
+    </array>
+    <array keyName="posts" title="Posts" ui="tableRoute" description={postDesc}
+      uiParams={{
+        columns: [{
+          title: 'Title',
+          dataIndex: 'title'
+        }, {
+          title: 'Category',
+          dataIndex: 'category.name'
+        }]
+      }}
+    >
+      <toolbar>
+        <pagination />
+        <filter fields={[{
+          title: 'All',
+          condition: {
+          }
+        }, {
+          title: 'Draft',
+          condition: {
+            status: {
+              draft: {
+                eq: true
               }
-              <string keyName="value"/>
-            </array>
-          ))
-        }
-        </object>
-      </Tabs>
-    </Block>
-  </object>
-  <Posts />
-  <object keyName="overview" title="Components Overview">
-    <Block title="All Types">
-      <Tabs>
-        <object keyName="string" title="String type">
-          <string keyName="input" title="Input" description="Input is the default ui of string type"/>
-          <string keyName="card" title="Card" ui="card" uiParams={{
-            options: [{
-              text: 'YES',
-              value: 'yes'
-            }, {
-              text: 'NO',
-              value: 'no'
-            }]
+            }
+          }
+        }, {
+          title: 'Stick',
+          condition: {
+            status: {
+              stick: {
+                eq: true
+              }
+            }
+          }
+        }]} search={{
+          title: 'Search name',
+          key: 'name'
+        }} componentName="TabsFilter"/>
+      </toolbar>
+      <Focus focus={["title", "content"]}>
+        <string keyName="title" title="Title" packageName="./customize-cms-component/custom-string-title_input"/>
+        <object keyName="content" title="Content" ui="editor" />
+        <object keyName="status" title="Status">
+          <string keyName="publish" packageName="./customize-cms-component/custom-string-schedule_btn" />
+          <boolean keyName="draft" title="Draft" packageName="./customize-cms-component/custom-boolean-review_btn" uiParams={{
+            desc: "Pending review",
+            help: "Flag this post to be reviewed for approval."
           }}/>
-          <string keyName="link" title="Link" ui="link"/>
-          <string keyName="radio" title="Radio" ui="radio" uiParams={{
-            options: [{
-              text: 'YES',
-              value: 'yes'
-            }, {
-              text: 'NO',
-              value: 'no'
-            }]
+          <boolean keyName="stick" packageName="./customize-cms-component/custom-boolean-switch_desc" uiParams={{
+            desc: "Stick to the front page",
+            help: "Sticky posts will appear at the top of the posts listing."
           }}/>
-          <string keyName="select" title="Select" ui="select" uiParams={{
-            options: [{
-              text: 'YES',
-              value: 'yes'
-            }, {
-              text: 'NO',
-              value: 'no'
-            }]
+        </object>
+        <Layout name="default" title="Categories & Tags" keyName="CategoriesAndTags">
+          <array keyName="tags" title="Tags" ui="tag" description="Use tags to associate more specific keywords with your posts.">
+            <string/>
+          </array>
+          <relation keyName="category"
+            title="category"
+            packageName="./customize-cms-component/custom-relation-tree_toOne"
+            relation={{
+              type: 'toOne',
+              to: 'category'
+            }}
+            uiParams={{
+              textCol: "name",
+              columns: [{
+                title: 'Title',
+                dataIndex: 'name'
+              }]
+            }}/>
+        </Layout>
+        
+        <file keyName="featureImage" title="Feature Image"/>
+        <object keyName="share" title="Sharing">
+          <boolean keyName="showShareButton" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
+            desc: "Show sharing button"
           }}/>
-          <string keyName="textarea" title="Textarea" ui="textarea" />
-          <file keyName="image" title="Image" />
-          <dateTime keyName="date" title="Date" />
+          <boolean keyName="showLikeButton" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
+            desc: "Show like button"
+          }}/>
         </object>
-        <object keyName="boolean" title="Boolean Types">
-          <boolean keyName="card" ui="card" title="Card" />
-          <boolean keyName="switch" ui="switch" title="Switch" />
-        </object>
-        <object keyName="number" title="Number Types">
-          <number keyName="input" title="Title" ui="input" />
-          <number keyName="rate" title="Rate" ui="rate" />
-          <number keyName="slider" title="Slider" ui="slider" />
-        </object>
-        <object keyName="array" title="Array Type">
-          <array keyName="tabs" ui="tabs" title="Tabs">
-            <string keyName="info" title="info" />
-          </array>
-          <array keyName="panel" ui="panel" title="Panel">
-            <string keyName="info" title="info" />
-          </array>
-          <array keyName="tableRoute" ui="tableRoute" title="Table-route" uiParams={{
-            columns: [{
-              title: 'info',
-              dataIndex: 'info'
-            }]
-          }}>
-            <string keyName="info" title="info" />
-          </array>
-          <array keyName="table" ui="table" title="Table" uiParams={{
-            columns: [{
-              title: 'info',
-              dataIndex: 'info'
-            }]
-          }}>
-            <string keyName="info" title="info" />
-          </array>
-          {/* <array keyName="slider" ui="slider" title="Slider">
-            <string keyName="info" title="info" />
-          </array>
-          <array keyName="tag" ui="tag" title="Tag" />
-          <array keyName="gallery" ui="gallery" title="Gallery" /> */}
-        </object>
-        <object keyName="object" title="Object type">
-          {/* <geoPoint keyName="geoPoint" title="GeoPoint" /> */}
-          {/* <object keyName="variants" title="Variants" ui="variants" /> */}
-          <object keyName="options" title="Options" ui="options" uiParams={{
+        <string
+          title="Post format"
+          keyName="format"
+          ui="radio"
+          uiParams={{
             options: [{
-              title: 'One',
-              key: 'one'
+              text: 'Standard',
+              value: "standard"
             }, {
-              title: 'Two',
-              key: 'two'
+              text: 'Image',
+              value: "image"
             }],
-            optionKey: 'key'
-          }}>
-            <string keyName="one" />
-            <boolean keyName="two" />
-          </object>
+            defaultSelected: 0
+          }}/>
+        <object keyName="other" title="More Options">
+          <string keyName="slug" title="Slug" description="The slug is the URL-friendly version of the page title."/>
+          <string
+            keyName="excerpt"
+            ui="textarea"
+            title="Excerpt"
+            description="An excerpt is a short summary you can add to your posts. Some themes show excerpts alongside post titles on your site's homepage and archive pages."/>
+          <boolean keyName="allowComment" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
+            desc: "Allow comments",
+            help: "Provide a comment section to give readers the ability to respond."
+          }}/>
         </object>
-      </Tabs>
-    </Block>
-  </object>
-</root>
+      </Focus>
+    </array>
+    <array keyName="category" title="Category" hide={true} uiParams={{
+      columns: [{
+        title: 'Title',
+        dataIndex: 'name'
+      }, {
+        title: 'Parent Category',
+        dataIndex: 'parent.name'
+      }]
+    }}>
+      <toolbar>
+        <pagination />
+      </toolbar>
+      <string keyName="name" title="Title"/>
+      <relation keyName="parent"
+        title="Parent category"
+        packageName="./customize-cms-component/custom-relation-tree_toOne"
+        relation={{
+          type: 'toOne',
+          to: 'category'
+        }}
+        uiParams={{
+          textCol: "name",
+          columns: [{
+            title: 'Title',
+            dataIndex: 'name'
+          }]
+        }}/>
+    </array>
+  </root>
+);
