@@ -1,2 +1,0 @@
-// Setup resolvers
-export default {};

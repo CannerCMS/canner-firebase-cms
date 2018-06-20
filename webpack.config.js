@@ -34,8 +34,6 @@ module.exports = {
       app: path.resolve(__dirname, 'src/app/'),
       assets: path.resolve(__dirname, 'src/assets/'),
       "canner-schema": path.resolve(__dirname, './canner.schema.js'),
-      "canner-connector": path.resolve(__dirname, './canner.connector.js'),
-      "canner-resolver": path.resolve(__dirname, './canner.resolver.js'),
       "styled-components": path.resolve(__dirname, 'node_modules', 'styled-components')
     }
   },
@@ -108,7 +106,7 @@ module.exports = {
       },
       // loader for canner.schema.js
       {
-        test: /canner\.schema\.js$/,
+        test: /\.schema\.js|canner\.def\.js$/,
         use: [
           {loader: 'canner-schema-loader'},
           {loader: 'babel-loader'}
@@ -143,10 +141,6 @@ module.exports = {
       // both options are optional
       filename: !isProduction ? '[name].css' : '[name].[hash].css',
       chunkFilename: !isProduction ? '[id].css' : '[id].[hash].css',
-    }),
-    new webpack.DefinePlugin({
-      IMGUR_CLIENT_ID: JSON.stringify(process.env.IMGUR_CLIENT_ID),
-      IMGUR_MASHAPE_KEY: JSON.stringify(process.env.IMGUR_MASHAPE_KEY)
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: !isProduction ? 'development' : 'production', // use 'development' unless process.env.NODE_ENV is defined

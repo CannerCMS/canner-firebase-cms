@@ -1248,7 +1248,7 @@ babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-core@^6.26.0, babel-core@^6.26.3:
+babel-core@^6.26.0:
   version "6.26.3"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.3.tgz#b2e2f09e342d0f0c88e2f02e067794125e75c207"
   dependencies:
@@ -1643,15 +1643,6 @@ babel-plugin-transform-es2015-modules-amd@^6.22.0, babel-plugin-transform-es2015
 babel-plugin-transform-es2015-modules-commonjs@^6.23.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.1:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.26.0.tgz#0d8394029b7dc6abe1a97ef181e00758dd2e5d8a"
-  dependencies:
-    babel-plugin-transform-strict-mode "^6.24.1"
-    babel-runtime "^6.26.0"
-    babel-template "^6.26.0"
-    babel-types "^6.26.0"
-
-babel-plugin-transform-es2015-modules-commonjs@^6.26.2:
-  version "6.26.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.26.2.tgz#58a793863a9e7ca870bdc5a881117ffac27db6f3"
   dependencies:
     babel-plugin-transform-strict-mode "^6.24.1"
     babel-runtime "^6.26.0"
@@ -2344,10 +2335,6 @@ caniuse-lite@^1.0.30000792:
   version "1.0.30000830"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000830.tgz#cb96b8a2dd3cbfe04acea2af3c4e894249095328"
 
-canner-compiler@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/canner-compiler/-/canner-compiler-0.1.6.tgz#516b5b2ded2029cf94fe4ef65ce024adad79fdd0"
-
 canner-graphql-interface@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/canner-graphql-interface/-/canner-graphql-interface-1.11.0.tgz#601bdd067be23e72315a596a8b432d8474351a9b"
@@ -2396,17 +2383,21 @@ canner-image-gallery@^0.1.3:
     react-loading-image "^0.3.0"
     styled-components "^3.2.3"
 
-canner-layouts@1.0.5, canner-layouts@^1.0.5:
+canner-layouts@1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/canner-layouts/-/canner-layouts-1.0.5.tgz#1239906e4339b7e6320f379e0a4f078da29cf314"
+
+canner-layouts@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/canner-layouts/-/canner-layouts-1.0.6.tgz#dce89ab99b30d3bc167b318d6dbf000e9b7a9e1f"
 
 canner-ref-id@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/canner-ref-id/-/canner-ref-id-0.1.2.tgz#9c534d517818e915cef1004116012458bd165d83"
 
-canner-schema-loader@^1.1.30:
-  version "1.1.30"
-  resolved "https://registry.yarnpkg.com/canner-schema-loader/-/canner-schema-loader-1.1.30.tgz#1de497391e63c22e017da3ce9a286fbec1ffd966"
+canner-schema-loader@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/canner-schema-loader/-/canner-schema-loader-1.2.0.tgz#2f16bc62f7dcbbfdf7ae46b627192eec30008285"
   dependencies:
     "@canner/antd-array-gallery" "0.1.33"
     "@canner/antd-array-panel" "0.1.33"
@@ -2442,18 +2433,19 @@ canner-schema-loader@^1.1.30:
     "@canner/antd-string-select" "0.1.33"
     "@canner/antd-string-textarea" "0.1.33"
     "@canner/antd-string-time_picker" "0.1.33"
-    canner-compiler "^0.1.6"
     schema-utils "^0.4.5"
+    strip-bom "^3.0.0"
 
-canner-script@^1.0.36:
-  version "1.0.36"
-  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.0.36.tgz#f60a887a4d35db99b5e1d29de13ac2e1cabb4e5f"
+canner-script@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.1.1.tgz#05eb528e9ef2fa48aa5d7bf8941ea953467f4626"
   dependencies:
-    babel-core "^6.26.3"
-    babel-plugin-transform-es2015-modules-commonjs "^6.26.2"
-    babel-register "^6.26.0"
+    canner-graphql-interface "^1.11.0"
+    canner-helpers "^0.1.14"
+    canner-layouts "^1.0.6"
     eval "^0.1.2"
     object-path "^0.11.4"
+    safer-eval "^1.2.3"
 
 canner-slate-editor@^0.4.4:
   version "0.4.4"
@@ -2495,18 +2487,16 @@ canner-slate-editor@^0.4.4:
     slate-trailing-block "^0.5.0"
     styled-components "^3.2.3"
 
-canner@^1.0.33:
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/canner/-/canner-1.0.33.tgz#9a165d8fda79a0a33a63c67aa5ae15ef4d3c8cf7"
+canner@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/canner/-/canner-1.1.0.tgz#fcd92847bc0e7e52cf848a595c9f743fb54b8cff"
   dependencies:
     "@canner/antd-locales" "^0.1.18"
-    "@canner/image-service-config" "^0.3.0"
     antd "^3.2.3"
     antd-geosuggest "^0.2.4"
     apollo-boost "^0.1.4"
     bson-objectid "^1.2.2"
     canner-graphql-interface "^1.11.0"
-    canner-layouts "^1.0.5"
     canner-ref-id "^0.1.2"
     graphql "^0.13.2"
     graphql-tag "^2.9.1"
@@ -2519,12 +2509,9 @@ canner@^1.0.33:
     promise-polyfill "^7.1.0"
     prop-types "^15.6.1"
     react-apollo "^2.1.3"
-    react-css-modules "^4.7.1"
     react-intl "^2.4.0"
     react-loadable "^5.3.1"
     react-spinners "^0.2.6"
-    rxjs "^5.5.6"
-    store "^2.0.12"
     styled-components "^3.2.1"
 
 caseless@~0.12.0:
@@ -2713,6 +2700,10 @@ cloneable-readable@^1.0.0:
     inherits "^2.0.1"
     process-nextick-args "^2.0.0"
     readable-stream "^2.3.5"
+
+clones@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/clones/-/clones-1.1.0.tgz#87e904132d6140c5c0b72006c08c0d05bd7b63b3"
 
 co@^4.6.0:
   version "4.6.0"
@@ -5698,7 +5689,7 @@ lodash@4, lodash@^4.1.1:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
-lodash@4.17.5, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.16.2, lodash@^4.16.5, lodash@^4.16.6, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0:
+lodash@4.17.5, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.16.2, lodash@^4.16.5, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
@@ -6410,10 +6401,6 @@ object-keys@^1.0.8:
 object-path@^0.11.4:
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.4.tgz#370ae752fbf37de3ea70a861c23bba8915691949"
-
-object-unfreeze@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/object-unfreeze/-/object-unfreeze-1.1.0.tgz#69628bea1f3c9d29f4eb0ba63b38002d70ea3ce9"
 
 object-values@^1.0.0:
   version "1.0.0"
@@ -7698,14 +7685,6 @@ react-container-dimensions@^1.3.3:
     invariant "^2.2.2"
     prop-types "^15.5.8"
 
-react-css-modules@^4.7.1:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/react-css-modules/-/react-css-modules-4.7.3.tgz#d9d401b004e6e258a04dc0551ff7d80ac7601122"
-  dependencies:
-    hoist-non-react-statics "^1.2.0"
-    lodash "^4.16.6"
-    object-unfreeze "^1.1.0"
-
 react-dom@^16.4.0:
   version "16.4.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-16.4.0.tgz#099f067dd5827ce36a29eaf9a6cdc7cbf6216b1e"
@@ -8412,12 +8391,6 @@ rxjs@^5.4.2, rxjs@^5.5.2:
   dependencies:
     symbol-observable "1.0.1"
 
-rxjs@^5.5.6:
-  version "5.5.11"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.11.tgz#f733027ca43e3bec6b994473be4ab98ad43ced87"
-  dependencies:
-    symbol-observable "1.0.1"
-
 safe-buffer@5.1.1, safe-buffer@^5.1.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
@@ -8435,6 +8408,12 @@ safe-regex@^1.1.0:
 "safer-buffer@>= 2.1.2 < 3", safer-buffer@^2.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
+
+safer-eval@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/safer-eval/-/safer-eval-1.2.3.tgz#73ba74a34bc8a07d6a44135c815fd18a8eebe7a0"
+  dependencies:
+    clones "^1.1.0"
 
 sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   version "1.2.4"
@@ -8988,10 +8967,6 @@ steno@^0.4.1:
   resolved "https://registry.yarnpkg.com/steno/-/steno-0.4.4.tgz#071105bdfc286e6615c0403c27e9d7b5dcb855cb"
   dependencies:
     graceful-fs "^4.1.3"
-
-store@^2.0.12:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/store/-/store-2.0.12.tgz#8c534e2a0b831f72b75fc5f1119857c44ef5d593"
 
 stream-browserify@^2.0.1:
   version "2.0.1"

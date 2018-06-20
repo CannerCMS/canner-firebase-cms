@@ -1,7 +1,5 @@
 import * as React from 'react';
 import * as firebase from 'firebase';
-import * as connector from 'canner-connector';
-import * as resolver from 'canner-resolver';
 import styled from 'styled-components';
 import {Layout, Menu, Modal, Table, Badge, Avatar, Icon, Spin, notification} from 'antd';
 import {RouteComponentProps} from 'react-router';
@@ -9,10 +7,7 @@ import {CMS} from 'canner';
 import logoWhite from 'assets/logo-word-white.png';
 import schema from 'canner-schema';
 import { LogoContainer, HeaderMenu } from 'app/components/dashboard';
-import Focus from 'app/components/layouts/focus';
-import Tabs from 'app/components/layouts/tabs';
 import firConfig from 'app/config/firebase';
-import TabsFilter from '../../../customize-cms-component/filter.js';
 const confirm = Modal.confirm;
 const MenuText = styled.span`
   color: rgba(255, 255, 255, .65);
@@ -174,7 +169,7 @@ export default class Dashboard extends React.Component<Props> {
     const hasChanged = dataChanged && Object.keys(dataChanged).length;
     const username = user ? (user as any).displayName || (user as any).email : 'Hi';
     const spinIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
-    const firstKey = Object.keys(schema.cannerSchema)[0];
+    const firstKey = Object.keys(schema.schema)[0];
     return (
       <>
         <Layout>
@@ -226,9 +221,9 @@ export default class Dashboard extends React.Component<Props> {
                 onClick={this.siderMenuOnClick}
                 selectedKeys={[(match.params as any).activeKey || firstKey]}>
               {
-                Object.keys(schema.cannerSchema).map(key => (
+                Object.keys(schema.schema).map(key => (
                   <Menu.Item key={key}>
-                    {schema.cannerSchema[key].title}
+                    {schema.schema[key].title}
                   </Menu.Item>
                 ))
               }
@@ -238,15 +233,8 @@ export default class Dashboard extends React.Component<Props> {
               <Content>
                 <Spin indicator={spinIcon} spinning={deploying} tip="Saving...">
                   <CMS
-                    layouts={{Tabs, Focus}}
-                    toolbars={{
-                      TabsFilter
-                    }}
                     history={history}
                     schema={schema}
-                    connector={connector.default.connector}
-                    connectors={connector.default.connectors}
-                    resolver={resolver.default}
                     baseUrl="/dashboard"
                     hideButtons={true}
                     dataDidChange={this.dataDidChange}

@@ -1,8 +1,12 @@
 /** @jsx builder */
 
 // eslint-disable-next-line no-unused-vars
-import builder, {Block, Layout} from 'canner-script';
-
+import builder, {Block, Layout, Default} from 'canner-script';
+import Focus from 'app/components/layouts/focus';
+import Tabs from 'app/components/layouts/tabs';
+import TabsFilter from './customize-cms-component/filter.js';
+import utils from './utils';
+const {connector, storage} = utils;
 const Img = ({attributes}) => (
   <object keyName={attributes.keyName} title={attributes.title}>
     <string keyName="imageName" title="imageName" />
@@ -10,14 +14,13 @@ const Img = ({attributes}) => (
   </object>
 );
 
-const Tabs = ({attributes, children}) => <Layout name="Tabs" {...attributes}>{children}</Layout>
-const Focus = ({attributes, children}) => <Layout name="Focus" {...attributes}>{children}</Layout>
 const siteDesc = `Edit, update, add your new page in your blog.`;
 const postDesc = `Post dashboard is the place you manage all your blog posts.`;
 
 export default (
-  <root>
+  <root connector={connector}>
     <array keyName="pages" title="Pages" ui="tableRoute" description={siteDesc}
+      storage={storage}
       uiParams={{
         columns: [{
           title: 'Title',
@@ -61,9 +64,9 @@ export default (
         }]} search={{
           title: 'Search title',
           key: 'title'
-        }} componentName="TabsFilter"/>
+        }} component={TabsFilter}/>
       </toolbar>
-      <Focus focus={["title", "url", "content"]}>
+      <Layout component={Focus} focus={["title", "url", "content"]}>
         <string keyName="title" title="Title" />
         <string keyName="url" title="URL" packageName="./customize-cms-component/custom-string-url" />
         <object keyName="content" title="Content" ui="editor" />
@@ -112,9 +115,10 @@ export default (
             confirmText: "Are you sure you want to trash this page?",
           }
         }}/>
-      </Focus>
+      </Layout>
     </array>
     <array keyName="posts" title="Posts" ui="tableRoute" description={postDesc}
+      storage={storage}
       uiParams={{
         columns: [{
           title: 'Title',
@@ -161,9 +165,9 @@ export default (
         }]} search={{
           title: 'Search name',
           key: 'name'
-        }} componentName="TabsFilter"/>
+        }} component={TabsFilter} />
       </toolbar>
-      <Focus focus={["title", "content"]}>
+      <Layout component={Focus} focus={["title", "content"]}>
         <string keyName="title" title="Title" packageName="./customize-cms-component/custom-string-title_input"/>
         <object keyName="content" title="Content" ui="editor" />
         <object keyName="status" title="Status">
@@ -177,7 +181,7 @@ export default (
             help: "Sticky posts will appear at the top of the posts listing."
           }}/>
         </object>
-        <Layout name="default" title="Categories & Tags" keyName="CategoriesAndTags">
+        <Default title="Categories & Tags" keyName="CategoriesAndTags">
           <array keyName="tags" title="Tags" ui="tag" description="Use tags to associate more specific keywords with your posts.">
             <string/>
           </array>
@@ -195,7 +199,7 @@ export default (
                 dataIndex: 'name'
               }]
             }}/>
-        </Layout>
+        </Default>
         
         <file keyName="featureImage" title="Feature Image"/>
         <object keyName="share" title="Sharing">
@@ -242,16 +246,18 @@ export default (
             confirmText: "Are you sure you want to trash this page?",
           }
         }}/>
-      </Focus>
+      </Layout>
     </array>
-    <array keyName="category" title="Category" hide={true} uiParams={{
-      columns: [{
-        title: 'Title',
-        dataIndex: 'name'
-      }, {
-        title: 'Parent Category',
-        dataIndex: 'parent.name'
-      }]
+    <array keyName="category" title="Category" hide={true}
+      storage={storage}
+      uiParams={{
+        columns: [{
+          title: 'Title',
+          dataIndex: 'name'
+        }, {
+          title: 'Parent Category',
+          dataIndex: 'parent.name'
+        }]
     }}>
       <toolbar>
         <pagination />

@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import {FirebaseClientService} from '@canner/image-service-config';
 import * as GraphQLinterface from 'canner-graphql-interface';
 
 if (!firebase.apps.length) {
@@ -17,5 +18,14 @@ const connector = new GraphQLinterface.FirebaseRtdbClientConnector({
   database: defaultApp.database()
 });
 
-export default {connector};
+const storage = new FirebaseClientService({
+  firebase,
+  dir: 'CANNER_CMS',
+  filename: '',
+  hash: true
+}).getServiceConfig();
+
+
+
+export default {connector, resolver: {}, storage};
 
