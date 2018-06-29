@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Row, Col, Collapse} from 'antd';
 import {Item} from 'canner-helpers';
 const Panel = Collapse.Panel;
+
 export default class Focus extends React.Component {
   render() {
     const {children, focus, refId} = this.props;

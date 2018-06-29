@@ -3,7 +3,7 @@ import * as firebase from 'firebase';
 import { RouteComponentProps, Redirect } from 'react-router';
 import { FormComponentProps } from 'antd/lib/form';
 import {Row, Col, Form, Input, Icon, Button, Alert, notification} from 'antd';
-import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from 'app/components/app'
+import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from 'components/app'
 import GithubCorner from 'react-github-corner';
 
 import logoWhite from 'assets/logo-word-white.png';

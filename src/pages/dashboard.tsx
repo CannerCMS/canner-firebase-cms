@@ -6,8 +6,8 @@ import {RouteComponentProps} from 'react-router';
 import {CMS} from 'canner';
 import logoWhite from 'assets/logo-word-white.png';
 import schema from 'canner-schema';
-import { LogoContainer, HeaderMenu } from 'app/components/dashboard';
-import firConfig from 'app/config/firebase';
+import { LogoContainer, HeaderMenu } from 'components/dashboard';
+import firConfig from 'config/firebase';
 const confirm = Modal.confirm;
 const MenuText = styled.span`
   color: rgba(255, 255, 255, .65);

@@ -7,3 +7,4 @@ build
 public/*
 .firebaserc
 functions/lib
+.cache
