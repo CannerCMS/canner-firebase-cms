@@ -27,7 +27,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-less`,
       options: {
-        theme
+        modifyVars: theme
       },
     },
     `gatsby-plugin-react-helmet`
