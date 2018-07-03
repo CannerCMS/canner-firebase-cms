@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as firebase from 'firebase';
 import {Redirect} from 'react-router';
 import {Row, Col, Form, Input, Icon, Button, Alert, notification} from 'antd';
-import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from '../components/app'
 import GithubCorner from 'react-github-corner';
+import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from '../components/app'
 
 import logoWhite from '../assets/logo-word-white.png';
 
@@ -43,7 +43,7 @@ class CMSApp extends React.Component {
     const { redirectToReferrer } = this.state;
 
     if (redirectToReferrer) {
-      return <Redirect to={"/Dashboard"} />;
+      return <Redirect to={"/dashboard"} />;
     }
 
     return (

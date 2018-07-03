@@ -3420,9 +3420,9 @@ canner-schema-loader@1.2.4:
     schema-utils "^0.4.5"
     strip-bom "^3.0.0"
 
-canner-script@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.1.6.tgz#3a377a8334e7b847e1e962ff905a9d0f6b414a19"
+canner-script@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/canner-script/-/canner-script-1.1.7.tgz#ca974715a832910d94d24bfe4286679462283408"
   dependencies:
     canner-graphql-interface "^1.12.0"
     canner-helpers "^0.1.14"
@@ -5555,15 +5555,16 @@ gatsby-link@^2.0.0-beta.3:
     react-lifecycles-compat "^3.0.2"
     ric "^1.3.0"
 
-gatsby-plugin-canner-schema@1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-canner-schema/-/gatsby-plugin-canner-schema-1.0.7.tgz#7bd5b126478317f58a7a7fd5a0d14f0c3ec6cd5b"
+gatsby-plugin-canner-schema@1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-canner-schema/-/gatsby-plugin-canner-schema-1.0.9.tgz#65200ed139d1c676be6e8dd87f04ab4f52b9e12b"
   dependencies:
     "@babel/preset-env" "^7.0.0-beta.51"
     "@babel/preset-react" "^7.0.0-beta.51"
     "@babel/preset-stage-0" "^7.0.0-beta.51"
     babel-plugin-import "^1.8.0"
     canner-schema-loader "1.2.4"
+    react-loadable "^5.4.0"
 
 gatsby-plugin-less@^2.0.0-beta.3:
   version "2.0.0-beta.3"
@@ -9491,7 +9492,7 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-loadable@^5.3.1:
+react-loadable@^5.3.1, react-loadable@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-5.4.0.tgz#3b6b7d51121a7868fd155be848a36e02084742c9"
   dependencies:
