@@ -2,7 +2,7 @@
 
 // eslint-disable-next-line no-unused-vars
 import builder, {Layout, Default} from 'canner-script';
-import Focus from './src/components/layouts/focus';
+import Focus from './layouts/focus';
 import TabsFilter from './customize-cms-component/filter.js';
 import utils from './utils';
 const {connector, storage} = utils;

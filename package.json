@@ -27,9 +27,11 @@
     "prettier": "^1.11.1"
   },
   "dependencies": {
+    "@babel/register": "^7.0.0-beta.51",
     "antd": "3.5.2",
     "babel-plugin-import": "^1.8.0",
     "babel-plugin-styled-components": "^1.5.1",
+    "babel-plugin-transform-require-ignore": "^0.1.1",
     "canner": "1.1.5",
     "canner-helpers": "^0.1.14",
     "canner-layouts": "1.0.5",
@@ -40,6 +42,7 @@
     "gatsby-plugin-less": "^2.0.0-beta.3",
     "gatsby-plugin-react-helmet": "^3.0.0-beta.3",
     "gatsby-plugin-styled-components": "^2.0.11",
+    "ignore-styles": "^5.0.1",
     "less": "3.5.0-beta.5",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
