@@ -12,7 +12,6 @@ export default class PublishBtn extends React.Component {
   }
 
   render() {
-    const {refId} = this.props;
     const {value} = this.state;
 
     return (

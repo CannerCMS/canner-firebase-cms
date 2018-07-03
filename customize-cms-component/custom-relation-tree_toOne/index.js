@@ -1,15 +1,14 @@
 // @flow
 import React, { PureComponent } from "react";
 import { Tree } from "antd";
-import { List, fromJS } from 'immutable';
-import template from 'lodash/template';
+import { fromJS } from 'immutable';
 import update from 'lodash/update';
 import 'antd/lib/tree/style';
-const TreeNode = Tree.TreeNode;
-// type 
 import type {RelationDefaultProps} from 'types/RelationDefaultProps';
 import type {FieldDisabled} from 'types/DefaultProps';
+const TreeNode = Tree.TreeNode;
 
+// type
 type State = {
   modalVisible: boolean
 };
@@ -44,7 +43,7 @@ export default class RelationTree extends PureComponent<Props, State> {
       })
     }
   }
- 
+
   componentDidMount() {
     const {updateQuery, relation} = this.props;
     updateQuery([relation.to], {
@@ -61,7 +60,7 @@ export default class RelationTree extends PureComponent<Props, State> {
     }
   }
 
-  componentWillReceiveProps(props: Props) {
+  UNSAFE_componentWillReceiveProps(props: Props) {
     if (props.refId.toString() !== this.props.refId.toString()) {
       this.updateData(this.state.data);
     }
@@ -127,7 +126,7 @@ export default class RelationTree extends PureComponent<Props, State> {
 
   render() {
     const { treeData, data } = this.state;
-    const { disabled, value, uiParams, refId, relation, fetch, fetchRelation, subscribe, updateQuery } = this.props;
+    const { value, refId, relation } = this.props;
     const [key, index] = refId.getPathArr();
     const checkedId = value && value.get('id');
     let selfId = null;
@@ -183,30 +182,30 @@ function genRelationTree(data: any, textCol: string, treeData: array = [], treeM
     genRelationTree(leftData, textCol, treeData, treeMap)
   }
   return treeData;
-  
+
 }
 
-function getTag(v: {[string]: any}, uiParams: {
-  textCol: string,
-  subtextCol: string,
-  renderText?: string  
-}): string {
-  // use value and uiParams to generateTagName
-  const {textCol, subtextCol, renderText} = uiParams;
-  let tag = '';
-  if (renderText) {
-    // if there is renderText, textCol and subtextCol will be ignored;
-    const compiler = template(renderText);
-    try {
-      tag = compiler(v);
-    } catch (e) {
-      throw e;
-    }
-  } else {
-    const text = v[textCol];
-    const subtext = v[subtextCol];
-    tag = text + (subtext ? `(${subtext})` : '');
-  }
+// function getTag(v: {[string]: any}, uiParams: {
+//   textCol: string,
+//   subtextCol: string,
+//   renderText?: string
+// }): string {
+//   // use value and uiParams to generateTagName
+//   const {textCol, subtextCol, renderText} = uiParams;
+//   let tag = '';
+//   if (renderText) {
+//     // if there is renderText, textCol and subtextCol will be ignored;
+//     const compiler = template(renderText);
+//     try {
+//       tag = compiler(v);
+//     } catch (e) {
+//       throw e;
+//     }
+//   } else {
+//     const text = v[textCol];
+//     const subtext = v[subtextCol];
+//     tag = text + (subtext ? `(${subtext})` : '');
+//   }
 
-  return tag;
-}
+//   return tag;
+// }

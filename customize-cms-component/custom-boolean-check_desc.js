@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Checkbox, Row, Col, Icon, Tooltip} from 'antd';
+import {Checkbox, Row, Icon, Tooltip} from 'antd';
 
 export default class CustomCheckboxDesc extends React.Component {
   onChange = (e) => {
@@ -8,7 +8,7 @@ export default class CustomCheckboxDesc extends React.Component {
   }
 
   render() {
-    const {uiParams = {}, value} = this.props;
+    const {uiParams = {}} = this.props;
     return (
       <Row>
         <Checkbox onChange={this.onChange}>

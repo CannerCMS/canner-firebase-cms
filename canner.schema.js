@@ -1,19 +1,11 @@
 /** @jsx builder */
 
 // eslint-disable-next-line no-unused-vars
-import builder, {Block, Layout, Default} from 'canner-script';
-import Focus from 'app/components/layouts/focus';
-import Tabs from 'app/components/layouts/tabs';
+import builder, {Layout, Default} from 'canner-script';
+import Focus from './src/components/layouts/focus';
 import TabsFilter from './customize-cms-component/filter.js';
 import utils from './utils';
 const {connector, storage} = utils;
-const Img = ({attributes}) => (
-  <object keyName={attributes.keyName} title={attributes.title}>
-    <string keyName="imageName" title="imageName" />
-    <file keyName="imageSrc" title="imageSrc" contentType="images/*" />
-  </object>
-);
-
 const siteDesc = `Edit, update, add your new page in your blog.`;
 const postDesc = `Post dashboard is the place you manage all your blog posts.`;
 
@@ -200,7 +192,7 @@ export default (
               }]
             }}/>
         </Default>
-        
+
         <file keyName="featureImage" title="Feature Image"/>
         <object keyName="share" title="Sharing">
           <boolean keyName="showShareButton" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{

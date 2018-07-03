@@ -2,12 +2,11 @@ import * as React from 'react';
 import * as firebase from 'firebase';
 import styled from 'styled-components';
 import {Layout, Menu, Modal, Table, Badge, Avatar, Icon, Spin, notification} from 'antd';
-import {RouteComponentProps} from 'react-router';
 import {CMS} from 'canner';
-import logoWhite from 'assets/logo-word-white.png';
-import schema from 'canner-schema';
-import { LogoContainer, HeaderMenu } from 'components/dashboard';
-import firConfig from 'config/firebase';
+import logoWhite from '../assets/logo-word-white.png';
+import schema from '../../canner.schema';
+import { LogoContainer, HeaderMenu } from '../components/dashboard';
+import firConfig from '../config/firebase';
 const confirm = Modal.confirm;
 const MenuText = styled.span`
   color: rgba(255, 255, 255, .65);
@@ -20,17 +19,13 @@ const UserName = styled.span`
   margin-left: 8px;
 `
 
-const AvatarWithIcon = styled(Avatar as any)`
+const AvatarWithIcon = styled(Avatar)`
   .anticon {
     margin-right: 0 !important;
   }
 `
 const { Header, Sider, Content, Footer } = Layout;
-interface Props extends RouteComponentProps<void> {
-}
-
-export default class Dashboard extends React.Component<Props> {
-  private cms: typeof CMS;
+export default class Dashboard extends React.Component {
   state = {
     visible: false,
     dataChanged: {},
@@ -38,7 +33,7 @@ export default class Dashboard extends React.Component<Props> {
     deploying: false,
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const {history, location} = this.props;
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -50,7 +45,7 @@ export default class Dashboard extends React.Component<Props> {
       } else {
         if (location.pathname.match("/dashboard")) {
           this.setState({
-            user: user as any
+            user: user
           });
         } else {
           history.push({
@@ -62,7 +57,7 @@ export default class Dashboard extends React.Component<Props> {
     });
   }
 
-  headerMenuOnClick = (menuItem: {key: string}) => {
+  headerMenuOnClick = (menuItem) => {
     const {history} = this.props;
     if(menuItem.key === 'logout') {
       firebase.auth().signOut()
@@ -78,7 +73,7 @@ export default class Dashboard extends React.Component<Props> {
     }
   }
 
-  siderMenuOnClick = (menuItem: {key: string}) => {
+  siderMenuOnClick = (menuItem) => {
     const {history} = this.props;
     const {dataChanged} = this.state;
     const {key} = menuItem;
@@ -110,8 +105,7 @@ export default class Dashboard extends React.Component<Props> {
     });
   }
 
-  dataDidChange = (dataChanged: object) => {
-    console.log(dataChanged);
+  dataDidChange = (dataChanged) => {
     this.setState({
       dataChanged
     });
@@ -164,10 +158,10 @@ export default class Dashboard extends React.Component<Props> {
       title: 'Database URL',
       dataIndex: 'databaseURL',
       key: 'databaseURL',
-      render: ((text: string) => <a href={text} target="_blank">{text}</a>),
+      render: ((text) => <a href={text} target="_blank" rel="noopener noreferrer">{text}</a>),
     }];
     const hasChanged = dataChanged && Object.keys(dataChanged).length;
-    const username = user ? (user as any).displayName || (user as any).email : 'Hi';
+    const username = user ? user.displayName || user.email : 'Hi';
     const spinIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
     const firstKey = Object.keys(schema.schema)[0];
     return (
@@ -175,7 +169,7 @@ export default class Dashboard extends React.Component<Props> {
         <Layout>
           <Header className="header" style={{padding: "0 20px"}}>
             <LogoContainer>
-              <img src={logoWhite} width={150}/>
+              <img src={logoWhite} width={150} alt="logo"/>
             </LogoContainer>
             <HeaderMenu>
               <Menu
@@ -219,7 +213,7 @@ export default class Dashboard extends React.Component<Props> {
                 theme="dark"
                 mode="inline"
                 onClick={this.siderMenuOnClick}
-                selectedKeys={[(match.params as any).activeKey || firstKey]}>
+                selectedKeys={[match.params.activeKey || firstKey]}>
               {
                 Object.keys(schema.schema).map(key => (
                   <Menu.Item key={key}>
@@ -238,7 +232,7 @@ export default class Dashboard extends React.Component<Props> {
                     baseUrl="/dashboard"
                     hideButtons={true}
                     dataDidChange={this.dataDidChange}
-                    ref={(cms: typeof CMS) => this.cms = cms}
+                    ref={(cms) => this.cms = cms}
                   />
                 </Spin>
               </Content>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Icon, Row, Col, Switch, Tooltip, Modal} from 'antd';
+import {Button, Icon, Modal} from 'antd';
 const confirm = Modal.confirm;
 
 export default class CustomReviewBtn extends React.Component {
@@ -26,7 +26,7 @@ export default class CustomReviewBtn extends React.Component {
   }
 
   confirmDelete = () => {
-    const {refId, onChange, value, uiParams, goTo, routes, deploy, reset} = this.props;
+    const {refId, onChange, uiParams, goTo, routes, deploy, reset} = this.props;
     confirm({
       title: uiParams.false.confirmText,
       okText: 'Move to trash',

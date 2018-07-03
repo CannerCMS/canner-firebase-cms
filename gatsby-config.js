@@ -1,4 +1,3 @@
-const tsImportPluginFactory = require('ts-import-plugin');
 const pkg = require("./package.json");
 const theme = pkg.theme;
 
@@ -8,28 +7,14 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-typescript`,
-      options: {
-        transpileOnly: true,
-        getCustomTransformers: () => ({
-          before: [
-            tsImportPluginFactory({
-              libraryName: 'antd',
-              style: true
-            })
-          ]
-        }),
-        compilerOptions: {
-          module: 'es2015'
-        }
-      }
-    },
-    {
       resolve: `gatsby-plugin-less`,
       options: {
+        javascriptEnabled: true,
         modifyVars: theme
       },
     },
-    `gatsby-plugin-react-helmet`
+    `gatsby-plugin-canner-schema`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`
   ]
 }

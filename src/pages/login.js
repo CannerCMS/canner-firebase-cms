@@ -1,26 +1,23 @@
 import * as React from 'react';
 import * as firebase from 'firebase';
-import { RouteComponentProps, Redirect } from 'react-router';
-import { FormComponentProps } from 'antd/lib/form';
+import {Redirect} from 'react-router';
 import {Row, Col, Form, Input, Icon, Button, Alert, notification} from 'antd';
-import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from 'components/app'
+import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from '../components/app'
 import GithubCorner from 'react-github-corner';
 
-import logoWhite from 'assets/logo-word-white.png';
+import logoWhite from '../assets/logo-word-white.png';
 
 const FormItem = Form.Item;
 
-interface Props extends RouteComponentProps<void>, FormComponentProps {
-}
 
-class CMSApp extends React.Component<Props> {
+class CMSApp extends React.Component {
   state = {
     redirectToReferrer: false
   };
 
-  handleSubmit = (e: any) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFields((err: any, values: any) => {
+    this.props.form.validateFields((err, values) => {
       if (!err) {
         firebase.auth().signInWithEmailAndPassword(values.email, values.password)
           .then((result) => {
@@ -55,7 +52,7 @@ class CMSApp extends React.Component<Props> {
         <Row type="flex" justify="space-around" align="middle" style={{height: '100%'}}>
           <Col span={12}>
             <LogoContainer>
-              <img src={logoWhite}/>
+              <img src={logoWhite} alt="logo"/>
             </LogoContainer>
             <LoginContainer>
               <Form onSubmit={this.handleSubmit}>
@@ -81,7 +78,7 @@ class CMSApp extends React.Component<Props> {
               </Form>
             </LoginContainer>
             <FooterContainer>
-              Powered by <a href="https://www.canner.io/" target="_blank">CannerIO</a>. License under Apache License 2.0
+              Powered by <a href="https://www.canner.io/" target="_blank" rel="noopener noreferrer">CannerIO</a>. License under Apache License 2.0
             </FooterContainer>
             {
               // DELETE HERE !!!!!!! This section is some information for demo.

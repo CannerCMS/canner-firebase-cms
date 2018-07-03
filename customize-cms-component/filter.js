@@ -1,8 +1,6 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-// import DateRangeFilter from './dateRange';
-import isUndefined from 'lodash/isUndefined';
 import {Tabs, Input, Row, Col} from 'antd';
 const TabPane = Tabs.TabPane;
 const Search = Input.Search;
@@ -28,7 +26,12 @@ const Wrapper = styled.div`
   }
 `
 
-export default class TabsFilter extends React.Component<Props> {
+type State = {
+  search: Object,
+  filter: Object
+}
+
+export default class TabsFilter extends React.Component<Props, State> {
   state = {
     search: {},
     filter: {}
@@ -36,7 +39,7 @@ export default class TabsFilter extends React.Component<Props> {
 
   onChange = (index: number) => {
     const {fields} = this.props;
-    const {search, filter} = this.state;
+    const {search} = this.state;
     this.props.changeFilter({
       ...search,
       ...fields[index].condition
