@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as firebase from 'firebase';
-import LockScreenLoading from './LockScreenLoading';
+import LockScreenLoading from './lockScreenLoading';
 
-export default class IndexPage extends React.Component<{}> {
+export default class IndexPage extends React.Component {
   UNSAFE_componentWillMount() {
     if (typeof window !== `undefined`) {
       firebase.auth().onAuthStateChanged((user) => {

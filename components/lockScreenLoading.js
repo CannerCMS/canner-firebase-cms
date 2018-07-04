@@ -23,7 +23,7 @@ const Spinner = styled.div`
   display: inline-block;
 `
 
-export default class LockScreenLoading extends React.Component<{}> {
+export default class LockScreenLoading extends React.Component {
   render() {
     return (
       <Wrapper>
