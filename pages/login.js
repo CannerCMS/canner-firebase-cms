@@ -4,11 +4,13 @@ import {Redirect} from 'react-router';
 import {Row, Col, Form, Input, Icon, Button, Alert, notification} from 'antd';
 import GithubCorner from 'react-github-corner';
 import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from '../components/app'
-
-import logoWhite from '../assets/logo-word-white.png';
+import firebaseConfig from '../config-firebase';
 
 const FormItem = Form.Item;
 
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 class CMSApp extends React.Component {
   state = {
@@ -52,7 +54,7 @@ class CMSApp extends React.Component {
         <Row type="flex" justify="space-around" align="middle" style={{height: '100%'}}>
           <Col span={12}>
             <LogoContainer>
-              <img src={logoWhite} alt="logo"/>
+              <img src="/static/logo-word-white.png" alt="logo"/>
             </LogoContainer>
             <LoginContainer>
               <Form onSubmit={this.handleSubmit}>

@@ -2,11 +2,11 @@ import * as React from 'react';
 import * as firebase from 'firebase';
 import styled from 'styled-components';
 import {Layout, Menu, Modal, Table, Badge, Avatar, Icon, Spin, notification} from 'antd';
-import {CMS} from 'canner';
-import logoWhite from '../assets/logo-word-white.png';
-import schema from '../../canner.schema';
+// import {CMS} from 'canner';
+import schema from '../schema/canner.schema';
 import { LogoContainer, HeaderMenu } from '../components/dashboard';
-import firConfig from '../config/firebase';
+import firebaseConfig from '../config-firebase';
+
 const confirm = Modal.confirm;
 const MenuText = styled.span`
   color: rgba(255, 255, 255, .65);
@@ -25,6 +25,11 @@ const AvatarWithIcon = styled(Avatar)`
   }
 `
 const { Header, Sider, Content, Footer } = Layout;
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
 export default class Dashboard extends React.Component {
   state = {
     visible: false,
@@ -164,12 +169,13 @@ export default class Dashboard extends React.Component {
     const username = user ? user.displayName || user.email : 'Hi';
     const spinIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
     const firstKey = Object.keys(schema.schema)[0];
+    // const firstKey = 'test'
     return (
       <>
         <Layout>
           <Header className="header" style={{padding: "0 20px"}}>
             <LogoContainer>
-              <img src={logoWhite} width={150} alt="logo"/>
+              <img src="/static/logo-word-white.png" width={150} alt="logo"/>
             </LogoContainer>
             <HeaderMenu>
               <Menu
@@ -213,7 +219,7 @@ export default class Dashboard extends React.Component {
                 theme="dark"
                 mode="inline"
                 onClick={this.siderMenuOnClick}
-                selectedKeys={[match.params.activeKey || firstKey]}>
+                selectedKeys={[firstKey]}>
               {
                 Object.keys(schema.schema).map(key => (
                   <Menu.Item key={key}>
@@ -226,14 +232,14 @@ export default class Dashboard extends React.Component {
             <Layout>
               <Content>
                 <Spin indicator={spinIcon} spinning={deploying} tip="Saving...">
-                  <CMS
+                  {/* <CMS
                     history={history}
                     schema={schema}
                     baseUrl="/dashboard"
                     hideButtons={true}
                     dataDidChange={this.dataDidChange}
                     ref={(cms) => this.cms = cms}
-                  />
+                  /> */}
                 </Spin>
               </Content>
               <Footer style={{textAlign: "center"}}>
@@ -249,7 +255,7 @@ export default class Dashboard extends React.Component {
           onCancel={this.hideOverview}
           footer={null}
         >
-          <Table columns={columns} dataSource={[firConfig]} pagination={false} />
+          <Table columns={columns} dataSource={[firebaseConfig]} pagination={false} />
         </Modal>
       </>
     );
