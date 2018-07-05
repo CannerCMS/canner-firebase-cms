@@ -8,6 +8,8 @@ if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => {}
 }
 
+// antd + nextjs
+// https://github.com/zeit/next.js/tree/canary/examples/with-ant-design
 module.exports = withLess({
   lessLoaderOptions: {
     modifyVars: theme

@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
           <title>Canner ❤️ Firebase demo</title>
           <meta name="description" content="Canner CMS demo" />
           <meta charSet="utf-8"/>
+          <link rel='stylesheet' href='/_next/static/style.css' />
           {this.props.styleTags}
         </Head>
         <body>
