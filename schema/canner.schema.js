@@ -69,7 +69,7 @@ export default (
             help: "Flag this post to be reviewed for approval."
           }}/>
         </object>
-        <image keyName="featureImage" title="Feature Image"/>
+        {/* <image keyName="featureImage" title="Feature Image"/> */}
         <object keyName="pageProperty" title="Page Property">
           <boolean keyName="topLevel" title="Parent page" packageName="./customize-cms-component/custom-boolean-switch_desc" uiParams={{
             desc: "Top level",
@@ -193,7 +193,7 @@ export default (
             }}/>
         </Default>
 
-        <file keyName="featureImage" title="Feature Image"/>
+        {/* <image keyName="featureImage" title="Feature Image"/> */}
         <object keyName="share" title="Sharing">
           <boolean keyName="showShareButton" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
             desc: "Show sharing button"
