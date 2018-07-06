@@ -7,6 +7,7 @@ const theme = pkg.theme;
 // fix: prevents error when .less files are required by node
 if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => {}
+  require.extensions['.css'] = (file) => {}
 }
 
 // antd + nextjs
@@ -27,12 +28,7 @@ module.exports = withCss(withLess({
         use: [
           {loader: 'canner-schema-loader'},
           {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                'next/babel'
-              ]
-            }
+            loader: 'babel-loader'
           }
         ]
       }
