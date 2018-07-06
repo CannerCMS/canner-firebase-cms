@@ -43,7 +43,7 @@ export default class Dashboard extends React.Component {
 
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
-        Router.push('login');
+        Router.push('/login');
       } else {
         if (location.pathname.match("/dashboard")) {
           this.setState({
@@ -137,7 +137,7 @@ export default class Dashboard extends React.Component {
   }
 
   render() {
-    const {history, match} = this.props;
+    console.log(this.props);
     const {dataChanged, user, deploying} = this.state;
     const columns = [{
       title: 'Project ID',
@@ -157,10 +157,12 @@ export default class Dashboard extends React.Component {
       key: 'databaseURL',
       render: ((text) => <a href={text} target="_blank" rel="noopener noreferrer">{text}</a>),
     }];
+
+    const secondPath = window.location.pathname.split('/')[2];
     const hasChanged = dataChanged && Object.keys(dataChanged).length;
     const username = user ? user.displayName || user.email : 'Hi';
     const spinIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
-    const firstKey = Object.keys(schema.schema)[0];
+    const firstKey = secondPath || Object.keys(schema.schema)[0];
     return (
       <>
         <Layout>
@@ -226,9 +228,9 @@ export default class Dashboard extends React.Component {
                   <CMS
                     history={{
                       location: {
-                        pathname: '/'
+                        pathname: window.location.pathname
                       },
-                      push: () => {}
+                      push: Router.push
                     }}
                     schema={schema}
                     baseUrl="/dashboard"

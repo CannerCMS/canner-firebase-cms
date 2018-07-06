@@ -3,10 +3,6 @@
     "next/babel"
   ],
   "plugins": [
-    "transform-flow-strip-types",
-    ["import", {
-      "libraryName": "antd",
-      "style": true
-    }]
+    "transform-flow-strip-types"
   ]
 }

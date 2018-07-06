@@ -1,5 +1,14 @@
 import dynamic from 'next/dynamic';
-import {Route} from 'react-router';
-const DynamicCMS = dynamic(import('../components/cms'), { ssr: false })
+import LockScreenLoading from '../components/lockScreenLoading';
+import 'antd/dist/antd.less';
 
-export default () => <DynamicCMS/>;
+const DynamicCMS = dynamic(import('../components/cms'), {
+  ssr: false,
+  loading: () => <LockScreenLoading/>
+})
+
+export default class extends React.Component {
+  render() {
+    return <DynamicCMS/>;
+  }
+}

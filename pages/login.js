@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as firebase from 'firebase';
-import {Redirect} from 'react-router';
+import Router from 'next/router';
 import {Row, Col, Form, Input, Icon, Button, Alert, notification} from 'antd';
 import GithubCorner from 'react-github-corner';
 import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from '../components/app'
@@ -13,9 +13,6 @@ if (!firebase.apps.length) {
 }
 
 class CMSApp extends React.Component {
-  state = {
-    redirectToReferrer: false
-  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +20,7 @@ class CMSApp extends React.Component {
       if (!err) {
         firebase.auth().signInWithEmailAndPassword(values.email, values.password)
           .then((result) => {
-            this.setState({redirectToReferrer: true})
+            Router.push('/dashboard');
           })
           .catch(function(error) {
             // Handle Errors here.
@@ -40,13 +37,7 @@ class CMSApp extends React.Component {
   }
 
   render() {
-
     const { getFieldDecorator } = this.props.form;
-    const { redirectToReferrer } = this.state;
-
-    if (redirectToReferrer) {
-      return <Redirect to={"/dashboard"} />;
-    }
 
     return (
       <BodyWrapper>
