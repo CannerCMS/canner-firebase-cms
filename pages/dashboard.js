@@ -41,20 +41,21 @@ export default class Dashboard extends React.Component {
   }
 
   UNSAFE_componentWillMount() {
-
-    firebase.auth().onAuthStateChanged((user) => {
-      if (!user) {
-        Router.push('/login');
-      } else {
-        if (location.pathname.match("/dashboard")) {
-          this.setState({
-            user: user
-          });
+    if (typeof window !== "undefined") {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (!user) {
+          Router.push('/login');
         } else {
-          Router.push('/dashboard');
+          if (location.pathname.match("/dashboard")) {
+            this.setState({
+              user: user
+            });
+          } else {
+            Router.push('/dashboard');
+          }
         }
-      }
-    });
+      });
+    }
   }
 
   headerMenuOnClick = (menuItem) => {
