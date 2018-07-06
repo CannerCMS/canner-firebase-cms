@@ -38,7 +38,7 @@
     "@zeit/next-css": "^0.2.0",
     "@zeit/next-less": "^0.3.0",
     "antd": "3.5.2",
-    "canner": "1.1.9",
+    "canner": "1.1.10",
     "canner-helpers": "^0.1.16",
     "canner-layouts": "1.0.5",
     "canner-script": "^1.1.10",
