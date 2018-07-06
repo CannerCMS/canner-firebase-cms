@@ -2341,9 +2341,9 @@ canner-slate-editor@^0.4.4:
     slate-trailing-block "^0.5.0"
     styled-components "^3.2.3"
 
-canner@1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/canner/-/canner-1.1.7.tgz#6f9bf4b6a3f122f4a0dc8dcdb51fa6d65eb3ddfc"
+canner@1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/canner/-/canner-1.1.9.tgz#a2cb1f0b5a2b00e6e3c28ee196e638493014e850"
   dependencies:
     "@canner/antd-locales" "^0.1.18"
     antd "^3.2.3"
@@ -2359,6 +2359,7 @@ canner@1.1.7:
     invariant "^2.2.4"
     lodash "^4.17.5"
     lowdb "^1.0.0"
+    next "^6.1.1"
     pluralize "^7.0.0"
     promise-polyfill "^7.1.0"
     prop-types "^15.6.1"
