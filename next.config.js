@@ -3,6 +3,7 @@ const withLess = require('@zeit/next-less');
 const withCss = require('@zeit/next-css');
 const path = require("path");
 const theme = pkg.theme;
+const webpack = require('webpack');
 
 // fix: prevents error when .less files are required by node
 if (typeof require !== 'undefined') {
@@ -33,6 +34,11 @@ module.exports = withCss(withLess({
         ]
       }
     );
+    config.plugins.push(
+    new webpack.DefinePlugin({
+      // Definitions...
+      ENGINE: 'next'
+    }))
     return config;
   },
   exportPathMap: async function (defaultPathMap) {
