@@ -25,8 +25,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.52",
-    "@babel/preset-stage-0": "^7.0.0-beta.51",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "canner-schema-loader": "^1.2.6-1",
     "css-loader": "^0.28.11",
