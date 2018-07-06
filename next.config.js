@@ -43,7 +43,7 @@ module.exports = withCss(withLess({
     return {
       '/': { page: '/' },
       '/login': { page: '/login' },
-      '/dashboard/*': { page: '/dashboard'}
+      '/dashboard': { page: '/dashboard'}
     }
   }
 }))

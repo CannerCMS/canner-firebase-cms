@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "NODE_ENV=production node server.js",
     "deploy": "npm run build && firebase deploy --only hosting",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\""
