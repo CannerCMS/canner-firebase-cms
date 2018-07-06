@@ -4,6 +4,20 @@
 
 Canner CMS for Firebase, for Firebase, for blog, ecommerce, mobile apps and even chatbot! This project is based on Canner, a open source CMS framework  https://www.canner.io/
 
+## Deployment
+
+### Now.sh
+
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/canner/canner-firebase-cms)
+
+### Firebase hosting
+
+Modify `config-firebase.js` to your firebase settings and enter:
+
+```
+$ npm run build && firebase deploy --only hosting
+```
+
 ## Live demo
 
 https://fir-cms-15f83.firebaseapp.com/login
@@ -51,12 +65,6 @@ npm start
 
 ```
 npm run build
-```
-
-## Deploy hosting
-
-```
-npm run deploy
 ```
 
 ## License
