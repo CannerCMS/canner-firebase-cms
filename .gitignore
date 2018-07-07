@@ -7,3 +7,5 @@ build
 public/*
 .firebaserc
 functions/lib
+.next
+out
