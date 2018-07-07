@@ -66,11 +66,6 @@ module.exports = withCss(withLess({
         ]
       }
     );
-    config.plugins.push(
-    new webpack.DefinePlugin({
-      // Definitions...
-      ENGINE: 'next'
-    }))
     return config;
   },
   // exportPathMap: async function (defaultPathMap) {
