@@ -2341,15 +2341,9 @@ canner-slate-editor@^0.4.4:
     slate-trailing-block "^0.5.0"
     styled-components "^3.2.3"
 
-<<<<<<< HEAD
-canner@1.1.9:
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/canner/-/canner-1.1.9.tgz#a2cb1f0b5a2b00e6e3c28ee196e638493014e850"
-=======
-canner@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/canner/-/canner-1.1.8.tgz#d5a6e7bb33c5a8f177aa4ed7aeb9ce9072788d7a"
->>>>>>> 4bef6da9f43347d06e62a4ac3a624d1017930781
+canner@1.1.10:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/canner/-/canner-1.1.10.tgz#1403f3405ba0baf857c48e5a3afd5bd2ac2a7dac"
   dependencies:
     "@canner/antd-locales" "^0.1.18"
     antd "^3.2.3"
