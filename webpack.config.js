@@ -45,14 +45,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        exclude: /node_modules/,
-        options: {
-          presets: [
-            require('babel-preset-env'),
-            require('babel-preset-react'),
-            require('babel-preset-stage-0'),
-          ]
-        }
+        exclude: /node_modules/
       },
       // .ts, .tsx
       {

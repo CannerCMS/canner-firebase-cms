@@ -25,6 +25,10 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.52",
+    "@babel/preset-env": "^7.0.0-beta.52",
+    "@babel/preset-react": "^7.0.0-beta.52",
+    "@babel/preset-stage-0": "^7.0.0-beta.52",
     "@types/classnames": "2.2.3",
     "@types/firebase": "^3.2.1",
     "@types/history": "4.6.2",
@@ -38,11 +42,8 @@
     "@types/redux-actions": "2.2.4",
     "@types/webpack": "4.1.3",
     "@types/webpack-env": "1.13.6",
-    "babel-loader": "^7.1.3",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "canner-schema-loader": "^1.2.0",
+    "babel-loader": "^8.0.0-beta",
+    "canner-schema-loader": "^1.2.4",
     "canner-script": "^1.1.1",
     "css-loader": "^0.28.10",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -66,6 +67,8 @@
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
+    "@babel/core": "^7.0.0-beta.52",
+    "@babel/preset-flow": "^7.0.0-beta.52",
     "antd": "3.5.2",
     "canner": "^1.1.10",
     "canner-helpers": "^0.1.14",
