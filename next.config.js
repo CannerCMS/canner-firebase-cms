@@ -73,13 +73,13 @@ module.exports = withCss(withLess({
     }))
     return config;
   },
-  exportPathMap: async function (defaultPathMap) {
-    return {
-      '/': { page: '/' },
-      '/login': { page: '/login' },
-      '/dashboard': { page: '/dashboard'}
-    }
-  }
+  // exportPathMap: async function (defaultPathMap) {
+  //   return {
+  //     '/': { page: '/' },
+  //     '/login': { page: '/login' },
+  //     '/dashboard': { page: '/dashboard'}
+  //   }
+  // }
 }))
 
 
