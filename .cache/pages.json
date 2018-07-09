@@ -1,0 +1,37 @@
+[
+    {
+        "componentChunkName": "component---src-pages-dashboard-js",
+        "jsonName": "dashboard-pages-1ae",
+        "path": "/dashboard/pages"
+    },
+    {
+        "componentChunkName": "component---src-pages-dashboard-js",
+        "jsonName": "dashboard-posts-76d",
+        "path": "/dashboard/posts"
+    },
+    {
+        "componentChunkName": "component---src-pages-dashboard-js",
+        "jsonName": "dashboard-category-c15",
+        "path": "/dashboard/category"
+    },
+    {
+        "componentChunkName": "component---cache-dev-404-page-js",
+        "jsonName": "dev-404-page-5f9",
+        "path": "/dev-404-page/"
+    },
+    {
+        "componentChunkName": "component---src-pages-dashboard-js",
+        "jsonName": "dashboard-a6b",
+        "path": "/dashboard/"
+    },
+    {
+        "componentChunkName": "component---src-pages-index-js",
+        "jsonName": "index",
+        "path": "/"
+    },
+    {
+        "componentChunkName": "component---src-pages-login-js",
+        "jsonName": "login-557",
+        "path": "/login/"
+    }
+]
