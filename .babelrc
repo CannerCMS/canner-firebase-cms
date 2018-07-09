@@ -1,7 +1,14 @@
 {
   "presets": [
-    "env",
-    "react",
-    "stage-0"
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-flow",
+    ["@babel/preset-stage-0", {
+      "decoratorsLegacy": true,
+      "pipelineProposal": "minimal"
+    }]
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }
