@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 const pkg = require("./package.json");
 const theme = pkg.theme;
 
@@ -100,9 +101,24 @@ module.exports = {
       // loader for canner.schema.js
       {
         test: /\.schema\.js|canner\.def\.js$/,
+        include: [/customize-cms-component/, /node_modules\/@canner/, path.resolve(__dirname, 'canner.schema.js')],
         use: [
           {loader: 'canner-schema-loader'},
-          {loader: 'babel-loader'}
+          {
+            loader: 'babel-loader',
+            /**
+            * babel-loader doesn't load the .babelrc
+            * TODO: Remove once the issue is addressed
+            * https://github.com/babel/babel-loader/issues/624
+            */
+            options: Object.assign(
+               {
+                 babelrc: false,
+                 cacheDirectory: true
+               },
+               JSON.parse(fs.readFileSync(path.join(__dirname, '.babelrc'), 'utf-8'))
+            )
+          }
         ]
       },
       // static assets

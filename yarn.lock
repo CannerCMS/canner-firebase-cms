@@ -3756,9 +3756,9 @@ canner-ref-id@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/canner-ref-id/-/canner-ref-id-0.1.2.tgz#9c534d517818e915cef1004116012458bd165d83"
 
-canner-schema-loader@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/canner-schema-loader/-/canner-schema-loader-1.2.4.tgz#d3a144bbbc0b04e487f031fef11469a352ee7fde"
+canner-schema-loader@1.2.6-2:
+  version "1.2.6-2"
+  resolved "https://registry.yarnpkg.com/canner-schema-loader/-/canner-schema-loader-1.2.6-2.tgz#78c66c4c6446f85257b332506a81c3e133b440ea"
   dependencies:
     "@canner/antd-array-gallery" "0.1.35"
     "@canner/antd-array-panel" "0.1.35"
