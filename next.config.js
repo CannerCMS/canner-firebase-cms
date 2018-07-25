@@ -1,7 +1,6 @@
 const pkg = require("./package.json");
 const withLess = require('@zeit/next-less');
 const withCss = require('@zeit/next-css');
-const webpack = require('webpack');
 const path = require("path");
 const theme = pkg.theme;
 
