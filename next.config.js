@@ -19,13 +19,6 @@ module.exports = withCss(withLess({
   },
   webpack: (config, {}) => {
     config.resolve.alias["styled-components"] = path.resolve(__dirname, 'node_modules', 'styled-components');
-
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        'process.env.ENGINE': JSON.stringify('nextjs')
-      })
-    )
-
     const internalNodeModulesRegExp = /@zeit(?!.*node_modules)|\.schema\.js$|canner\.def\.js$/
 
     // overwrite external paths
@@ -67,14 +60,7 @@ module.exports = withCss(withLess({
       }
     );
     return config;
-  },
-  // exportPathMap: async function (defaultPathMap) {
-  //   return {
-  //     '/': { page: '/' },
-  //     '/login': { page: '/login' },
-  //     '/dashboard': { page: '/dashboard'}
-  //   }
-  // }
+  }
 }))
 
 
