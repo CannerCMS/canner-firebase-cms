@@ -3,12 +3,12 @@ import * as firebase from 'firebase';
 import styled from 'styled-components';
 import {Layout, Menu, Modal, Table, Badge, Avatar, Icon, Spin, notification} from 'antd';
 import Canner from 'canner';
-import Router from 'next/router';
+import Container, {transformSchemaToMenuConfig} from '@canner/container';
+import R from '@canner/history-router';
+import {withRouter} from 'next/router';
 import schema from '../schema/canner.schema';
 import { LogoContainer, HeaderMenu } from '../components/dashboard';
 import firebaseConfig from '../config-firebase';
-
-console.log(Canner)
 
 const confirm = Modal.confirm;
 const MenuText = styled.span`
@@ -33,7 +33,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-export default class Dashboard extends React.Component {
+class Dashboard extends React.Component {
   state = {
     visible: false,
     dataChanged: {},
@@ -42,17 +42,17 @@ export default class Dashboard extends React.Component {
   }
 
   UNSAFE_componentWillMount() {
-
+    const {router} = this.props;
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
-        Router.push('/login');
+        router.push('/login');
       } else {
         if (location.pathname.match("/dashboard")) {
           this.setState({
             user: user
           });
         } else {
-          Router.push('/dashboard');
+          router.push('/dashboard');
         }
       }
     });
@@ -140,6 +140,7 @@ export default class Dashboard extends React.Component {
 
   render() {
     const {dataChanged, user, deploying} = this.state;
+    const {router} = this.props;
     const columns = [{
       title: 'Project ID',
       dataIndex: 'projectId',
@@ -164,90 +165,75 @@ export default class Dashboard extends React.Component {
     const hasChanged = dataChanged && Object.keys(dataChanged).length;
     const username = user ? user.displayName || user.email : 'Hi';
     const spinIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
-    const firstKey = secondPath || Object.keys(schema.schema)[0];
     return (
       <React.Fragment>
-        <Layout>
-          <Header className="header" style={{padding: "0 20px"}}>
-            <LogoContainer>
-              <img src="/static/logo-word-white.png" width={150} alt="logo"/>
-            </LogoContainer>
-            <HeaderMenu>
-              <Menu
-                theme="dark"
-                mode="horizontal"
-                style={{ lineHeight: '64px' }}
-                selectedKeys={[]}
-                onClick={this.headerMenuOnClick}
-              >
-                <Menu.SubMenu title={<span>
-                  <AvatarWithIcon style={{color: '#f56a00', backgroundColor: '#fde3cf'}} icon="user" />
-                  <UserName>{username}</UserName>
-                  </span>}>
-                  <Menu.Item key="overview">Overview</Menu.Item>
-                  <Menu.Item key="logout">Log out</Menu.Item>
-                </Menu.SubMenu>
-                {
-                  hasChanged ?
-                  <Menu.Item key="deploy">
+        <Container
+          schema={schema}
+          sidebarConfig={{
+            menuConfig: [
+              ...transformSchemaToMenuConfig(schema.schema)
+            ]
+          }}
+          navbarConfig={{
+            logo: (
+              <LogoContainer>
+                <img src="/static/logo-word-white.png" width={150} alt="logo"/>
+              </LogoContainer>
+            ),
+            showSaveButton: true,
+            renderMenu: () => (
+              <HeaderMenu>
+                <Menu
+                  theme="dark"
+                  mode="horizontal"
+                  style={{ lineHeight: '64px' }}
+                  selectedKeys={[]}
+                  onClick={this.headerMenuOnClick}
+                >
+                  <Menu.SubMenu title={<span>
+                    <AvatarWithIcon style={{color: '#f56a00', backgroundColor: '#fde3cf'}} icon="user" />
+                    <UserName>{username}</UserName>
+                    </span>}>
+                    <Menu.Item key="overview">Overview</Menu.Item>
+                    <Menu.Item key="logout">Log out</Menu.Item>
+                  </Menu.SubMenu>
                   {
-                    deploying ?
-                      spinIcon :
-                      <Badge dot>
-                        <MenuText>
-                         Save
-                        </MenuText>
-                      </Badge>
+                    hasChanged ?
+                    <Menu.Item key="deploy">
+                    {
+                      deploying ?
+                        spinIcon :
+                        <Badge dot>
+                          <MenuText>
+                          Save
+                          </MenuText>
+                        </Badge>
+                    }
+                    </Menu.Item> :
+                    <Menu.Item key="saved">
+                      Saved
+                    </Menu.Item>
                   }
-                  </Menu.Item> :
-                  <Menu.Item key="saved">
-                    Saved
-                  </Menu.Item>
-                }
 
-              </Menu>
-            </HeaderMenu>
-          </Header>
-          <Layout>
-            <Sider width={200} style={{ minHeight: "100vh" }}>
-              <Menu
-                theme="dark"
-                mode="inline"
-                onClick={this.siderMenuOnClick}
-                selectedKeys={[firstKey]}>
-              {
-                Object.keys(schema.schema).map(key => (
-                  <Menu.Item key={key}>
-                    {schema.schema[key].title}
-                  </Menu.Item>
-                ))
-              }
-              </Menu>
-            </Sider>
-            <Layout>
-              <Content>
-                <Spin indicator={spinIcon} spinning={deploying} tip="Saving...">
-                  <CMS
-                    history={{
-                      location: {
-                        pathname: '/dashboard/posts' // window.location.pathname
-                      },
-                      push: Router.push
-                    }}
-                    schema={schema}
-                    baseUrl="/dashboard"
-                    hideButtons={true}
-                    dataDidChange={this.dataDidChange}
-                    ref={(cms) => this.cms = cms}
-                  />
-                </Spin>
-              </Content>
-              <Footer style={{textAlign: "center"}}>
-                Powered by <a href="https://www.canner.io/">CannerIO</a>. License under Apache License 2.0
-              </Footer>
-            </Layout>
-          </Layout>
-        </Layout>
+                </Menu>
+              </HeaderMenu>
+            )
+          }}
+          router={new R({
+            history: {
+              location: {
+                pathname: router.asPath,
+                search: ''
+              },
+              push: router.push
+            },
+            baseUrl: "/dashboard"
+          })}
+        >
+          <Canner
+            hideButtons={true}
+          />
+        </Container>
         <Modal
           width={"80%"}
           title="Overview Firebase"
@@ -261,3 +247,5 @@ export default class Dashboard extends React.Component {
     );
   }
 }
+
+export default withRouter(Dashboard)
