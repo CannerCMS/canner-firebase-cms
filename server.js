@@ -22,10 +22,8 @@ app.prepare().then(() => {
     } else {
       handle(req, res, parsedUrl)
     }
-  }).listen(dev ? 3000 : 80, err => {
+  }).listen(3000, err => {
     if (err) throw err
-
-    if (dev)
-      console.log('> Ready on http://localhost:3000')
+    console.log('> Ready on http://localhost:3000')
   })
 })
