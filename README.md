@@ -56,13 +56,7 @@ firebase auth:import firebase-default-user.json
 ## Development
 
 ```
-npm start
-```
-
-## Build script
-
-```
-npm run build
+npm run dev
 ```
 
 ## License
