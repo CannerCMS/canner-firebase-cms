@@ -9,6 +9,9 @@
     "start": "NODE_ENV=production node server.js",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },
+  "now": {
+    "alias": "canner-firebase"
+  },
   "theme": {
     "menu-dark-bg": "#373d62",
     "layout-sider-background": "#373d62",

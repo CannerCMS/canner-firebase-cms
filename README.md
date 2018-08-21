@@ -18,7 +18,7 @@ $ now
 
 ## Live demo
 
-- Now: https://canner-firebase-cms-wwcucqckhx.now.sh/
+- Now: https://canner-firebase.now.sh/
 
 ## Tutorial
 
