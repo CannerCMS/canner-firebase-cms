@@ -163,7 +163,7 @@ class Dashboard extends React.Component {
     // const secondPath = window.location.pathname.split('/')[2];
     const secondPath = 'posts'
     const hasChanged = dataChanged && Object.keys(dataChanged).length;
-    const username = user ? user.displayName || user.email : 'Hi';
+    const username = user ? user.displayName || user.email : 'loading...';
     const spinIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
     return (
       <React.Fragment>
