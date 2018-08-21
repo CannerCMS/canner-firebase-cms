@@ -1,8 +1,8 @@
-# canner-firebase-cms
+# canner-firebase-cms + NextJS
 
 [![](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/Canner/CannerCMS?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 
-Canner CMS for Firebase, for Firebase, for blog, ecommerce, mobile apps and even chatbot! This project is based on Canner, a open source CMS framework  https://www.canner.io/
+Canner CMS for Firebase with SSR supported (NextJS), for blog, ecommerce, mobile apps and even chatbot! This project is based on Canner, a open source CMS framework  https://www.canner.io/
 
 ## Deployment
 
@@ -10,17 +10,25 @@ Canner CMS for Firebase, for Firebase, for blog, ecommerce, mobile apps and even
 
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/canner/canner-firebase-cms)
 
+or
+
+```
+$ now
+```
+
 ### Firebase hosting
 
 Modify `config-firebase.js` to your firebase settings and enter:
 
 ```
-$ npm run build && firebase deploy --only hosting
+$ npm run export && npm run deploy:firebase
 ```
 
 ## Live demo
 
-https://fir-cms-15f83.firebaseapp.com/login
+- Now: https://canner-firebase-cms-wwcucqckhx.now.sh/
+
+- Firebase hosting: https://fir-cms-15f83.firebaseapp.com/login
 
 ## Tutorial
 

@@ -63,6 +63,13 @@ module.exports = withCss(withLess({
       }
     );
     return config;
+  },
+  exportPathMap: function(defaultPathMap) {
+    return {
+      '/': { page: '/' },
+      '/login': { page: '/login' },
+      '/dashboard': { page: '/dashboard' }
+    }
   }
 }))
 
