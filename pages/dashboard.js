@@ -180,7 +180,6 @@ class Dashboard extends React.Component {
                 <img src="/static/logo-word-white.png" width={150} alt="logo"/>
               </LogoContainer>
             ),
-            showSaveButton: true,
             renderMenu: () => (
               <HeaderMenu>
                 <Menu
@@ -231,8 +230,7 @@ class Dashboard extends React.Component {
           })}
         >
           <Canner
-            hideButtons={true}
-          />
+            hideButtons={true}/>
         </Container>
         <Modal
           width={"80%"}

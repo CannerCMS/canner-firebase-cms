@@ -18,8 +18,7 @@ module.exports = withCss(withLess({
     javascriptEnabled: true
   },
   webpack: (config, {}) => {
-    const internalNodeModulesRegExp = /@zeit(?!.*node_modules)|\.schema\.js$|canner\.def\.js$/
-
+    const internalNodeModulesRegExp = /@zeit(?!.*node_modules)|\.schema\.js$|canner\.def\.js$|\.less$/
     // overwrite external paths
     // https://github.com/zeit/next.js/pull/3732/files#diff-0b0406776536850213e57e76340d2a2dR10
     config.externals = config.externals.map(external => {
@@ -27,6 +26,7 @@ module.exports = withCss(withLess({
         return (ctx, req, cb) => (internalNodeModulesRegExp.test(req) ? cb() : external(ctx, req, cb))
     })
 
+    config.resolve.extensions = [".wasm", ".mjs", ".js", ".json", ".less"]
     config.resolve.alias["styled-components"] = path.resolve(__dirname, 'node_modules', 'styled-components');
 
     // with antd example using next.js

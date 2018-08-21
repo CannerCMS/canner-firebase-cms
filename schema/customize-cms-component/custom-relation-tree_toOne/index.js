@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { Tree } from "antd";
 import { fromJS } from 'immutable';
 import update from 'lodash/update';
+import get from 'lodash/get';
 import 'antd/lib/tree/style';
 const TreeNode = Tree.TreeNode;
 
@@ -59,7 +60,7 @@ export default class RelationTree extends PureComponent {
 
   updateData = (data) => {
     const {relation, uiParams: {textCol}} = this.props;
-    const treeData = genRelationTree(data.getIn([relation.to, 'edges']).map(edge => edge.get('node')).toJS(), textCol);
+    const treeData = genRelationTree(get(data, [relation.to, 'edges'])).map(edge => edge.node, textCol);
     this.setState({
       treeData,
       data
@@ -71,15 +72,16 @@ export default class RelationTree extends PureComponent {
     const nodes = info.checkedNodes;
     const {onChange, refId, value, relation} = this.props;
     const {data} = this.state;
+
     if (checkedKeys.length > 1 && !nodes[1].props.disableCheckbox) {
-      const checked = data.getIn([relation.to, 'edges'])
-        .find(edge => edge.get('cursor') === checkedKeys[1])
-        .get('node');
+      const checked = get(data, [relation.to, 'edges'])
+        .find(edge => edge.cursor === checkedKeys[1])
+        .node;
       onChange(refId, 'connect', checked);
     } else if (checkedKeys[0] && !nodes[0].props.disableCheckbox) {
-      const checked = data.getIn([relation.to, 'edges'])
-        .find(edge => edge.get('cursor') === checkedKeys[0])
-        .get('node');
+      const checked = get(data, [relation.to, 'edges'])
+        .find(edge => edge.cursor === checkedKeys[0])
+        .node;
       onChange(refId, 'connect', checked);
     } else {
       onChange(refId, 'disconnect', value);
@@ -105,11 +107,11 @@ export default class RelationTree extends PureComponent {
     const { treeData, data } = this.state;
     const { value, refId, relation } = this.props;
     const [key, index] = refId.getPathArr();
-    const checkedId = value && value.get('id');
+    const checkedId = value && value.id;
     let selfId = null;
     if (key === relation.to) {
       // self relation
-      selfId = data.getIn([key, 'edges', index, 'cursor']);
+      selfId = get(data, [key, 'edges', index, 'cursor']);
     }
     return (
       <Tree
@@ -117,7 +119,7 @@ export default class RelationTree extends PureComponent {
         checkStrictly
         checkable
         onCheck={this.onCheck}
-        checkedKeys={value ? [value.get('id')] : []}
+        checkedKeys={value ? [value.id] : []}
       >
         {this.renderTreeNodes(treeData, checkedId, selfId)}
       </Tree>
