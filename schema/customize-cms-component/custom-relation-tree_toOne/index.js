@@ -60,7 +60,7 @@ export default class RelationTree extends PureComponent {
 
   updateData = (data) => {
     const {relation, uiParams: {textCol}} = this.props;
-    const treeData = genRelationTree(get(data, [relation.to, 'edges'])).map(edge => edge.node, textCol);
+    const treeData = genRelationTree(get(data, [relation.to, 'edges']).map(edge => edge.node), textCol);
     this.setState({
       treeData,
       data
