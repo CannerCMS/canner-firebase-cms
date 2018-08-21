@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "export": "next build && next export",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "firebase deploy --only hosting",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },
   "theme": {

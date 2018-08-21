@@ -14,6 +14,10 @@ if (!firebase.apps.length) {
 
 class CMSApp extends React.Component {
 
+  static async getInitialProps () {
+    return {}
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {

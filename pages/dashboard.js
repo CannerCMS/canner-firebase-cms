@@ -41,6 +41,10 @@ class Dashboard extends React.Component {
     deploying: false,
   }
 
+  static async getInitialProps () {
+    return {}
+  }
+
   UNSAFE_componentWillMount() {
     const {router} = this.props;
     firebase.auth().onAuthStateChanged((user) => {
@@ -59,10 +63,11 @@ class Dashboard extends React.Component {
   }
 
   headerMenuOnClick = (menuItem) => {
+    const {router} = this.props;
     if(menuItem.key === 'logout') {
       firebase.auth().signOut()
         .then(function() {
-          Router.push('/');
+          router.push('/');
         });
     } else if(menuItem.key === "overview") {
       this.setState({
@@ -75,6 +80,7 @@ class Dashboard extends React.Component {
 
   siderMenuOnClick = (menuItem) => {
     const {dataChanged} = this.state;
+    const {router} = this.props;
     const {key} = menuItem;
     if (dataChanged && Object.keys(dataChanged).length > 0) {
       confirm({
@@ -87,14 +93,14 @@ class Dashboard extends React.Component {
             setTimeout(resolve, 1000);
           }).then(this.reset)
             .then(() => {
-              Router.push(`/dashboard/${key}`);
+              router.push(`/dashboard/${key}`);
             });
         },
         onCancel: () => {
         },
       });
     } else {
-      Router.push(`/dashboard/${key}`);
+      router.push(`/dashboard/${key}`);
     }
   }
 

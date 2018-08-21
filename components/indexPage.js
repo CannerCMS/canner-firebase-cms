@@ -3,6 +3,10 @@ import * as firebase from 'firebase';
 import LockScreenLoading from './lockScreenLoading';
 
 export default class IndexPage extends React.Component {
+  static async getInitialProps () {
+    return {}
+  }
+
   UNSAFE_componentWillMount() {
     if (typeof window !== `undefined`) {
       firebase.auth().onAuthStateChanged((user) => {
