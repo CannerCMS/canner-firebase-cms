@@ -2,12 +2,13 @@ import * as React from 'react';
 import * as firebase from 'firebase';
 import styled from 'styled-components';
 import {Layout, Menu, Modal, Table, Badge, Avatar, Icon, Spin, notification} from 'antd';
-import {CMS} from 'canner';
+import Canner from 'canner';
 import Router from 'next/router';
 import schema from '../schema/canner.schema';
 import { LogoContainer, HeaderMenu } from '../components/dashboard';
 import firebaseConfig from '../config-firebase';
-import 'antd/dist/antd.less';
+
+console.log(Canner)
 
 const confirm = Modal.confirm;
 const MenuText = styled.span`
@@ -165,7 +166,7 @@ export default class Dashboard extends React.Component {
     const spinIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
     const firstKey = secondPath || Object.keys(schema.schema)[0];
     return (
-      <>
+      <React.Fragment>
         <Layout>
           <Header className="header" style={{padding: "0 20px"}}>
             <LogoContainer>
@@ -256,7 +257,7 @@ export default class Dashboard extends React.Component {
         >
           <Table columns={columns} dataSource={[firebaseConfig]} pagination={false} />
         </Modal>
-      </>
+      </React.Fragment>
     );
   }
 }

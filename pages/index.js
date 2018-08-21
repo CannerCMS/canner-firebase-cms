@@ -7,4 +7,4 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-export default () => <IndexPage/>;
+export default IndexPage;

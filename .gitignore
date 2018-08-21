@@ -7,6 +7,6 @@ build
 public/*
 .firebaserc
 functions/lib
-.cache
 .next
 out
+.cache

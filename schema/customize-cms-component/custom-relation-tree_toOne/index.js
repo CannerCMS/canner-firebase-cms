@@ -1,34 +1,11 @@
-// @flow
 import React, { PureComponent } from "react";
 import { Tree } from "antd";
 import { fromJS } from 'immutable';
 import update from 'lodash/update';
 import 'antd/lib/tree/style';
-import type {RelationDefaultProps} from 'types/RelationDefaultProps';
-import type {FieldDisabled} from 'types/DefaultProps';
 const TreeNode = Tree.TreeNode;
 
-// type
-type State = {
-  modalVisible: boolean
-};
-
-type Props = RelationDefaultProps & {
-  uiParams: {
-    textCol: string,
-    subtextCol: string,
-    renderText?: string,
-    columns: Array<*>
-  },
-  rootValue: any,
-  value: any,
-  subscribe: Function,
-  disabled: FieldDisabled,
-  updateQuery: Function
-};
-
-export default class RelationTree extends PureComponent<Props, State> {
-  isOnComposition: boolean;
+export default class RelationTree extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,7 +37,7 @@ export default class RelationTree extends PureComponent<Props, State> {
     }
   }
 
-  UNSAFE_componentWillReceiveProps(props: Props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (props.refId.toString() !== this.props.refId.toString()) {
       this.updateData(this.state.data);
     }
@@ -80,7 +57,7 @@ export default class RelationTree extends PureComponent<Props, State> {
     this.subscription = subscribe(relation.to, this.updateData);
   }
 
-  updateData = (data: any) => {
+  updateData = (data) => {
     const {relation, uiParams: {textCol}} = this.props;
     const treeData = genRelationTree(data.getIn([relation.to, 'edges']).map(edge => edge.get('node')).toJS(), textCol);
     this.setState({
@@ -147,7 +124,7 @@ export default class RelationTree extends PureComponent<Props, State> {
     );
   }
 }
-function genRelationTree(data: any, textCol: string, treeData: array = [], treeMap: object = {}) {
+function genRelationTree(data, textCol, treeData = [], treeMap = {}) {
   const leftData = [];
   data.forEach(datum => {
     if (!datum.parent) {

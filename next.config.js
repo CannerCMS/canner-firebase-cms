@@ -1,10 +1,8 @@
 const pkg = require("./package.json");
 const withLess = require('@zeit/next-less');
 const withCss = require('@zeit/next-css');
-const webpack = require('webpack');
 const path = require("path");
 const theme = pkg.theme;
-const webpack = require('webpack');
 
 // fix: prevents error when .less files are required by node
 if (typeof require !== 'undefined') {
@@ -16,16 +14,20 @@ if (typeof require !== 'undefined') {
 // https://github.com/zeit/next.js/tree/canary/examples/with-ant-design
 module.exports = withCss(withLess({
   lessLoaderOptions: {
-    modifyVars: theme
+    modifyVars: theme,
+    javascriptEnabled: true
   },
   webpack: (config, {}) => {
-    config.resolve.alias["styled-components"] = path.resolve(__dirname, 'node_modules', 'styled-components');
+    const internalNodeModulesRegExp = /@zeit(?!.*node_modules)|\.schema\.js$|canner\.def\.js$/
 
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        'process.env.ENGINE': JSON.stringify('nextjs')
-      })
-    )
+    // overwrite external paths
+    // https://github.com/zeit/next.js/pull/3732/files#diff-0b0406776536850213e57e76340d2a2dR10
+    config.externals = config.externals.map(external => {
+      if (typeof external !== "function") return external
+        return (ctx, req, cb) => (internalNodeModulesRegExp.test(req) ? cb() : external(ctx, req, cb))
+    })
+
+    config.resolve.alias["styled-components"] = path.resolve(__dirname, 'node_modules', 'styled-components');
 
     // with antd example using next.js
     // https://github.com/zeit/next.js/tree/canary/examples/with-ant-design
@@ -48,29 +50,19 @@ module.exports = withCss(withLess({
                   "preset-env": {modules: 'commonjs'},
                   "transform-runtime": {
                     helpers: true,
-                    polyfill: true,
                     regenerator: true
                   }
                 }]
+              ],
+              plugins: [
+                "transform-flow-strip-types"
               ]
             }
           }
         ]
       }
     );
-    config.plugins.push(
-    new webpack.DefinePlugin({
-      // Definitions...
-      ENGINE: 'next'
-    }))
     return config;
-  },
-  exportPathMap: async function (defaultPathMap) {
-    return {
-      '/': { page: '/' },
-      '/login': { page: '/login' },
-      '/dashboard': { page: '/dashboard'}
-    }
   }
 }))
 
