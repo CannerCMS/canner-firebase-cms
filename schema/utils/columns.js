@@ -19,3 +19,11 @@ export function renderStatus(text, record) {
     return <Tag color="blue">Draft</Tag>
   }
 }
+
+export function renderCategory(category, record, cannerProps) {
+  if (!category) {
+    return '-';
+  } else {
+    return <a href="javascript;" onClick={() => goTo(`/category/${category.id}`)}>{category.name}</a>
+  }
+}

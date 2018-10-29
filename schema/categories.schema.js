@@ -2,8 +2,11 @@
 
 import builder from 'canner-script';
 export default () => (
-  <array keyName="category" title="Category" hide={true}
+  <array keyName="category" title="Category"
+    ui="tree"
     uiParams={{
+      relationField: 'parent',
+      textCol: 'name',
       columns: [{
         title: 'Title',
         dataIndex: 'name'
@@ -12,17 +15,14 @@ export default () => (
         dataIndex: 'parent.name'
       }]
   }}>
-    <toolbar>
-      <pagination />
-    </toolbar>
     <string keyName="name" title="Title"/>
     <relation keyName="parent"
       title="Parent category"
-      packageName="./customize-cms-component/custom-relation-tree_toOne"
       relation={{
         type: 'toOne',
         to: 'category'
       }}
+      ui="singleSelectTree"
       uiParams={{
         textCol: "name",
         columns: [{

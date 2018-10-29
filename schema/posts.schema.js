@@ -2,7 +2,7 @@
 
 import builder, {Default} from 'canner-script';
 import {Focus} from './utils.schema';
-import {renderUrl, renderStatus} from './utils/columns';
+import {renderUrl, renderStatus, renderCategory} from './utils/columns';
 
 const postDesc = `Post dashboard is the place you manage all your blog posts.`;
 
@@ -14,8 +14,8 @@ export default () => (
         dataIndex: 'title'
       }, {
         title: 'Category',
-        dataIndex: 'category.name',
-        render: text => text || '-'
+        dataIndex: 'category',
+        render: renderCategory
       }]
     }}
   >
@@ -82,7 +82,7 @@ export default () => (
         </array>
         <relation keyName="category"
           title="category"
-          packageName="./customize-cms-component/custom-relation-tree_toOne"
+          ui="singleSelectTree"
           relation={{
             type: 'toOne',
             to: 'category'
