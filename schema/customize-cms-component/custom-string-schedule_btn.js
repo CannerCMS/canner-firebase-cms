@@ -1,40 +1,46 @@
 import * as React from 'react';
 import {Form, Radio, DatePicker, Button} from 'antd';
+import moment from 'moment';
+
 const FormItem = Form.Item;
 
 export default class PublishBtn extends React.Component {
-  state = {
-    value: "now"
+  onChange = (e) => {
+    const {onChange, refId, value} = this.props;
+    onChange(refId, 'update', {
+      ...value,
+      type: e.target.value
+    });
   }
 
-  onChange = (e) => {
-    this.setState({ value: e.target.value });
+  selectDate = (date) => {
+    const {onChange, refId, value} = this.props
+    const ISO = date.toISOString();
+    onChange(refId, 'update', {
+      ...value,
+      date: ISO
+    })
   }
 
   render() {
-    const {value} = this.state;
-
+    const {value} = this.props;
     return (
       <div>
-        <Radio.Group value={value} onChange={this.onChange}>
+        <Radio.Group value={value ? value.type : 'now'} onChange={this.onChange}>
           <Radio.Button value="now">Publish immediately</Radio.Button>
           <Radio.Button value="schedule">Schedule</Radio.Button>
         </Radio.Group>
         {
-          value === "schedule" && (
-            <Form layout="inline" style={{marginTop: '10px'}}>
-              <FormItem span={20}>
-                <DatePicker
-                  format="YYYY-MM-DD"
-                />
-              </FormItem>
-              <FormItem span={4}>
-                <Button type="primary">Save</Button>
-              </FormItem>
-            </Form>
+          value && value.type === "schedule" && (
+            <DatePicker
+              style={{marginTop: 8}}
+              value={value && value.date ? moment(value.date) : moment()}
+              format="YYYY-MM-DD"
+              onChange={this.selectDate}
+            />
           )
         }
       </div>
-    )
+    );
   }
 }

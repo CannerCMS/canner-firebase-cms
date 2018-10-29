@@ -1,6 +1,6 @@
 /** @jsx builder */
 
-import builder, {Default} from 'canner-script';
+import builder, {Default, Condition} from 'canner-script';
 import {Focus} from './utils.schema';
 import {renderUrl, renderStatus, renderCategory} from './utils/columns';
 
@@ -16,6 +16,10 @@ export default () => (
         title: 'Category',
         dataIndex: 'category',
         render: renderCategory
+      }, {
+        title: 'Status',
+        dataIndex: 'title',
+        render: renderStatus
       }]
     }}
   >
@@ -29,10 +33,7 @@ export default () => (
         <selectFilter
           label="Status"
           options={[{
-            text: 'All',
-            condition: {}
-          }, {
-            text: 'Published',
+            text: 'Publish',
             condition: {
               draft: {
                 eq: false
@@ -62,15 +63,20 @@ export default () => (
         />
       </filter>
     </toolbar>
-    <Focus focusKeys={['title', 'content']}>
+    <Focus focusKeys={['title', 'content', 'featureImage']}>
       <string keyName="title" title="Title" packageName="./customize-cms-component/custom-string-title_input"/>
       <object keyName="content" title="Content" ui="editor" />
       <Default keyName="status" title="Status">
-        <string keyName="publish" packageName="./customize-cms-component/custom-string-schedule_btn" />
-        <boolean keyName="draft" title="Draft" packageName="./customize-cms-component/custom-boolean-review_btn" uiParams={{
-          desc: "Pending review",
-          help: "Flag this post to be reviewed for approval."
-        }}/>
+        <boolean keyName="draft"
+          title="Draft"
+          uiParams={{
+            yesText: " ",
+            noText: " "
+          }}
+        />
+        <Condition match={value => !value.draft}>
+          <json keyName="publish" packageName="./customize-cms-component/custom-string-schedule_btn" />
+        </Condition>
         <boolean keyName="stick" packageName="./customize-cms-component/custom-boolean-switch_desc" uiParams={{
           desc: "Stick to the front page",
           help: "Sticky posts will appear at the top of the posts listing."
@@ -95,8 +101,8 @@ export default () => (
             }]
           }}/>
       </Default>
-
-      <image keyName="featureImage" title="Feature Image"/>
+      {/* limitSize unit: bytes */}
+      <image keyName="featureImage" title="Feature Image" uiParams={{limitSize: 50000, dirname: 'canner/posts'}}/>
       <Default keyName="share" title="Sharing">
         <boolean keyName="showShareButton" packageName="./customize-cms-component/custom-boolean-check_desc" uiParams={{
           desc: "Show sharing button"

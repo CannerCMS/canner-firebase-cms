@@ -14,7 +14,7 @@ export default class CustomReviewBtn extends React.Component {
         onOk: () => {
           onChange(refId, 'update', false);
           deploy(refId.getPathArr()[0]).then(() => {
-            goTo(routes[0]);
+            goTo({pathname: routes[0]});
             reset(refId.getPathArr()[0])
           });
         },
@@ -34,7 +34,7 @@ export default class CustomReviewBtn extends React.Component {
       onOk: () => {
         onChange(refId, 'update', true);
         deploy(refId.getPathArr()[0]).then(() => {
-          goTo(routes[0]);
+          goTo({pathname: routes[0]});
           reset(refId.getPathArr()[0])
         })
       },

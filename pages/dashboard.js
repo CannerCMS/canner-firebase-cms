@@ -147,8 +147,8 @@ class Dashboard extends React.Component {
           router={new R({
             history: {
               location: {
-                pathname: router.asPath,
-                search: ''
+                pathname: router.asPath.split('?')[0],
+                search: (`${router.asPath}?`).split('?')[1] 
               },
               push: router.push
             },

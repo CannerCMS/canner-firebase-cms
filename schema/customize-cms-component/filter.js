@@ -34,10 +34,7 @@ type State = {
 }
 
 const fields = [{
-  title: 'All',
-  condition: {}
-}, {
-  title: 'Published',
+  title: 'Publish',
   condition: {
     draft: {
       eq: false
@@ -51,9 +48,6 @@ const fields = [{
   condition: {
     draft: {
       eq: true
-    },
-    trash: {
-      eq: false
     }
   }
 }, {

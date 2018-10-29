@@ -41,6 +41,7 @@
     "@canner/antd-components": "^0.5.8",
     "@canner/container": "^2.0.5",
     "@canner/history-router": "^2.0.5",
+    "@canner/storage": "^2.0.5",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",
     "antd": "3.10.3",

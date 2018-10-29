@@ -1,6 +1,6 @@
 /** @jsx builder */
 
-import builder, {Default} from 'canner-script';
+import builder, {Default, Condition} from 'canner-script';
 import TabsFilter from './customize-cms-component/filter.js';
 import {Focus} from './utils.schema';
 import {renderUrl, renderStatus} from './utils/columns';
@@ -15,7 +15,7 @@ export default () => (
         dataIndex: 'title'
       }, {
         title: 'Url',
-        dataIndex: 'Url',
+        dataIndex: 'url',
         render: renderUrl
       }, {
         title: 'Status',
@@ -29,23 +29,45 @@ export default () => (
       {/* customized filter bar */}
       <filter component={TabsFilter} />
     </toolbar>
-    <Focus focusKeys={['title', 'url', 'content']}>
-      <string keyName="title" title="Title" />
-      <string keyName="url" title="URL" packageName="./customize-cms-component/custom-string-url" />
+    <Focus focusKeys={['title', 'url', 'content', 'featureImage']}>
+      <string keyName="title" title="Title" layout="horizontal" />
+      <string keyName="url" title="URL" uiParams={{addonBefore: 'https://'}}  layout="horizontal"/>
       <object keyName="content" title="Content" ui="editor" />
       <Default keyName="status" title="Status">
-        <string keyName="publish" packageName="./customize-cms-component/custom-string-schedule_btn" />
-        <boolean keyName="draft" packageName="./customize-cms-component/custom-boolean-review_btn" uiParams={{
-          desc: "Pending review",
-          help: "Flag this post to be reviewed for approval."
-        }}/>
+        <boolean keyName="draft"
+          title="Draft"
+          uiParams={{
+            yesText: " ",
+            noText: " "
+          }}
+        />
+        <Condition match={value => !value.draft}>
+          <json keyName="publish" packageName="./customize-cms-component/custom-string-schedule_btn" />
+        </Condition>
       </Default>
-      <image keyName="featureImage" title="Feature Image"/>
+      {/* limitSize unit: bytes */}
+      <image keyName="featureImage" title="Feature Image" uiParams={{limitSize: 50000, dirname: 'canner/pages'}}/>
       <Default keyName="pageProperty" title="Page Property">
-        <boolean keyName="topLevel" title="Parent page" packageName="./customize-cms-component/custom-boolean-switch_desc" uiParams={{
-          desc: "Top level",
-          help: "Disable to select a parent page"
-        }}/>
+        <boolean keyName="topmost"
+          title="Topmost"
+          description="Disable to select a parent page"
+          uiParams={{
+            yesText: " ",
+            noText: " "
+          }}
+        />
+        <Condition match={value => !value.topmost}>
+          <relation
+            title="Parent Page"
+            keyName="parentPage"
+            ui="singleSelectTree"
+            relation={{to: 'pages', type: 'toOne'}}
+            uiParams={{
+              relationField: 'parentPage',
+              textCol: 'title'
+            }}
+          />
+        </Condition>
         <number keyName="order" title="Order" uiParams={{min: 0}}/>
       </Default>
       <Default keyName="share" title="Sharing">
