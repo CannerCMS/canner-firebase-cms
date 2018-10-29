@@ -3,7 +3,7 @@ import * as firebase from 'firebase';
 import Router from 'next/router';
 import {Row, Col, Form, Input, Icon, Button, Alert, notification} from 'antd';
 import GithubCorner from 'react-github-corner';
-import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from '../components/app'
+import {LoginContainer, LogoContainer, FooterContainer, BodyWrapper} from '../components/app';
 import firebaseConfig from '../config-firebase';
 
 const FormItem = Form.Item;

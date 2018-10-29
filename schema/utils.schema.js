@@ -6,7 +6,7 @@ import Panel from './layouts/panel';
 const Collapse = ({children}) => <Layout component={Panel}>{children}</Layout>
 export const Focus = ({children, attributes: {focusKeys}}) => {
   return (
-    <Row type="flex" gutter={16}>
+    <Row type="flex" gutter={16} style={{marginBottom: 16}}>
       <Col xs={24} sm={24} md={16} lg={16}>
         <Block>
           {
