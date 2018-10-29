@@ -123,41 +123,7 @@ export default (
     >
       <toolbar>
         <pagination />
-        <filter fields={[{
-          title: 'Published',
-          condition: {
-            status: {
-              draft: {
-                eq: false
-              },
-            },
-            trash: {
-              eq: false
-            }
-          }
-        }, {
-          title: 'Drafts',
-          condition: {
-            status: {
-              draft: {
-                eq: true
-              },
-            },
-            trash: {
-              eq: false
-            }
-          }
-        }, {
-          title: 'Trashed',
-          condition: {
-            trash: {
-              eq: true
-            }
-          }
-        }]} search={{
-          title: 'Search name',
-          key: 'name'
-        }} component={TabsFilter} />
+        <filter component={TabsFilter} />
       </toolbar>
       <Layout component={Focus} focus={["title", "content"]}>
         <string keyName="title" title="Title" packageName="./customize-cms-component/custom-string-title_input"/>

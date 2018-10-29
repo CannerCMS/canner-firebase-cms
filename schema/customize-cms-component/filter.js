@@ -14,7 +14,9 @@ type Props = {
 
 const Wrapper = styled.div`
   box-shadow: 1px 1px 1px 1px #ccc;
-  margin-bottom: 64px;
+  margin-bottom: 24px;
+  width: 100%;
+
   .ant-tabs-bar {
     margin-bottom: 0;
   }
@@ -30,6 +32,39 @@ type State = {
   search: Object,
   filter: Object
 }
+
+const fields = [{
+  title: 'Published',
+  condition: {
+    status: {
+      draft: {
+        eq: false
+      },
+    },
+    trash: {
+      eq: false
+    }
+  }
+}, {
+  title: 'Drafts',
+  condition: {
+    status: {
+      draft: {
+        eq: true
+      },
+    },
+    trash: {
+      eq: false
+    }
+  }
+}, {
+  title: 'Trashed',
+  condition: {
+    trash: {
+      eq: true
+    }
+  }
+}];
 
 export default class TabsFilter extends React.Component<Props, State> {
   state = {
@@ -60,18 +95,17 @@ export default class TabsFilter extends React.Component<Props, State> {
       });
       return;
     }
-    const {search} = this.props;
     this.props.changeFilter({
-      [search.key]: {eq: value},
+      title: {eq: value},
       ...filter
     });
     this.setState({
-      search: {[search.key]: {eq: value}}
+      search: {title: {eq: value}}
     });
   }
 
   render() {
-    const {fields, where, search} = this.props;
+    const {where} = this.props;
     const activeKey = fields.findIndex(field => JSON.stringify(field.condition) === JSON.stringify(where));
     return (
       <Wrapper>
@@ -85,9 +119,10 @@ export default class TabsFilter extends React.Component<Props, State> {
           </Col>
           <Col span={6}>
             <Search
-              placeholder={search.title}
+              placeholder="Enter Name"
               onSearch={this.onSearch}
               enterButton
+              onPressEnter={e => this.onSearch(e.target.value)}
             />
           </Col>
         </Row>
