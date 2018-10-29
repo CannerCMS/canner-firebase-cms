@@ -73,34 +73,6 @@ class Dashboard extends React.Component {
       this.setState({
         visible: true
       });
-    } else if (menuItem.key === 'deploy') {
-      this.deploy();
-    }
-  }
-
-  siderMenuOnClick = (menuItem) => {
-    const {dataChanged} = this.state;
-    const {router} = this.props;
-    const {key} = menuItem;
-    if (dataChanged && Object.keys(dataChanged).length > 0) {
-      confirm({
-        title: 'Do you want to reset all changes?',
-        content: <div>Leaving without deployment will reset all changes. Click the <b>Save</b> button at the top-right corner to save them.</div>,
-        okText: 'Yes',
-        cancelText: 'No',
-        onOk: () => {
-          return new Promise((resolve, reject) => {
-            setTimeout(resolve, 1000);
-          }).then(this.reset)
-            .then(() => {
-              router.push(`/dashboard/${key}`);
-            });
-        },
-        onCancel: () => {
-        },
-      });
-    } else {
-      router.push(`/dashboard/${key}`);
     }
   }
 
@@ -108,40 +80,6 @@ class Dashboard extends React.Component {
     this.setState({
       visible: false,
     });
-  }
-
-  dataDidChange = (dataChanged) => {
-    this.setState({
-      dataChanged
-    });
-  }
-
-  deploy = () => {
-    if (this.cms) {
-      this.setState({
-        deploying: true
-      });
-      return this.cms.deploy()
-        .then(() => {
-          setTimeout(() => {
-            this.setState({
-              deploying: false
-            });
-            notification.success({
-              message: 'Save successfully!',
-              description: 'Your changes have been saved.',
-              placement: 'bottomRight'
-            });
-          }, 1000)
-        });
-    }
-  }
-
-  reset = () => {
-    if (this.cms) {
-      return this.cms.reset();
-    }
-    return Promise.resolve();
   }
 
   render() {
@@ -174,6 +112,7 @@ class Dashboard extends React.Component {
     return (
       <React.Fragment>
         <Container
+          dataDidChange={this.dataDidChange}
           schema={schema}
           sidebarConfig={{
             menuConfig: [
@@ -186,42 +125,23 @@ class Dashboard extends React.Component {
                 <img src="/static/logo-word-white.png" width={150} alt="logo"/>
               </LogoContainer>
             ),
+            showSaveButton: true,
             renderMenu: () => (
-              <HeaderMenu>
-                <Menu
-                  theme="dark"
-                  mode="horizontal"
-                  style={{ lineHeight: '64px' }}
-                  selectedKeys={[]}
-                  onClick={this.headerMenuOnClick}
-                >
-                  <Menu.SubMenu title={<span>
-                    <AvatarWithIcon style={{color: '#f56a00', backgroundColor: '#fde3cf'}} icon="user" />
-                    <UserName>{username}</UserName>
-                    </span>}>
-                    <Menu.Item key="overview">Overview</Menu.Item>
-                    <Menu.Item key="logout">Log out</Menu.Item>
-                  </Menu.SubMenu>
-                  {
-                    hasChanged ?
-                    <Menu.Item key="deploy">
-                    {
-                      deploying ?
-                        spinIcon :
-                        <Badge dot>
-                          <MenuText>
-                          Save
-                          </MenuText>
-                        </Badge>
-                    }
-                    </Menu.Item> :
-                    <Menu.Item key="saved">
-                      Saved
-                    </Menu.Item>
-                  }
-
-                </Menu>
-              </HeaderMenu>
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                style={{ lineHeight: '64px', display: 'inline-block' }}
+                selectedKeys={[]}
+                onClick={this.headerMenuOnClick}
+              >
+                <Menu.SubMenu title={<span>
+                  <AvatarWithIcon style={{color: '#f56a00', backgroundColor: '#fde3cf'}} icon="user" />
+                  <UserName>{username}</UserName>
+                  </span>}>
+                  <Menu.Item key="overview">Overview</Menu.Item>
+                  <Menu.Item key="logout">Log out</Menu.Item>
+                </Menu.SubMenu>
+              </Menu>
             )
           }}
           router={new R({
@@ -235,8 +155,7 @@ class Dashboard extends React.Component {
             baseUrl: "/dashboard"
           })}
         >
-          <Canner
-            hideButtons={true}/>
+          <Canner />
         </Container>
         <Modal
           width={"80%"}
