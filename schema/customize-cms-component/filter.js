@@ -34,12 +34,13 @@ type State = {
 }
 
 const fields = [{
+  title: 'All',
+  condition: {}
+}, {
   title: 'Published',
   condition: {
-    status: {
-      draft: {
-        eq: false
-      },
+    draft: {
+      eq: false
     },
     trash: {
       eq: false
@@ -48,10 +49,8 @@ const fields = [{
 }, {
   title: 'Drafts',
   condition: {
-    status: {
-      draft: {
-        eq: true
-      },
+    draft: {
+      eq: true
     },
     trash: {
       eq: false
@@ -73,7 +72,6 @@ export default class TabsFilter extends React.Component<Props, State> {
   }
 
   onChange = (index: number) => {
-    const {fields} = this.props;
     const {search} = this.state;
     this.props.changeFilter({
       ...search,
