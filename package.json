@@ -32,21 +32,21 @@
     "babel-loader": "^8.0.0-beta",
     "babel-plugin-styled-components": "^1.5.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "canner-schema-loader": "1.5.0-canary.7",
-    "canner-script": "1.5.0-canary.7",
-    "less": "3.0.2",
+    "canner-schema-loader": "2.0.7",
+    "canner-script": "2.0.7",
+    "less": "3.8.1",
     "prettier": "^1.11.1"
   },
   "dependencies": {
-    "@canner/antd-components": "^0.4.0-beta.13",
-    "@canner/container": "^1.5.0-canary.8",
-    "@canner/history-router": "^1.5.0-canary.2",
-    "@zeit/next-css": "^0.2.1-canary.1",
-    "@zeit/next-less": "^0.3.1-canary.1",
-    "antd": "3.8.2",
-    "canner": "^1.5.0-canary.2",
-    "canner-helpers": "^1.5.0-canary.2",
-    "canner-layouts": "^1.0.6",
+    "@canner/antd-components": "^0.5.8",
+    "@canner/container": "^2.0.5",
+    "@canner/history-router": "^2.0.5",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1",
+    "antd": "3.10.2",
+    "canner": "^2.0.7",
+    "canner-helpers": "^2.0.6",
+    "canner-layouts": "^2.0.7",
     "firebase": "^5.0.4",
     "next": "^7.0.0-canary.0",
     "query-string": "^6.1.0",
@@ -55,6 +55,6 @@
     "react-github-corner": "^2.3.0",
     "react-router": "^4.3.1",
     "slug": "^0.9.1",
-    "styled-components": "^3.3.3"
+    "styled-components": "^4.0.2"
   }
 }
