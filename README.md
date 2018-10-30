@@ -4,6 +4,8 @@
 
 Canner CMS for Firebase with SSR supported ([NextJS](https://nextjs.org/docs/#setup)), for blog, ecommerce, mobile apps and even chatbot! This project is based on Canner, a open source CMS framework  https://github.com/Canner/canner
 
+> We have another demo using firestore and deploying with `firebase-tools`, see [canner-firestore-cms](https://github.com/Canner/canner-firestore-cms).
+
 ## Deployment
 
 ### Now.sh
