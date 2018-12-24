@@ -42,7 +42,7 @@ A simple blog post example:
 ![preview](./preview/syntax.png)
 
 
-Learn how to write schema [canner-script](https://www.canner.io/docs/guides-writing-schema.html)
+Learn how to write schema [canner-script](https://www.cannercms.com/docs/schema-overview)
 
 ## Import default user
 
