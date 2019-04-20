@@ -15,7 +15,6 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Canner ❤️ Firebase demo</title>
           <meta name="description" content="Canner CMS demo with Firebase" />
           <meta charSet="utf-8"/>
           <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css"/>
